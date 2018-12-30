@@ -25,10 +25,8 @@ const generateStationsCheckBoxes = (stationObj)=>{
 }
 const CircleIcon = ({stn})=>{
   const [hideSeek,setHideSeek] = useState(false)
-  
   return <React.Fragment >
       <circle id={stn["-id"]} cx={stn["-cx"]} cy={stn["-cy"]} r={stn["-r"]} style={{"cursor":`pointer`}} onClick={()=> {
-        
         setHideSeek(!hideSeek)
       }
       }/>
@@ -38,9 +36,10 @@ const CircleIcon = ({stn})=>{
         <circle id={stn["-id"]} cx={stn["-cx"]} cy={stn["-cy"]} r={stn["-r"]} style={{"cursor":`pointer`}} fill="#0093ef" onClick={()=> {
         setHideSeek(!hideSeek)
       }}/>
-      <g transform ={`rotate(230 ${stn["-cx"]} ${parseFloat(stn["-cy"])+3})`} stroke="none" fill="#FFFFFF" onClick={()=> {
+      <g style={{"cursor":`pointer`}} transform ={`rotate(230 ${parseFloat(stn["-cx"])} ${parseFloat(stn["-cy"])+3})`} stroke="none" fill="#FFFFFF" onClick={()=> {
         setHideSeek(!hideSeek)
       }}>
+      {/* Drawing Tick icon here by overlapping two rectangle and rotating */}
       <rect x={stn["-cx"]} y={stn["-cy"]} rx="15" ry="15" height="2.5" width="5" onClick={()=> {
         setHideSeek(!hideSeek)
       }}/>
@@ -531,7 +530,7 @@ const genImage = ()=> {
      </g>
     </svg>
 }
-function SGMrt() {
+const SGMrt=()=> {
         const [showFutureStations, setShowFutureStation] = useState(true);
         return(<div style={{"width": `100vw`,
                     "overflow": `scroll`,
