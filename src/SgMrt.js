@@ -27,28 +27,28 @@ const CircleIcon = ({stn})=>{
   const [hideSeek,setHideSeek] = useState(false)
   
   return <React.Fragment >
-      <circle id={stn["-id"]} cx={stn["-cx"]} cy={stn["-cy"]} r={stn["-r"]} onClick={()=> {
+      <circle id={stn["-id"]} cx={stn["-cx"]} cy={stn["-cy"]} r={stn["-r"]} style={{"cursor":`pointer`}} onClick={()=> {
         
         setHideSeek(!hideSeek)
       }
       }/>
     {hideSeek &&
     
-    <React.Fragment >
-      <circle id={stn["-id"]} cx={stn["-cx"]} cy={stn["-cy"]} r={stn["-r"]} fill="#0093ef" onClick={()=> {
-      setHideSeek(!hideSeek)
-    }}/>
-    <g transform ={`rotate(230 ${stn["-cx"]} ${parseFloat(stn["-cy"])+3})`} stroke="none" fill="#FFFFFF" onClick={()=> {
-      setHideSeek(!hideSeek)
-    }}>
-    <rect x={stn["-cx"]} y={stn["-cy"]} rx="15" ry="15" height="2.5" width="5" onClick={()=> {
-      setHideSeek(!hideSeek)
-    }}/>
-    <rect x={stn["-cx"]} y={stn["-cy"]} rx="15" ry="15" height="10" width="2.5" onClick={()=> {
-      setHideSeek(!hideSeek)
-    }}/>
-    </g>
-    </React.Fragment>
+      <React.Fragment >
+        <circle id={stn["-id"]} cx={stn["-cx"]} cy={stn["-cy"]} r={stn["-r"]} style={{"cursor":`pointer`}} fill="#0093ef" onClick={()=> {
+        setHideSeek(!hideSeek)
+      }}/>
+      <g transform ={`rotate(230 ${stn["-cx"]} ${parseFloat(stn["-cy"])+3})`} stroke="none" fill="#FFFFFF" onClick={()=> {
+        setHideSeek(!hideSeek)
+      }}>
+      <rect x={stn["-cx"]} y={stn["-cy"]} rx="15" ry="15" height="2.5" width="5" onClick={()=> {
+        setHideSeek(!hideSeek)
+      }}/>
+      <rect x={stn["-cx"]} y={stn["-cy"]} rx="15" ry="15" height="10" width="2.5" onClick={()=> {
+        setHideSeek(!hideSeek)
+      }}/>
+      </g>
+      </React.Fragment>
     
   }
   </React.Fragment>
