@@ -1,23 +1,9 @@
 import React,{useState} from 'react';
-const EW_LINE_STN = {"g":{"-id":"stns_ewl","-stroke":"#009645","circle":[{"-id":"cg2","-cx":"1334","-cy":"694","-r":"5","name":"ChangiAirport"},{"-id":"ew1","-cx":"1283","-cy":"524.5","-r":"5","name":"Pasir Ris"},{"-id":"ew3","-cx":"1245","-cy":"634","-r":"5","name":"Simei"},{"-id":"ew5","-cx":"1186","-cy":"659","-r":"5","name":"Bedok"},{"-id":"ew6","-cx":"1126","-cy":"659","-r":"5","name":"Kembangan"},{"-id":"ew7","-cx":"1066","-cy":"659","-r":"5","name":"Eunos"},{"-id":"ew9","-cx":"974","-cy":"660","-r":"5","name":"Aljunied"},{"-id":"ew10","-cx":"950.5","-cy":"675","-r":"5","name":"Kallang"},{"-id":"ew11","-cx":"926","-cy":"699","-r":"5","name":"Lavender"},{"-id":"ew15","-cx":"698.5","-cy":"856","-r":"5","name":"TanjongPagar"},{"-id":"ew17","-cx":"630","-cy":"748","-r":"5","name":"TiongBahru"},{"-id":"ew18","-cx":"595.5","-cy":"714","-r":"5","name":"Redhill"},{"-id":"ew19","-cx":"554.7","-cy":"673","-r":"5","name":"Queenstown"},{"-id":"ew20","-cx":"519","-cy":"637","-r":"5","name":"Commonwealth"},{"-id":"ew22","-cx":"451","-cy":"570","-r":"5","name":"Dover"},{"-id":"ew23","-cx":"405","-cy":"524","-r":"5","name":"Clementi"},{"-id":"ew25","-cx":"247","-cy":"514","-r":"5","name":"ChineseGarden"},{"-id":"ew26","-cx":"202","-cy":"514","-r":"5","name":"Lakeside"},{"-id":"ew27","-cx":"155","-cy":"514","-r":"5","name":"Boon Lay"},{"-id":"ew28","-cx":"75","-cy":"540","-r":"5","name":"Pioneer"},{"-id":"ew29","-cx":"75","-cy":"568","-r":"5","name":"Joo Koon "},{"-id":"ew30","-cx":"75","-cy":"596","-r":"5","name":"Gul Circle"},{"-id":"ew31","-cx":"75","-cy":"624","-r":"5","name":"TuasCrescent"},{"-id":"ew32","-cx":"75","-cy":"652","-r":"5","name":"Tuas WestRoad"},{"-id":"ew33","-cx":"75","-cy":"680","-r":"5","name":"Tuas Link"}]}};
-const NS_LINE_STN = {"g":{"-id":"stns_nsl","-stroke":"#d42e12","circle":[{"-id":"ns2","-cx":"286","-cy":"413","-r":"5","name":"BukitBatok"},{"-id":"ns3","-cx":"286","-cy":"321","-r":"5","name":"BukitGombak"},{"-id":"ns5","-cx":"286","-cy":"123","-r":"5","name":"Yew Tee"},{"-id":"ns7","-cx":"352","-cy":"67","-r":"5","name":"Kranji"},{"-id":"ns8","-cx":"435","-cy":"67","-r":"5","name":"Marsiling"},{"-id":"ns9","-cx":"529","-cy":"67","-r":"5","name":"Woodlands"},{"-id":"ns10","-cx":"632","-cy":"67","-r":"5","name":"Admiralty"},{"-id":"ns11","-cx":"735","-cy":"67","-r":"5","name":"Sembawang"},{"-id":"ns12","-cx":"786","-cy":"104","-r":"5","name":"Canberra"},{"-id":"ns13","-cx":"786","-cy":"153","-r":"5","name":"Yishun"},{"-id":"ns14","-cx":"786","-cy":"202","-r":"5","name":"Khatib"},{"-id":"ns15","-cx":"786","-cy":"250","-r":"5","name":"YioChu Kang"},{"-id":"ns16","-cx":"786","-cy":"306","-r":"5","name":"AngMo Kio"},{"-id":"ns18","-cx":"786","-cy":"428","-r":"5","name":"Braddell"},{"-id":"ns19","-cx":"770","-cy":"467","-r":"5","name":"Toa Payoh"},{"-id":"ns20","-cx":"739","-cy":"498","-r":"5","name":"Novena"},{"-id":"ns22","-cx":"660","-cy":"586","-r":"5","name":"Orchard"},{"-id":"ns23","-cx":"702","-cy":"632","-r":"5","name":"Somerset"},{"-id":"ns28","-cx":"833","-cy":"955","-r":"5","name":"MarinaSouth Pier"}]}}
-const NE_LINE_STN={"g":{"-id":"stns_nel","-stroke":"#9900aa","circle":[{"-id":"ne5","-cx":"723.5","-cy":"724.5","-r":"5","name":"ClarkeQuay"},{"-id":"ne8","-cx":"807.5","-cy":"578.4","-r":"5","name":"Farrer Park"},{"-id":"ne9","-cx":"834","-cy":"552","-r":"5","name":"Boon Keng"},{"-id":"ne10","-cx":"861","-cy":"525","-r":"5","name":"Potong Pasir"},{"-id":"ne11","-cx":"888","-cy":"498","-r":"5","name":"Woodleigh"},{"-id":"ne13","-cx":"956","-cy":"430","-r":"5","name":"Kovan"},{"-id":"ne14","-cx":"983","-cy":"403.5","-r":"5","name":"Hougang"},{"-id":"ne15","-cx":"1018","-cy":"368","-r":"5","name":"Buangkok"},{"-id":"ne18","-cx":"1254","-cy":"132","-r":"5","name":"Punggol Coast"}]}}
-const CC_LINE_STN={"g":{"-id":"stns_ccl","-stroke":"#fa9e0d","circle":[{"-id":"cc2","-cx":"824","-cy":"739","-r":"5","name":"BrasBasah"},{"-id":"cc3","-cx":"880","-cy":"795","-r":"5","name":"Esplanade"},{"-id":"cc5","-cx":"970","-cy":"786","-r":"5","name":"NicollHighway"},{"-id":"cc6","-cx":"985","-cy":"754.5","-r":"5","name":"Stadium"},{"-id":"cc7","-cx":"996","-cy":"720.5","-r":"5","name":"Mountbatten"},{"-id":"cc8","-cx":"1003","-cy":"687","-r":"5","name":"Dakota"},{"-id":"cc11","-cx":"984.5","-cy":"552","-r":"5","name":"Tai Seng"},{"-id":"cc12","-cx":"964","-cy":"514","-r":"5","name":"Bartley"},{"-id":"cc14","-cx":"854","-cy":"416","-r":"5","name":"LorongChuan"},{"-id":"cc16","-cx":"721","-cy":"390.8","-r":"5","name":"Marymount"},{"-id":"cc17","-cx":"658","-cy":"402.8","-r":"5","name":"Caldecott"},{"-id":"cc18","-cx":"601","-cy":"429","-r":"5","name":"BukitBrown"},{"-id":"cc20","-cx":"515.5","-cy":"514","-r":"5","name":"Farrer Road"},{"-id":"cc21","-cx":"497","-cy":"549","-r":"5","name":"HollandVillage"},{"-id":"cc23","-cx":"475.7","-cy":"637","-r":"5","name":"one-north"},{"-id":"cc24","-cx":"476","-cy":"674","-r":"5","name":"KentRidge"},{"-id":"cc25","-cx":"481","-cy":"709","-r":"5","name":"Haw ParVilla"},{"-id":"cc26","-cx":"493.5","-cy":"750","-r":"5","name":"PasirPanjang"},{"-id":"cc27","-cx":"513.8","-cy":"792","-r":"5","name":"LabradorPark"},{"-id":"cc28","-cx":"540","-cy":"827.5","-r":"5","name":"TelokBlangah"},{"-id":"cc30","-cx":"630","-cy":"895","-r":"5","name":"Keppel"},{"-id":"cc31","-cx":"681","-cy":"912","-r":"5","name":"Cantonment"},{"-id":"cc32","-cx":"735","-cy":"919","-r":"5","name":"PrinceEdward"}]}}
-const DTL_LINE_STN={"g":{"-id":"stns_dtl","-stroke":"#005ec4","circle":[{"-id":"dt2","-cx":"479","-cy":"268","-r":"5","name":"Cashew"},{"-id":"dt3","-cx":"479","-cy":"309","-r":"5","name":"Hillview"},{"-id":"dt5","-cx":"479","-cy":"353","-r":"5","name":"BeautyWorld"},{"-id":"dt6","-cx":"485","-cy":"406","-r":"5","name":"King AlbertPark"},{"-id":"dt7","-cx":"502","-cy":"425","-r":"5","name":"SixthAvenue"},{"-id":"dt8","-cx":"524","-cy":"447.5","-r":"5","name":"TanKah Kee"},{"-id":"dt10","-cx":"658","-cy":"486","-r":"5","name":"Stevens"},{"-id":"dt13","-cx":"818","-cy":"645","-r":"5","name":"Rochor"},{"-id":"dt17","-cx":"804","-cy":"866","-r":"5","name":"Downtown"},{"-id":"dt18","-cx":"742","-cy":"803","-r":"5","name":"TelokAyer"},{"-id":"dt20","-cx":"703.5","-cy":"727","-r":"5","name":"FortCanning"},{"-id":"dt21","-cx":"832","-cy":"693","-r":"5","name":"Bencoolen"},{"-id":"dt22","-cx":"865","-cy":"659.8","-r":"5","name":"JalanBesar"},{"-id":"dt23","-cx":"896","-cy":"629","-r":"5","name":"Bendeemer"},{"-id":"dt24","-cx":"927","-cy":"602.5","-r":"5","name":"GeylangBahru"},{"-id":"dt25","-cx":"969","-cy":"600","-r":"5","name":"Mattar"},{"-id":"dt27","-cx":"1046","-cy":"600","-r":"5","name":"Ubi"},{"-id":"dt28","-cx":"1089","-cy":"600","-r":"5","name":"KakiBukit"},{"-id":"dt29","-cx":"1129","-cy":"600","-r":"5","name":"BedokNorth"},{"-id":"dt30","-cx":"1172.5","-cy":"600","-r":"5","name":"BedokReservoir"},{"-id":"dt31","-cx":"1211","-cy":"600","-r":"5","name":"TampinesWest"},{"-id":"dt33","-cx":"1286","-cy":"632","-r":"5","name":"TampinesEast"},{"-id":"dt34","-cx":"1286","-cy":"667","-r":"5","name":"UpperChangi"},{"-id":"dt36","-cx":"1286","-cy":"736","-r":"5","name":"Xilin"},{"-id":"dt37","-cx":"1286","-cy":"786","-r":"5","name":"SungeiBedok"}]}}
-const ECL_TEL_LINE_STN = {"g":{"-id":"stns_tel","-stroke":"#784008","circle":[{"-id":"te1","-cx":"496","-cy":"34","-r":"5","name":"WoodlandsNorth"},{"-id":"te3","-cx":"579","-cy":"117","-r":"5","name":"WoodlandsSouth"},{"-id":"te4","-cx":"624","-cy":"161.8","-r":"5","name":"Springleaf"},{"-id":"te5","-cx":"658","-cy":"208","-r":"5","name":"Lentor"},{"-id":"te6","-cx":"658","-cy":"247","-r":"5","name":"Mayflower"},{"-id":"te7","-cx":"658","-cy":"309.5","-r":"5","name":"BrightHill"},{"-id":"te8","-cx":"658","-cy":"357","-r":"5","name":"UpperThomson"},{"-id":"te10","-cx":"658","-cy":"444","-r":"5","name":"MountPleasant"},{"-id":"te12","-cx":"658","-cy":"517","-r":"5","name":"Napier"},{"-id":"te13","-cx":"658","-cy":"549","-r":"5","name":"OrchardBoulevard"},{"-id":"te15","-cx":"658","-cy":"648","-r":"5","name":"GreatWorld"},{"-id":"te16","-cx":"658","-cy":"694","-r":"5","name":"Havelock"},{"-id":"te18","-cx":"687","-cy":"826.4","-r":"5","name":"Maxwell"},{"-id":"te19","-cx":"741.7","-cy":"881","-r":"5","name":"ShentonWay"},{"-id":"te21","-cx":"846","-cy":"913","-r":"5","name":"MarinaSouth"},{"-id":"te22","-cx":"911","-cy":"913","-r":"5","name":"Gardensby the Bay"},{"-id":"te23","-cx":"958","-cy":"903","-r":"5","name":"TanjongRhu"},{"-id":"te24","-cx":"988","-cy":"873","-r":"5","name":"Katong Park"},{"-id":"te25","-cx":"1024","-cy":"837","-r":"5","name":"TanjongKatong"},{"-id":"te26","-cx":"1056","-cy":"805","-r":"5","name":"MarineParade"},{"-id":"te27","-cx":"1104","-cy":"786","-r":"5","name":"MarineTerrace"},{"-id":"te28","-cx":"1148","-cy":"786","-r":"5","name":"Siglap"},{"-id":"te29","-cx":"1192","-cy":"786","-r":"5","name":"Bayshore"},{"-id":"te30","-cx":"1236","-cy":"786","-r":"5","name":"BedokSouth"}]}}
-const JRL_LINE_STN = {"g":{"-id":"stns_jrl","-stroke":"#0099aa","circle":[{"-id":"js2","-cx":"227","-cy":"286","-r":"5","name":"Choa ChuKang West"},{"-id":"js3","-cx":"179","-cy":"334","-r":"5","name":"Tengah"},{"-id":"js4","-cx":"154.5","-cy":"380","-r":"5","name":"Hong Kah"},{"-id":"js5","-cx":"154.5","-cy":"415","-r":"5","name":"Corporation"},{"-id":"js6","-cx":"154.5","-cy":"450","-r":"5","name":"JurongWest"},{"-id":"js7","-cx":"154.5","-cy":"480","-r":"5","name":"BaharJunction"},{"-id":"js9","-cx":"156","-cy":"535","-r":"5","name":"Enterprise"},{"-id":"js10","-cx":"179","-cy":"565","-r":"5","name":"Tukang"},{"-id":"js11","-cx":"203.5","-cy":"589","-r":"5","name":"Jurong Hill"},{"-id":"js12","-cx":"232","-cy":"617","-r":"5","name":"Jurong Pier"},{"-id":"je1","-cx":"166","-cy":"386","-r":"5","name":"TengahPlantation"},{"-id":"je2","-cx":"188","-cy":"416","-r":"5","name":"undefinedTengah Park"},{"-id":"je3","-cx":"220","-cy":"448","-r":"5","name":"Bukit BatokWest"},{"-id":"je4","-cx":"249","-cy":"477","-r":"5","name":"TohGuan"},{"-id":"je6","-cx":"311","-cy":"539","-r":"5","name":"JurongTown Hall"},{"-id":"je7","-cx":"346","-cy":"574","-r":"5","name":"PandanReservoir"},{"-id":"jw1","-cx":"75","-cy":"465","-r":"5","name":"Gek Poh"},{"-id":"jw2","-cx":"75","-cy":"430","-r":"5","name":"Tawas"},{"-id":"jw3","-cx":"75","-cy":"395","-r":"5","name":"NanyangGateway"},{"-id":"jw4","-cx":"75","-cy":"360","-r":"5","name":"NanyangCrescent"},{"-id":"jw5","-cx":"75","-cy":"325","-r":"5","name":"Peng KangHill"}]}}
-// LRT STATIONS
-const BP_LRT_LINE_STN = {"g":{"-id":"stns_bplrt","-stroke":"#999999","-strokeWidth":"1.7","circle":[{"-id":"bp2","-cx":"321","-cy":"226","-r":"4.6","name":"SouthView"},{"-id":"bp3","-cx":"356","-cy":"226","-r":"4.6","name":"KeatHong"},{"-id":"bp4","-cx":"391","-cy":"226","-r":"4.6","name":"TeckWhye"},{"-id":"bp5","-cx":"426","-cy":"226","-r":"4.6","name":"Phoenix"},{"-id":"bp14","-cx":"445.5","-cy":"192.5","-r":"4.6","name":"Ten MileJunction"},{"-id":"bp7","-cx":"521","-cy":"245","-r":"4.6","name":"Petir"},{"-id":"bp8","-cx":"546","-cy":"259","-r":"4.6","name":"Pending"},{"-id":"bp9","-cx":"565","-cy":"248","-r":"4.6","name":"Bangkit"},{"-id":"bp10","-cx":"565","-cy":"226","-r":"4.6","name":"Fajar"},{"-id":"bp11","-cx":"565","-cy":"204","-r":"4.6","name":"Segar"},{"-id":"bp12","-cx":"546","-cy":"192","-r":"4.6","name":"Jelapang"},{"-id":"bp13","-cx":"521","-cy":"206","-r":"4.6","name":"Senja"}]}}
-const NS_SK_LRT_LINE_STN={"g":{"-id":"stns_sklrt","-stroke":"#999999","-strokeWidth":"1.7","circle":[{"-id":"se1","-cx":"1127","-cy":"321","-r":"4.6","name":"Compassvale"},{"-id":"se2","-cx":"1154","-cy":"339","-r":"4.6","name":"Rumbia"},{"-id":"se3","-cx":"1151","-cy":"372","-r":"4.6","name":"Bakau"},{"-id":"se4","-cx":"1113","-cy":"377.3","-r":"4.6","name":"Kangkar"},{"-id":"se5","-cx":"1095.5","-cy":"348.5","-r":"4.6","name":"Ranggung"},{"-id":"sw1","-cx":"1066.5","-cy":"273.5","-r":"4.6","name":"ChengLim"},{"-id":"sw2","-cx":"1061.4","-cy":"247","-r":"4.6","name":"Farmway"},{"-id":"sw3","-cx":"1044","-cy":"229","-r":"4.6","name":"Kupang"},{"-id":"sw4","-cx":"1022","-cy":"229","-r":"4.6","name":"Thanggam"},{"-id":"sw5","-cx":"1002","-cy":"249","-r":"4.6","name":"Fernvale"},{"-id":"sw6","-cx":"1003.5","-cy":"269.5","-r":"4.6","name":"Layar"},{"-id":"sw7","-cx":"1018.7","-cy":"284.5","-r":"4.6","name":"Tongkang"},{"-id":"sw8","-cx":"1047","-cy":"291.5","-r":"4.6","name":"Renjong"}]}}
-const NS_PG_LRT_LINE_STN={"g":{"-id":"stns_pglrt","-stroke":"#999999","-strokeWidth":"1.7","circle":[{"-id":"pe1","-cx":"1191.7","-cy":"247.3","-r":"4.6","name":"Cove"},{"-id":"pe2","-cx":"1198","-cy":"270","-r":"4.6","name":"Meridian"},{"-id":"pe3","-cx":"1215","-cy":"287","-r":"4.6","name":"Coral Edge"},{"-id":"pe4","-cx":"1245","-cy":"277.7","-r":"4.6","name":"Riviera"},{"-id":"pe5","-cx":"1254","-cy":"246.5","-r":"4.6","name":"Kadaloor"},{"-id":"pe6","-cx":"1238","-cy":"230.5","-r":"4.6","name":"Oasis"},{"-id":"pe7","-cx":"1214","-cy":"224","-r":"4.6","name":"Damai"},{"-id":"pw1","-cx":"1161","-cy":"177","-r":"4.6","name":"Sam Kee"},{"-id":"pw2","-cx":"1156","-cy":"150","-r":"4.6","name":"Teck Lee"},{"-id":"pw3","-cx":"1139","-cy":"132","-r":"4.6","name":"Punggol Point"},{"-id":"pw4","-cx":"1106","-cy":"144","-r":"4.6","name":"Samudera"},{"-id":"pw5","-cx":"1098.5","-cy":"173","-r":"4.6","name":"Nibong"},{"-id":"pw6","-cx":"1115.5","-cy":"190","-r":"4.6","name":"Sumang"},{"-id":"pw7","-cx":"1141","-cy":"194.5","-r":"4.6","name":"SooTeck"}]}};
-const RTS_JB_LINE_STN={"g":{"-id":"rtslink","-stroke":"#87cefa","-strokeWidth":"1.7","circle":[{"-id":"jb2","-cx":"436","-cy":"34","-r":"5","name":"Bukit Chagar(Johor Bahru)"}]}};
-// Interchange Stations
-const INTS_STNS={"g":{"-id":"stns_ints","-stroke":"#000000","-strokeWidth":"3","circle":[{"-id":"cc1","-cx":"760.2","-cy":"689","-r":"7.7","name":"DhobyGhaut"},{"-id":"ce2","-cx":"793","-cy":"913.3","-r":"7.7","name":"MarinaBay"},{"-id":"ce1","-cx":"887","-cy":"871","-r":"7.7","name":"Bayfront"},{"-id":"cc4","-cx":"941.3","-cy":"821","-r":"7.7","name":"Promenade"},{"-id":"cc9","-cx":"1004","-cy":"659","-r":"7.7","name":"PayaLebar"},{"-id":"cc10","-cx":"1000","-cy":"600","-r":"7.7","name":"MacPherson"},{"-id":"cc13","-cx":"923","-cy":"463.2","-r":"7.7","name":"Serangoon"},{"-id":"cc15","-cx":"786","-cy":"394","-r":"7.7","name":"Bishan"},{"-id":"cc19","-cx":"548","-cy":"471.5","-r":"7.7","name":"BotanicGardens"},{"-id":"cc22","-cx":"481","-cy":"599","-r":"7.7","name":"Buona Vista"},{"-id":"cc29","-cx":"581","-cy":"866","-r":"7.7","name":"HarbourFront"},{"-id":"cg1","-cx":"1286","-cy":"694","-r":"7.7","name":"Expo"},{"-id":"ew2","-cx":"1245","-cy":"600.5","-r":"7.7","name":"Tampines"},{"-id":"ew4","-cx":"1227","-cy":"659","-r":"7.7","name":"TanahMerah"},{"-id":"ew12","-cx":"899","-cy":"726","-r":"7.7","name":"Bugis"},{"-id":"ew13","-cx":"830.3","-cy":"790","-r":"7.7","name":"CityHall"},{"-id":"ew14","-cx":"799","-cy":"822","-r":"7.7","name":"RafflesPlace"},{"-id":"ew16","-cx":"657","-cy":"790.5","-r":"7.7","name":"OutramPark"},{"-id":"ew24","-cx":"286","-cy":"514","-r":"7.7","name":"JurongEast"},{"-id":"ne4","-cx":"693.5","-cy":"754","-r":"7.7","name":"Chinatown"},{"-id":"ne7","-cx":"780","-cy":"606.5","-r":"7.7","name":"LittleIndia"},{"-id":"ne16","-cx":"1080.7","-cy":"305.3","-r":"7.7","name":"Sengkang"},{"-id":"ne17","-cx":"1177","-cy":"209.5","-r":"7.7","name":"Punggol"},{"-id":"ns4","-cx":"286","-cy":"225.5","-r":"7.7","name":"ChoaChu Kang"},{"-id":"ns21","-cx":"705","-cy":"532","-r":"7.7","name":"Newton"},{"-id":"dt1","-cx":"479","-cy":"225.5","-r":"7.7","name":"BukitPanjang"}]}}
 
-const generateStationsCheckBoxes = (stationObj)=>{
-  return (<g id={stationObj["g"]["-id"]} stroke={stationObj["g"]["-stroke"]}>
+const generateStationsCheckBoxes = (stationObj,key)=>{
+  return (<g key={key} id={stationObj["g"]["-id"]} stroke={stationObj["g"]["-stroke"]}>
       {stationObj["g"]["circle"].map((stn,index)=>{
-        return <CircleIcon key={index} stn={stn}/>
+        return <CircleIcon key={index} stn={stn} />
       })
   }
   </g>)
@@ -52,7 +38,41 @@ const CircleIcon = ({stn})=>{
   }
   </React.Fragment>
 }
-const genImage = ()=> {
+const genImage = ({displayStations})=> {
+  const EW_LINE_STN = {"g":{"-id":"stns_ewl","-stroke":"#009645","circle":[{"-id":"cg2","-cx":"1334","-cy":"694","-r":"5","name":"ChangiAirport"},{"-id":"ew1","-cx":"1283","-cy":"524.5","-r":"5","name":"Pasir Ris"},{"-id":"ew3","-cx":"1245","-cy":"634","-r":"5","name":"Simei"},{"-id":"ew5","-cx":"1186","-cy":"659","-r":"5","name":"Bedok"},{"-id":"ew6","-cx":"1126","-cy":"659","-r":"5","name":"Kembangan"},{"-id":"ew7","-cx":"1066","-cy":"659","-r":"5","name":"Eunos"},{"-id":"ew9","-cx":"974","-cy":"660","-r":"5","name":"Aljunied"},{"-id":"ew10","-cx":"950.5","-cy":"675","-r":"5","name":"Kallang"},{"-id":"ew11","-cx":"926","-cy":"699","-r":"5","name":"Lavender"},{"-id":"ew15","-cx":"698.5","-cy":"856","-r":"5","name":"TanjongPagar"},{"-id":"ew17","-cx":"630","-cy":"748","-r":"5","name":"TiongBahru"},{"-id":"ew18","-cx":"595.5","-cy":"714","-r":"5","name":"Redhill"},{"-id":"ew19","-cx":"554.7","-cy":"673","-r":"5","name":"Queenstown"},{"-id":"ew20","-cx":"519","-cy":"637","-r":"5","name":"Commonwealth"},{"-id":"ew22","-cx":"451","-cy":"570","-r":"5","name":"Dover"},{"-id":"ew23","-cx":"405","-cy":"524","-r":"5","name":"Clementi"},{"-id":"ew25","-cx":"247","-cy":"514","-r":"5","name":"ChineseGarden"},{"-id":"ew26","-cx":"202","-cy":"514","-r":"5","name":"Lakeside"},{"-id":"ew27","-cx":"155","-cy":"514","-r":"5","name":"Boon Lay"},{"-id":"ew28","-cx":"75","-cy":"540","-r":"5","name":"Pioneer"},{"-id":"ew29","-cx":"75","-cy":"568","-r":"5","name":"Joo Koon "},{"-id":"ew30","-cx":"75","-cy":"596","-r":"5","name":"Gul Circle"},{"-id":"ew31","-cx":"75","-cy":"624","-r":"5","name":"TuasCrescent"},{"-id":"ew32","-cx":"75","-cy":"652","-r":"5","name":"Tuas WestRoad"},{"-id":"ew33","-cx":"75","-cy":"680","-r":"5","name":"Tuas Link"}]}};
+  const NS_LINE_STN = {"g":{"-id":"stns_nsl","-stroke":"#d42e12","circle":[{"-id":"ns2","-cx":"286","-cy":"413","-r":"5","name":"BukitBatok"},{"-id":"ns3","-cx":"286","-cy":"321","-r":"5","name":"BukitGombak"},{"-id":"ns5","-cx":"286","-cy":"123","-r":"5","name":"Yew Tee"},{"-id":"ns7","-cx":"352","-cy":"67","-r":"5","name":"Kranji"},{"-id":"ns8","-cx":"435","-cy":"67","-r":"5","name":"Marsiling"},{"-id":"ns9","-cx":"529","-cy":"67","-r":"5","name":"Woodlands"},{"-id":"ns10","-cx":"632","-cy":"67","-r":"5","name":"Admiralty"},{"-id":"ns11","-cx":"735","-cy":"67","-r":"5","name":"Sembawang"},{"-id":"ns12","-cx":"786","-cy":"104","-r":"5","name":"Canberra"},{"-id":"ns13","-cx":"786","-cy":"153","-r":"5","name":"Yishun"},{"-id":"ns14","-cx":"786","-cy":"202","-r":"5","name":"Khatib"},{"-id":"ns15","-cx":"786","-cy":"250","-r":"5","name":"YioChu Kang"},{"-id":"ns16","-cx":"786","-cy":"306","-r":"5","name":"AngMo Kio"},{"-id":"ns18","-cx":"786","-cy":"428","-r":"5","name":"Braddell"},{"-id":"ns19","-cx":"770","-cy":"467","-r":"5","name":"Toa Payoh"},{"-id":"ns20","-cx":"739","-cy":"498","-r":"5","name":"Novena"},{"-id":"ns22","-cx":"660","-cy":"586","-r":"5","name":"Orchard"},{"-id":"ns23","-cx":"702","-cy":"632","-r":"5","name":"Somerset"},{"-id":"ns28","-cx":"833","-cy":"955","-r":"5","name":"MarinaSouth Pier"}]}}
+  const NE_LINE_STN={"g":{"-id":"stns_nel","-stroke":"#9900aa","circle":[{"-id":"ne5","-cx":"723.5","-cy":"724.5","-r":"5","name":"ClarkeQuay"},{"-id":"ne8","-cx":"807.5","-cy":"578.4","-r":"5","name":"Farrer Park"},{"-id":"ne9","-cx":"834","-cy":"552","-r":"5","name":"Boon Keng"},{"-id":"ne10","-cx":"861","-cy":"525","-r":"5","name":"Potong Pasir"},{"-id":"ne11","-cx":"888","-cy":"498","-r":"5","name":"Woodleigh"},{"-id":"ne13","-cx":"956","-cy":"430","-r":"5","name":"Kovan"},{"-id":"ne14","-cx":"983","-cy":"403.5","-r":"5","name":"Hougang"},{"-id":"ne15","-cx":"1018","-cy":"368","-r":"5","name":"Buangkok"}]}}
+  const NE_LINE_NEW_STN={"g":{"-id":"stns_nel","-stroke":"#9900aa","circle":[{"-id":"ne18","-cx":"1254","-cy":"132","-r":"5","name":"Punggol Coast"}]}}
+  const CC_LINE_STN={"g":{"-id":"stns_ccl","-stroke":"#fa9e0d","circle":[{"-id":"cc2","-cx":"824","-cy":"739","-r":"5","name":"BrasBasah"},{"-id":"cc3","-cx":"880","-cy":"795","-r":"5","name":"Esplanade"},{"-id":"cc5","-cx":"970","-cy":"786","-r":"5","name":"NicollHighway"},{"-id":"cc6","-cx":"985","-cy":"754.5","-r":"5","name":"Stadium"},{"-id":"cc7","-cx":"996","-cy":"720.5","-r":"5","name":"Mountbatten"},{"-id":"cc8","-cx":"1003","-cy":"687","-r":"5","name":"Dakota"},{"-id":"cc11","-cx":"984.5","-cy":"552","-r":"5","name":"Tai Seng"},{"-id":"cc12","-cx":"964","-cy":"514","-r":"5","name":"Bartley"},{"-id":"cc14","-cx":"854","-cy":"416","-r":"5","name":"LorongChuan"},{"-id":"cc16","-cx":"721","-cy":"390.8","-r":"5","name":"Marymount"},{"-id":"cc17","-cx":"658","-cy":"402.8","-r":"5","name":"Caldecott"},{"-id":"cc20","-cx":"515.5","-cy":"514","-r":"5","name":"Farrer Road"},{"-id":"cc21","-cx":"497","-cy":"549","-r":"5","name":"HollandVillage"},{"-id":"cc23","-cx":"475.7","-cy":"637","-r":"5","name":"one-north"},{"-id":"cc24","-cx":"476","-cy":"674","-r":"5","name":"KentRidge"},{"-id":"cc25","-cx":"481","-cy":"709","-r":"5","name":"Haw ParVilla"},{"-id":"cc26","-cx":"493.5","-cy":"750","-r":"5","name":"PasirPanjang"},{"-id":"cc27","-cx":"513.8","-cy":"792","-r":"5","name":"LabradorPark"},{"-id":"cc28","-cx":"540","-cy":"827.5","-r":"5","name":"TelokBlangah"}]}}
+  const CC_LINE_NEW_STN={"g":{"-id":"stns_ccl","-stroke":"#fa9e0d","circle":[{"-id":"cc18","-cx":"601","-cy":"429","-r":"5","name":"BukitBrown"},{"-id":"cc30","-cx":"630","-cy":"895","-r":"5","name":"Keppel"},{"-id":"cc31","-cx":"681","-cy":"912","-r":"5","name":"Cantonment"},{"-id":"cc32","-cx":"735","-cy":"919","-r":"5","name":"PrinceEdward"}]}}
+  const DTL_LINE_STN={"g":{"-id":"stns_dtl","-stroke":"#005ec4","circle":[{"-id":"dt2","-cx":"479","-cy":"268","-r":"5","name":"Cashew"},{"-id":"dt3","-cx":"479","-cy":"309","-r":"5","name":"Hillview"},{"-id":"dt5","-cx":"479","-cy":"353","-r":"5","name":"BeautyWorld"},{"-id":"dt6","-cx":"485","-cy":"406","-r":"5","name":"King AlbertPark"},{"-id":"dt7","-cx":"502","-cy":"425","-r":"5","name":"SixthAvenue"},{"-id":"dt8","-cx":"524","-cy":"447.5","-r":"5","name":"TanKah Kee"},{"-id":"dt10","-cx":"658","-cy":"486","-r":"5","name":"Stevens"},{"-id":"dt13","-cx":"818","-cy":"645","-r":"5","name":"Rochor"},{"-id":"dt17","-cx":"804","-cy":"866","-r":"5","name":"Downtown"},{"-id":"dt18","-cx":"742","-cy":"803","-r":"5","name":"TelokAyer"},{"-id":"dt20","-cx":"703.5","-cy":"727","-r":"5","name":"FortCanning"},{"-id":"dt21","-cx":"832","-cy":"693","-r":"5","name":"Bencoolen"},{"-id":"dt22","-cx":"865","-cy":"659.8","-r":"5","name":"JalanBesar"},{"-id":"dt23","-cx":"896","-cy":"629","-r":"5","name":"Bendeemer"},{"-id":"dt24","-cx":"927","-cy":"602.5","-r":"5","name":"GeylangBahru"},{"-id":"dt25","-cx":"969","-cy":"600","-r":"5","name":"Mattar"},{"-id":"dt27","-cx":"1046","-cy":"600","-r":"5","name":"Ubi"},{"-id":"dt28","-cx":"1089","-cy":"600","-r":"5","name":"KakiBukit"},{"-id":"dt29","-cx":"1129","-cy":"600","-r":"5","name":"BedokNorth"},{"-id":"dt30","-cx":"1172.5","-cy":"600","-r":"5","name":"BedokReservoir"},{"-id":"dt31","-cx":"1211","-cy":"600","-r":"5","name":"TampinesWest"},{"-id":"dt33","-cx":"1286","-cy":"632","-r":"5","name":"TampinesEast"},{"-id":"dt34","-cx":"1286","-cy":"667","-r":"5","name":"UpperChangi"}]}}
+  const DTL_LINE_NEW_STN={"g":{"-id":"stns_dtl","-stroke":"#005ec4","circle":[{"-id":"dt36","-cx":"1286","-cy":"736","-r":"5","name":"Xilin"},{"-id":"dt37","-cx":"1286","-cy":"786","-r":"5","name":"SungeiBedok"}]}}
+  const ECL_TEL_LINE_STN = {"g":{"-id":"stns_tel","-stroke":"#784008","circle":[{"-id":"te1","-cx":"496","-cy":"34","-r":"5","name":"WoodlandsNorth"},{"-id":"te3","-cx":"579","-cy":"117","-r":"5","name":"WoodlandsSouth"},{"-id":"te4","-cx":"624","-cy":"161.8","-r":"5","name":"Springleaf"},{"-id":"te5","-cx":"658","-cy":"208","-r":"5","name":"Lentor"},{"-id":"te6","-cx":"658","-cy":"247","-r":"5","name":"Mayflower"},{"-id":"te7","-cx":"658","-cy":"309.5","-r":"5","name":"BrightHill"},{"-id":"te8","-cx":"658","-cy":"357","-r":"5","name":"UpperThomson"},{"-id":"te10","-cx":"658","-cy":"444","-r":"5","name":"MountPleasant"},{"-id":"te12","-cx":"658","-cy":"517","-r":"5","name":"Napier"},{"-id":"te13","-cx":"658","-cy":"549","-r":"5","name":"OrchardBoulevard"},{"-id":"te15","-cx":"658","-cy":"648","-r":"5","name":"GreatWorld"},{"-id":"te16","-cx":"658","-cy":"694","-r":"5","name":"Havelock"},{"-id":"te18","-cx":"687","-cy":"826.4","-r":"5","name":"Maxwell"},{"-id":"te19","-cx":"741.7","-cy":"881","-r":"5","name":"ShentonWay"},{"-id":"te21","-cx":"846","-cy":"913","-r":"5","name":"MarinaSouth"},{"-id":"te22","-cx":"911","-cy":"913","-r":"5","name":"Gardensby the Bay"},{"-id":"te23","-cx":"958","-cy":"903","-r":"5","name":"TanjongRhu"},{"-id":"te24","-cx":"988","-cy":"873","-r":"5","name":"Katong Park"},{"-id":"te25","-cx":"1024","-cy":"837","-r":"5","name":"TanjongKatong"},{"-id":"te26","-cx":"1056","-cy":"805","-r":"5","name":"MarineParade"},{"-id":"te27","-cx":"1104","-cy":"786","-r":"5","name":"MarineTerrace"},{"-id":"te28","-cx":"1148","-cy":"786","-r":"5","name":"Siglap"},{"-id":"te29","-cx":"1192","-cy":"786","-r":"5","name":"Bayshore"},{"-id":"te30","-cx":"1236","-cy":"786","-r":"5","name":"BedokSouth"}]}}
+  const JRL_LINE_STN = {"g":{"-id":"stns_jrl","-stroke":"#0099aa","circle":[{"-id":"js2","-cx":"227","-cy":"286","-r":"5","name":"Choa ChuKang West"},{"-id":"js3","-cx":"179","-cy":"334","-r":"5","name":"Tengah"},{"-id":"js4","-cx":"154.5","-cy":"380","-r":"5","name":"Hong Kah"},{"-id":"js5","-cx":"154.5","-cy":"415","-r":"5","name":"Corporation"},{"-id":"js6","-cx":"154.5","-cy":"450","-r":"5","name":"JurongWest"},{"-id":"js7","-cx":"154.5","-cy":"480","-r":"5","name":"BaharJunction"},{"-id":"js9","-cx":"156","-cy":"535","-r":"5","name":"Enterprise"},{"-id":"js10","-cx":"179","-cy":"565","-r":"5","name":"Tukang"},{"-id":"js11","-cx":"203.5","-cy":"589","-r":"5","name":"Jurong Hill"},{"-id":"js12","-cx":"232","-cy":"617","-r":"5","name":"Jurong Pier"},{"-id":"je1","-cx":"166","-cy":"386","-r":"5","name":"TengahPlantation"},{"-id":"je2","-cx":"188","-cy":"416","-r":"5","name":"undefinedTengah Park"},{"-id":"je3","-cx":"220","-cy":"448","-r":"5","name":"Bukit BatokWest"},{"-id":"je4","-cx":"249","-cy":"477","-r":"5","name":"TohGuan"},{"-id":"je6","-cx":"311","-cy":"539","-r":"5","name":"JurongTown Hall"},{"-id":"je7","-cx":"346","-cy":"574","-r":"5","name":"PandanReservoir"},{"-id":"jw1","-cx":"75","-cy":"465","-r":"5","name":"Gek Poh"},{"-id":"jw2","-cx":"75","-cy":"430","-r":"5","name":"Tawas"},{"-id":"jw3","-cx":"75","-cy":"395","-r":"5","name":"NanyangGateway"},{"-id":"jw4","-cx":"75","-cy":"360","-r":"5","name":"NanyangCrescent"},{"-id":"jw5","-cx":"75","-cy":"325","-r":"5","name":"Peng KangHill"}]}}
+  // LRT STATIONS
+  const BP_LRT_LINE_STN = {"g":{"-id":"stns_bplrt","-stroke":"#999999","-strokeWidth":"1.7","circle":[{"-id":"bp2","-cx":"321","-cy":"226","-r":"4.6","name":"SouthView"},{"-id":"bp3","-cx":"356","-cy":"226","-r":"4.6","name":"KeatHong"},{"-id":"bp4","-cx":"391","-cy":"226","-r":"4.6","name":"TeckWhye"},{"-id":"bp5","-cx":"426","-cy":"226","-r":"4.6","name":"Phoenix"},{"-id":"bp14","-cx":"445.5","-cy":"192.5","-r":"4.6","name":"Ten MileJunction"},{"-id":"bp7","-cx":"521","-cy":"245","-r":"4.6","name":"Petir"},{"-id":"bp8","-cx":"546","-cy":"259","-r":"4.6","name":"Pending"},{"-id":"bp9","-cx":"565","-cy":"248","-r":"4.6","name":"Bangkit"},{"-id":"bp10","-cx":"565","-cy":"226","-r":"4.6","name":"Fajar"},{"-id":"bp11","-cx":"565","-cy":"204","-r":"4.6","name":"Segar"},{"-id":"bp12","-cx":"546","-cy":"192","-r":"4.6","name":"Jelapang"},{"-id":"bp13","-cx":"521","-cy":"206","-r":"4.6","name":"Senja"}]}}
+  const NS_SK_LRT_LINE_STN={"g":{"-id":"stns_sklrt","-stroke":"#999999","-strokeWidth":"1.7","circle":[{"-id":"se1","-cx":"1127","-cy":"321","-r":"4.6","name":"Compassvale"},{"-id":"se2","-cx":"1154","-cy":"339","-r":"4.6","name":"Rumbia"},{"-id":"se3","-cx":"1151","-cy":"372","-r":"4.6","name":"Bakau"},{"-id":"se4","-cx":"1113","-cy":"377.3","-r":"4.6","name":"Kangkar"},{"-id":"se5","-cx":"1095.5","-cy":"348.5","-r":"4.6","name":"Ranggung"},{"-id":"sw1","-cx":"1066.5","-cy":"273.5","-r":"4.6","name":"ChengLim"},{"-id":"sw2","-cx":"1061.4","-cy":"247","-r":"4.6","name":"Farmway"},{"-id":"sw3","-cx":"1044","-cy":"229","-r":"4.6","name":"Kupang"},{"-id":"sw4","-cx":"1022","-cy":"229","-r":"4.6","name":"Thanggam"},{"-id":"sw5","-cx":"1002","-cy":"249","-r":"4.6","name":"Fernvale"},{"-id":"sw6","-cx":"1003.5","-cy":"269.5","-r":"4.6","name":"Layar"},{"-id":"sw7","-cx":"1018.7","-cy":"284.5","-r":"4.6","name":"Tongkang"},{"-id":"sw8","-cx":"1047","-cy":"291.5","-r":"4.6","name":"Renjong"}]}}
+  const NS_PG_LRT_LINE_STN={"g":{"-id":"stns_pglrt","-stroke":"#999999","-strokeWidth":"1.7","circle":[{"-id":"pe1","-cx":"1191.7","-cy":"247.3","-r":"4.6","name":"Cove"},{"-id":"pe2","-cx":"1198","-cy":"270","-r":"4.6","name":"Meridian"},{"-id":"pe3","-cx":"1215","-cy":"287","-r":"4.6","name":"Coral Edge"},{"-id":"pe4","-cx":"1245","-cy":"277.7","-r":"4.6","name":"Riviera"},{"-id":"pe5","-cx":"1254","-cy":"246.5","-r":"4.6","name":"Kadaloor"},{"-id":"pe6","-cx":"1238","-cy":"230.5","-r":"4.6","name":"Oasis"},{"-id":"pe7","-cx":"1214","-cy":"224","-r":"4.6","name":"Damai"},{"-id":"pw1","-cx":"1161","-cy":"177","-r":"4.6","name":"Sam Kee"},{"-id":"pw2","-cx":"1156","-cy":"150","-r":"4.6","name":"Teck Lee"},{"-id":"pw3","-cx":"1139","-cy":"132","-r":"4.6","name":"Punggol Point"},{"-id":"pw4","-cx":"1106","-cy":"144","-r":"4.6","name":"Samudera"},{"-id":"pw5","-cx":"1098.5","-cy":"173","-r":"4.6","name":"Nibong"},{"-id":"pw6","-cx":"1115.5","-cy":"190","-r":"4.6","name":"Sumang"},{"-id":"pw7","-cx":"1141","-cy":"194.5","-r":"4.6","name":"SooTeck"}]}};
+  const RTS_JB_LINE_STN={"g":{"-id":"rtslink","-stroke":"#87cefa","-strokeWidth":"1.7","circle":[{"-id":"jb2","-cx":"436","-cy":"34","-r":"5","name":"Bukit Chagar(Johor Bahru)"}]}};
+
+  // Interchange Stations
+  const INTS_STNS={"g":{"-id":"stns_ints","-stroke":"#000000","-strokeWidth":"3","circle":[{"-id":"cc1","-cx":"760.2","-cy":"689","-r":"7.7","name":"DhobyGhaut"},{"-id":"ce2","-cx":"793","-cy":"913.3","-r":"7.7","name":"MarinaBay"},{"-id":"ce1","-cx":"887","-cy":"871","-r":"7.7","name":"Bayfront"},{"-id":"cc4","-cx":"941.3","-cy":"821","-r":"7.7","name":"Promenade"},{"-id":"cc9","-cx":"1004","-cy":"659","-r":"7.7","name":"PayaLebar"},{"-id":"cc10","-cx":"1000","-cy":"600","-r":"7.7","name":"MacPherson"},{"-id":"cc13","-cx":"923","-cy":"463.2","-r":"7.7","name":"Serangoon"},{"-id":"cc15","-cx":"786","-cy":"394","-r":"7.7","name":"Bishan"},{"-id":"cc19","-cx":"548","-cy":"471.5","-r":"7.7","name":"BotanicGardens"},{"-id":"cc22","-cx":"481","-cy":"599","-r":"7.7","name":"Buona Vista"},{"-id":"cc29","-cx":"581","-cy":"866","-r":"7.7","name":"HarbourFront"},{"-id":"cg1","-cx":"1286","-cy":"694","-r":"7.7","name":"Expo"},{"-id":"ew2","-cx":"1245","-cy":"600.5","-r":"7.7","name":"Tampines"},{"-id":"ew4","-cx":"1227","-cy":"659","-r":"7.7","name":"TanahMerah"},{"-id":"ew12","-cx":"899","-cy":"726","-r":"7.7","name":"Bugis"},{"-id":"ew13","-cx":"830.3","-cy":"790","-r":"7.7","name":"CityHall"},{"-id":"ew14","-cx":"799","-cy":"822","-r":"7.7","name":"RafflesPlace"},{"-id":"ew16","-cx":"657","-cy":"790.5","-r":"7.7","name":"OutramPark"},{"-id":"ew24","-cx":"286","-cy":"514","-r":"7.7","name":"JurongEast"},{"-id":"ne4","-cx":"693.5","-cy":"754","-r":"7.7","name":"Chinatown"},{"-id":"ne7","-cx":"780","-cy":"606.5","-r":"7.7","name":"LittleIndia"},{"-id":"ne16","-cx":"1080.7","-cy":"305.3","-r":"7.7","name":"Sengkang"},{"-id":"ne17","-cx":"1177","-cy":"209.5","-r":"7.7","name":"Punggol"},{"-id":"ns4","-cx":"286","-cy":"225.5","-r":"7.7","name":"ChoaChu Kang"},{"-id":"ns21","-cx":"705","-cy":"532","-r":"7.7","name":"Newton"},{"-id":"dt1","-cx":"479","-cy":"225.5","-r":"7.7","name":"BukitPanjang"}]}}
+
+  const stationDict={"EW_LINE_STN":EW_LINE_STN,
+  "NS_LINE_STN":NS_LINE_STN,
+  "NE_LINE_STN":NE_LINE_STN,
+  "NE_LINE_NEW_STN":NE_LINE_NEW_STN,
+  "CC_LINE_STN":CC_LINE_STN,
+  "CC_LINE_NEW_STN":CC_LINE_NEW_STN,
+  "DTL_LINE_STN":DTL_LINE_STN,
+  "DTL_LINE_NEW_STN":DTL_LINE_NEW_STN,
+  "ECL_TEL_LINE_STN":ECL_TEL_LINE_STN,
+  "JRL_LINE_STN":JRL_LINE_STN,
+  "BP_LRT_LINE_STN":BP_LRT_LINE_STN,
+  "NS_SK_LRT_LINE_STN":NS_SK_LRT_LINE_STN,
+  "NS_PG_LRT_LINE_STN":NS_PG_LRT_LINE_STN,
+  "RTS_JB_LINE_STN":RTS_JB_LINE_STN}
+  
   return <svg version="1.1" xmlns="http://www.w3.org/2000/svg" style={{"overflow":`auto`,"width": `1410px`, "height": `auto`}} 
   height="1007" width="1410"  preserveAspectRatio="xMidYMid meet">
     <title>Singapore MRT/LRT system map</title>
@@ -121,76 +141,104 @@ const genImage = ()=> {
      </g>
      
      <g id="lines" fill="none" strokeWidth="4">
+     {displayStations.filter(item=>item==="EW_LINE_STN").length>0&&
       <g id="ewl" stroke="#009645">
        <path d="m1227 658v16q0 20 20 20h84"/>
        <path d="m1284 523-25 25 q-14.14 14.14-14.14 34.14 v57 q0 20 -20 20 h-239 q-20 0 -34.14 14.14 l-177 177 q-14.14 14.14-34.14 14.14 h-15 q-20 0 -34.14 -14.14 l-21-21 q-14.14-14.14-14.14-34.14 q0-20-14.14-34.14 l-232.4-232.4 q-14.14-14.14-34.14-14.14 h-280.6 q-20 0-20 20 v146"/>
       </g>
+     }
+      {displayStations.filter(item=>item==="NS_LINE_STN").length>0&&
       <g id="nsl" stroke="#d42e12">
        <path d="m286 514v-427q0-20 20-20h460q20 0 20 20v344 q0 20-14.14 34.14 l-104 104 q-14.14 14.14 0 28.28 l162 162 q14.14 14.14 0 28.28 l-67.7 67.7 q-14.14 14.14 0 28.28 l72 72"/>
       </g>
+      }
       <g id="nel" stroke="#9900aa">
-       <path d="m582 866 l173.2-173.2 q14.14-14.14 14.14-28.28 v-28 q0 -20 14.14 -34.34 l390 -390"/>
+      {displayStations.filter(item=>item==="NE_LINE_STN").length>0&&
+       <path d="m582 866 l173.2-173.2 q14.14-14.14 14.14-28.28 v-28 q0 -20 14.14 -34.34 l390 -390"/>}
+       
+       {displayStations.filter(item=>item==="NE_LINE_NEW_STN").length>0&&
        <path id="nelex" d="m1254 132.46-92 91.3" strokeDasharray="8, 8"/>
+    }
       </g>
       <g id="ccl" stroke="#fa9e0d">
-       <path d="m754 689q20 0 34.14 14.14 l124 124 q14.14 14.14 28.28 0"/>
-       <path d="m582 867 A 265 265 0 1 1 793 914"/>
-       <path id="cclex" d="m582 867 A 265 265 0 0 0 793 914" strokeWidth="4.5" strokeDasharray="10, 10"/>
+      {displayStations.filter(item=>item === "CC_LINE_STN").length>0&&
+             <path d="m754 689q20 0 34.14 14.14 l124 124 q14.14 14.14 28.28 0"/>
+      
+      }
+      {displayStations.filter(item=>item === "CC_LINE_STN").length>0&&
+          <path d="m582 867 A 265 265 0 1 1 793 914"/>
+      }
+        
+       {displayStations.filter(item=>item === "CC_LINE_NEW_STN").length>0&&
+        <path id="cclex" d="m582 867 A 265 265 0 0 0 793 914" strokeWidth="4.5" strokeDasharray="10, 10"/>
+       }
       </g>
+      {displayStations.filter(item=>item === "DTL_LINE_STN").length>0&&
       <g id="dtl" stroke="#005ec4">
        <path d="m479 225 v157 q0 20 14.14 34.14 l48.5 48.5 q14.14 14.14 34.14 14.14 h56 q20 0 34.14 14.14 l284 284 q13 14.14 0 30 c-16.1 22.6-47.3 54.9-93.9 80 q-20.34 9-41.1-10 l-121-121"/>
        <path d="m698 760q-14.14 -14.14 0 -28.28 l10-10 q14.14-14.14 28.28-14.14 h61 q20 0 34.14 -14.14 l79-79 q14.14-14.14 34.14-14.14 h321.5 q20 0 20 20 v69"/>
       </g>
+      }
+      {displayStations.filter(item=>item==="DTL_LINE_NEW_STN").length>0&&
       <g id="dtlex" stroke="#005ec4" strokeDasharray="8, 8">
        <path d="m1286 695v90"/>
       </g>
+      }
+      {displayStations.filter(item=>item==="ECL_TEL_LINE_STN").length>0&&
       <g id="telex" stroke="#784008" strokeDasharray="8, 8">
        <path d="m496 34 l147.8 147.8 q14.14 14.14 14.14 34.14 v562 q0 20 14.14 34.14 l87 87 q14.14 14.14 34.14 14.14 h134 q20 0 34.14 -14.14 l99 -99 q14.14 -14.14 28.28 -14.14 h283 q20 0 20 -20 v-52 q0 -20 -20 -20 h-35"/>
       </g>
+      }
+      {displayStations.filter(item=>item==="JRL_LINE_STN").length>0&&
       <g id="jrlex" stroke="#0099aa" strokeDasharray="8, 8">
        <path d="m292 220 l-123.5 123.5 q-14.14 14.14 -14.14 34.14 v142 q0 20 14.14 34.14 l62 62"/>
        <path d="m151 480 h-56 q-20 0 -20 -20 v-140"/>
        <path d="m179 332 q-14.14 14.14 -14.14 34.14 v6 q0 20 14.14 34.14 l305 305"/>
       </g>
+      }
+       {displayStations.filter(item=>item==="CRL_LINE_STN").length>0&&
       <g id="crlex" stroke="#f266b5" strokeDasharray="8, 8">
        <path d="m77 597 l5.5 5.5 q14.14 14.14 20 14.14 h257.3s12.1 0.149 17.6-5.27c5.54-5.42 8.9-21.8 8.9-21.8"/>
        <path d="m385 595 A 355 355 0 0 1 1050 494"/>
        <path d="m1391 698 v-48 q0 -20 -14.14 -34.14 l-83.8-83.8 q-14.14-14.14-34.14-14.14 h-161 s-14.8-0.0184-30.2-0.0486 c-7.76-0-17.1-21-17.1-21"/>
        <path d="m1177 209.5 l67 67 q14.14 14.14 14.14 34.14 v167.4 q0 20 14.14 34.14"/>
       </g>
+       }
+       
       <g id="lrt" stroke="#999999">
+      {displayStations.filter(item=>item==="BP_LRT_LINE_STN").length>0&&
        <path d="m284.4 225.6h207 q10 0 17.07-7.07 l19.2-19.2 q7.07-7.07 17.07-7.07 h10 q10 0 10 10 v46.6 q0 10-10 10 h-10 q-10 0-17.07-7.07 l-19.2-19.2 q-7.07-7.07-17.07-7.07"/>
+      }
+      {displayStations.filter(item=>item==="BP_LRT_LINE_STN").length>0&&
        <path d="m445.5 224.9v-35.2"/>
-       <path d="m1081 306 l-7.76-7.76 q-7.07-7.07-7.07-17.07 v-20 q0-10-7.07-17.07 l-19-19 q-7.07-7.07-14.14 0 l-26 26 q-7.07 7.07 0 14.14 l 19 19 q 7.07 7.07 17.07 7.07 h 20 q 10 0 17.07 7.07"/>
-       <path d="m1081 306 l 7.76 7.76 q 7.07 7.07 7.07 17.07 v 20 q0 10 7.07 17.07 l 19 19 q 7.07 7.07 14.14 0 l 26-26 q 7.07-7.07 0-14.14 l-19-19 q-7.07-7.07-17.07-7.07 h-20 q-10 0-17.07-7.07"/>
-       <path d="m1176 209.5 l-7.76-7.76 q-7.07-7.07-7.07-17.07 v-20 q0-10-7.07-17.07 l-19-19 q-7.07-7.07-14.14 0 l-26 26 q-7.07 7.07 0 14.14 l 19 19 q 7.07 7.07 17.07 7.07 h 20 q 10 0 17.07 7.07"/>
-       <path d="m1177 209.5 l 7.76 7.76 q 7.07 7.07 7.07 17.07 v 20 q0 10 7.07 17.07 l 19 19 q 7.07 7.07 14.14 0 l 26-26 q 7.07-7.07 0-14.14 l-19-19 q-7.07-7.07-17.07-7.07 h-20 q-10 0-17.07-7.07"/>
+    }
+    {displayStations.filter(item=>item==="NS_SK_LRT_LINE_STN").length>0&&
+       <path d="m1081 306 l-7.76-7.76 q-7.07-7.07-7.07-17.07 v-20 q0-10-7.07-17.07 l-19-19 q-7.07-7.07-14.14 0 l-26 26 q-7.07 7.07 0 14.14 l 19 19 q 7.07 7.07 17.07 7.07 h 20 q 10 0 17.07 7.07"/>}
+       {displayStations.filter(item=>item==="NS_SK_LRT_LINE_STN").length>0&&
+       <path d="m1081 306 l 7.76 7.76 q 7.07 7.07 7.07 17.07 v 20 q0 10 7.07 17.07 l 19 19 q 7.07 7.07 14.14 0 l 26-26 q 7.07-7.07 0-14.14 l-19-19 q-7.07-7.07-17.07-7.07 h-20 q-10 0-17.07-7.07"/>}
+       {displayStations.filter(item=>item==="NS_PG_LRT_LINE_STN").length>0&&
+       <path d="m1176 209.5 l-7.76-7.76 q-7.07-7.07-7.07-17.07 v-20 q0-10-7.07-17.07 l-19-19 q-7.07-7.07-14.14 0 l-26 26 q-7.07 7.07 0 14.14 l 19 19 q 7.07 7.07 17.07 7.07 h 20 q 10 0 17.07 7.07"/>}
+       {displayStations.filter(item=>item==="NS_PG_LRT_LINE_STN").length>0&&
+       <path d="m1177 209.5 l 7.76 7.76 q 7.07 7.07 7.07 17.07 v 20 q0 10 7.07 17.07 l 19 19 q 7.07 7.07 14.14 0 l 26-26 q 7.07-7.07 0-14.14 l-19-19 q-7.07-7.07-17.07-7.07 h-20 q-10 0-17.07-7.07"/>}
       </g>
+      {displayStations.filter(item=>item==="RTS_JB_LINE_STN").length>0&&
       <g id="rtslink" stroke="#87cefa" strokeDasharray="8, 8">
        <path d="m496 34h-60"/>
       </g>
+      }
      </g>
      <g id="stns_icons" fill="#FFFFFF" strokeWidth="2">
-     {generateStationsCheckBoxes(EW_LINE_STN)}
-     {generateStationsCheckBoxes(NS_LINE_STN)}
-     {generateStationsCheckBoxes(NE_LINE_STN)}
-     {generateStationsCheckBoxes(CC_LINE_STN)}
-     {generateStationsCheckBoxes(DTL_LINE_STN)}
-     {generateStationsCheckBoxes(ECL_TEL_LINE_STN)}
-     {generateStationsCheckBoxes(JRL_LINE_STN)}
-     {generateStationsCheckBoxes(INTS_STNS)}
-              
-               
-      {/* Circle Line ints first for ease of reference. */}
-      
-      {generateStationsCheckBoxes(BP_LRT_LINE_STN)}
-      {generateStationsCheckBoxes(NS_SK_LRT_LINE_STN)}
-      {generateStationsCheckBoxes(NS_PG_LRT_LINE_STN)}
-      {generateStationsCheckBoxes(RTS_JB_LINE_STN)}
+
+     {displayStations.map((line,index)=>{
+      return generateStationsCheckBoxes(stationDict[line],index)})
+     }
+      {generateStationsCheckBoxes(INTS_STNS)}
            
                
      </g>
+     
      <g id="stns_labels" fontFamily="Arial" line-height="100%">
+     {displayStations.filter(item=>item==="EW_LINE_STN").length>0&&
       <g id="lbewl" fill="#000000">
        <text id="lbcg1" x="1255" y="707" fontSize="12">Expo</text>
        <text id="lbcg2a" x="1310" y="707" fontSize="12">Changi</text>
@@ -227,6 +275,7 @@ const genImage = ()=> {
        <text id="lbew32a" x="39" y="664" fontSize="12">Road</text>
        <text id="lbew33" x="15" y="684" fontSize="12">Tuas Link</text>
       </g>
+    }{displayStations.filter(item=>item==="NS_LINE_STN").length>0&&
       <g id="lbnsl" fill="#000000">
        <text id="lbns2a" x="292" y="411" fontSize="12">Bukit</text>
        <text id="lbns2b" x="292" y="423" fontSize="12">Batok</text>
@@ -253,7 +302,9 @@ const genImage = ()=> {
        <text id="lbns28a" x="836" y="967" fontSize="12">Marina</text>
        <text id="lbns28b" x="836" y="979" fontSize="12">South Pier</text>
       </g>
-      <g id="lbnel" fill="#000000">
+      }
+      {displayStations.filter(item=>item==="NE_LINE_STN").length>0&&
+     <g id="lbnel" fill="#000000">
        <text id="lbne5a" x="730" y="729" fontSize="12">Clarke</text>
        <text id="lbne5b" x="730" y="741" fontSize="12">Quay</text>
        <text id="lbne8" x="813" y="588" fontSize="12">Farrer Park</text>
@@ -263,10 +314,16 @@ const genImage = ()=> {
        <text id="lbne13" x="921" y="426" fontSize="12">Kovan</text>
        <text id="lbne14" x="992" y="408" fontSize="12">Hougang</text>
        <text id="lbne15" x="962" y="365" fontSize="12">Buangkok</text>
-       <text id="lbne18" x="1264" y="132" fontSize="12" fill="#aaaaaa">Punggol Coast</text>
+       
     
       </g>
-      
+      }
+      {displayStations.filter(item=>item==="NE_LINE_NEW_STN").length>0&&
+       <g id="lbnelex" fill="#000000">
+       <text id="lbne18" x="1264" y="132" fontSize="12" fill="#aaaaaa">Punggol Coast</text>
+       </g>
+      }
+       {displayStations.filter(item=>item === "CC_LINE_STN").length>0&&
       <g id="lbccl" fill="#000000">
        <text id="lbcc2a" x="830" y="727" fontSize="12">Bras</text>
        <text id="lbcc2b" x="830" y="739" fontSize="12">Basah</text>
@@ -299,6 +356,8 @@ const genImage = ()=> {
        <text id="lbcc28a" x="504" y="834" fontSize="12">Telok</text>
        <text id="lbcc28b" x="488" y="846" fontSize="12">Blangah</text>
       </g>
+      }
+      {displayStations.filter(item=>item === "CC_LINE_NEW_STN").length>0&&
       <g id="lbcclex" fill="#aaaaaa">
        <text id="lbcc18a" x="571" y="414" fontSize="12">Bukit</text>
        <text id="lbcc18b" x="566" y="426" fontSize="12">Brown</text>
@@ -307,6 +366,8 @@ const genImage = ()=> {
        <text id="lbcc32a" x="717" y="934" fontSize="12">Prince</text>
        <text id="lbcc32b" x="713" y="946" fontSize="12">Edward</text>
       </g>
+      }
+      {displayStations.filter(item=>item==="DTL_LINE_STN").length>0&&
       <g id="lbdtl" fill="#000000">
        <text id="lbdt2" x="430.5" y="272" fontSize="12">Cashew</text>
        <text id="lbdt3" x="433" y="312" fontSize="12">Hillview</text>
@@ -347,11 +408,16 @@ const genImage = ()=> {
        <text id="lbdt34b" x="1292" y="675" fontSize="12">Changi</text>   
        
       </g>
+      }
+      {displayStations.filter(item=>item==="DTL_LINE_NEW_STN").length>0&&
+    
       <g id="lbdtlex" fill="#aaaaaa">
        <text id="lbdt36" x="1292" y="741" fontSize="12">Xilin</text>
        <text id="lbdt37a" x="1269" y="802" fontSize="12">Sungei</text>
        <text id="lbdt37b" x="1271" y="814" fontSize="12">Bedok</text>
       </g>
+      }
+      {displayStations.filter(item=>item==="ECL_TEL_LINE_STN").length>0&&
       <g id="lbtelex" fill="#aaaaaa">
        <text id="lbte1a" x="506" y="29" fontSize="12">Woodlands</text>
        <text id="lbte1b" x="506" y="41" fontSize="12">North</text>
@@ -393,6 +459,8 @@ const genImage = ()=> {
        <text id="lbte30a" x="1219" y="802" fontSize="12">Bedok</text>
        <text id="lbte30b" x="1220" y="814" fontSize="12">South</text>
       </g>
+      }
+      {displayStations.filter(item=>item==="JRL_LINE_STN").length>0&&
       <g id="lbjrlex" fill="#aaaaaa">
        <text id="lbjs2a" x="163" y="274" fontSize="12">Choa Chu</text>
        <text id="lbjs2b" x="158" y="286" fontSize="12">Kang West</text>
@@ -428,6 +496,7 @@ const genImage = ()=> {
        <text id="lbjw5a" x="8" y="323" fontSize="12">Peng Kang</text>
        <text id="lbjw5b" x="51" y="335" fontSize="12">Hill</text>
       </g>
+      }
       {/* Circle Line ints first for ease of reference. */}
       <g id="lbintdup" fill="#000000" >
       <text id="lbcg1" x="1255" y="707" fontSize="12" fontWeight="unset">Expo</text>
@@ -472,6 +541,7 @@ const genImage = ()=> {
 <text id="lbdt1a" x="465" y="204" fontSize="12">Bukit</text>
 <text id="lbdt1b" x="456" y="215" fontSize="12">Panjang</text>
 </g>
+{displayStations.filter(item=>item==="BP_LRT_LINE_STN").length>0&&
       <g id="lbbpl" fill="#000000">
        <text id="lbbp2a" x="307" y="211" fontSize="10">South</text>
        <text id="lbbp2b" x="309" y="221" fontSize="10">View</text>
@@ -490,6 +560,8 @@ const genImage = ()=> {
        <text id="lbbp12" x="525" y="186" fontSize="10">Jelapang</text>
        <text id="lbbp13" x="525" y="215" fontSize="10">Senja</text>
       </g>
+}
+ {displayStations.filter(item=>item==="NS_SK_LRT_LINE_STN").length>0&&
       <g id="lbskl" fill="#000000">
        <text id="lbse1" x="1096" y="315" fontSize="10">Compassvale</text>
        <text id="lbse2" x="1155" y="335" fontSize="10">Rumbia</text>
@@ -506,6 +578,8 @@ const genImage = ()=> {
        <text id="lbsw7" x="973" y="293" fontSize="10">Tongkang</text>
        <text id="lbsw8" x="1025" y="286" fontSize="10">Renjong</text>
       </g>
+ }
+  {displayStations.filter(item=>item==="NS_PG_LRT_LINE_STN").length>0&&
       <g id="lbpgl" fill="#000000">
        <text id="lbpe1" x="1164" y="250" fontSize="10">Cove</text>
        <text id="lbpe2" x="1154" y="275" fontSize="10">Meridian</text>
@@ -523,19 +597,28 @@ const genImage = ()=> {
        <text id="lbpw7a" x="1131" y="182" fontSize="10">Soo</text>
        <text id="lbpw7b" x="1130" y="191" fontSize="10">Teck</text>
       </g>
+  }
+      {displayStations.filter(item=>item==="RTS_JB_LINE_STN").length>0&&
       <g id="rtsl" fill="#aaaaaa">
        <text id="jb2" x="360" y="29" fontSize="12">Bukit Chagar</text>
        <text id="jb2" x="356" y="41" fontSize="12">(Johor Bahru)</text>
       </g>
+      }
      </g>
     </svg>
 }
 const SGMrt=()=> {
         const [showFutureStations, setShowFutureStation] = useState(true);
+        const currentStation = ["EW_LINE_STN","NS_LINE_STN","NE_LINE_STN","CC_LINE_STN","DTL_LINE_STN","BP_LRT_LINE_STN","NS_SK_LRT_LINE_STN","NS_PG_LRT_LINE_STN"]
+        const newStations = ["ECL_TEL_LINE_STN","JRL_LINE_STN","RTS_JB_LINE_STN","CC_LINE_NEW_STN","DTL_LINE_NEW_STN","NE_LINE_NEW_STN"]
+        const stns= {
+          displayStations:[...currentStation,...newStations]
+          // displayStations:[]
+        };
         return(<div style={{"width": `100vw`,
                     "overflow": `scroll`,
                     "margin": `0 auto`}}>
-           {genImage()}
+           {genImage(stns)}
            <p>You clicked {showFutureStations.toString()} times</p>
       <button onClick={() => setShowFutureStation(!showFutureStations)}>
         Click me
