@@ -1,36 +1,47 @@
 import React,{useState} from 'react';
 
-const generateStationsCheckBoxes = (stationObj,key)=>{
+const generateStationsCheckBoxes = (stationObj,key,selectedStations,setSelectedStations,removeSelectedStation)=>{
   return (<g key={key} id={stationObj["g"]["-id"]} stroke={stationObj["g"]["-stroke"]}>
       {stationObj["g"]["circle"].map((stn,index)=>{
-        return <CircleIcon key={index} stn={stn} />
+        return <CircleIcon key={index} stn={stn} selectedStations={selectedStations} setSelectedStations={setSelectedStations} removeSelectedStation={removeSelectedStation} />
       })
   }
   </g>)
  
 }
-const CircleIcon = ({stn})=>{
-  const [hideSeek,setHideSeek] = useState(false)
+const CircleIcon = ({stn,selectedStations,setSelectedStations,removeSelectedStation})=>{
+  
+  const [hideSeek,setHideSeek] = useState(selectedStations.includes(stn["-id"]))
   return <React.Fragment >
       <circle id={stn["-id"]} cx={stn["-cx"]} cy={stn["-cy"]} r={stn["-r"]} style={{"cursor":`pointer`}} onClick={()=> {
-        setHideSeek(!hideSeek)
+        
+        
+          setSelectedStations(stn["-id"])        
+          setHideSeek(!hideSeek)
+          
       }
       }/>
     {hideSeek &&
     
       <React.Fragment >
         <circle id={stn["-id"]} cx={stn["-cx"]} cy={stn["-cy"]} r={stn["-r"]} style={{"cursor":`pointer`}} fill="#0093ef" onClick={()=> {
+        
+        removeSelectedStation(stn["-id"])   
         setHideSeek(!hideSeek)
+        
       }}/>
       <g style={{"cursor":`pointer`}} transform ={`rotate(230 ${parseFloat(stn["-cx"])} ${parseFloat(stn["-cy"])+3})`} stroke="none" fill="#FFFFFF" onClick={()=> {
-        setHideSeek(!hideSeek)
+          removeSelectedStation(stn["-id"])   
+          setHideSeek(!hideSeek)
       }}>
       {/* Drawing Tick icon here by overlapping two rectangle and rotating */}
       <rect x={stn["-cx"]} y={stn["-cy"]} rx="15" ry="15" height="2.5" width="5" onClick={()=> {
+        removeSelectedStation(stn["-id"])   
         setHideSeek(!hideSeek)
       }}/>
       <rect x={stn["-cx"]} y={stn["-cy"]} rx="15" ry="15" height="10" width="2.5" onClick={()=> {
-        setHideSeek(!hideSeek)
+           removeSelectedStation(stn["-id"])   
+           setHideSeek(!hideSeek)
       }}/>
       </g>
       </React.Fragment>
@@ -38,7 +49,7 @@ const CircleIcon = ({stn})=>{
   }
   </React.Fragment>
 }
-const genImage = ({displayStations})=> {
+const genImage = ({displayStations},selectedStations,setSelectedStations,removeSelectedStation)=> {
   const EW_LINE_STN = {"g":{"-id":"stns_ewl","-stroke":"#009645","circle":[{"-id":"cg2","-cx":"1334","-cy":"694","-r":"5","name":"ChangiAirport"},{"-id":"ew1","-cx":"1283","-cy":"524.5","-r":"5","name":"Pasir Ris"},{"-id":"ew3","-cx":"1245","-cy":"634","-r":"5","name":"Simei"},{"-id":"ew5","-cx":"1186","-cy":"659","-r":"5","name":"Bedok"},{"-id":"ew6","-cx":"1126","-cy":"659","-r":"5","name":"Kembangan"},{"-id":"ew7","-cx":"1066","-cy":"659","-r":"5","name":"Eunos"},{"-id":"ew9","-cx":"974","-cy":"660","-r":"5","name":"Aljunied"},{"-id":"ew10","-cx":"950.5","-cy":"675","-r":"5","name":"Kallang"},{"-id":"ew11","-cx":"926","-cy":"699","-r":"5","name":"Lavender"},{"-id":"ew15","-cx":"698.5","-cy":"856","-r":"5","name":"TanjongPagar"},{"-id":"ew17","-cx":"630","-cy":"748","-r":"5","name":"TiongBahru"},{"-id":"ew18","-cx":"595.5","-cy":"714","-r":"5","name":"Redhill"},{"-id":"ew19","-cx":"554.7","-cy":"673","-r":"5","name":"Queenstown"},{"-id":"ew20","-cx":"519","-cy":"637","-r":"5","name":"Commonwealth"},{"-id":"ew22","-cx":"451","-cy":"570","-r":"5","name":"Dover"},{"-id":"ew23","-cx":"405","-cy":"524","-r":"5","name":"Clementi"},{"-id":"ew25","-cx":"247","-cy":"514","-r":"5","name":"ChineseGarden"},{"-id":"ew26","-cx":"202","-cy":"514","-r":"5","name":"Lakeside"},{"-id":"ew27","-cx":"155","-cy":"514","-r":"5","name":"Boon Lay"},{"-id":"ew28","-cx":"75","-cy":"540","-r":"5","name":"Pioneer"},{"-id":"ew29","-cx":"75","-cy":"568","-r":"5","name":"Joo Koon "},{"-id":"ew30","-cx":"75","-cy":"596","-r":"5","name":"Gul Circle"},{"-id":"ew31","-cx":"75","-cy":"624","-r":"5","name":"TuasCrescent"},{"-id":"ew32","-cx":"75","-cy":"652","-r":"5","name":"Tuas WestRoad"},{"-id":"ew33","-cx":"75","-cy":"680","-r":"5","name":"Tuas Link"}]}};
   const NS_LINE_STN = {"g":{"-id":"stns_nsl","-stroke":"#d42e12","circle":[{"-id":"ns2","-cx":"286","-cy":"413","-r":"5","name":"BukitBatok"},{"-id":"ns3","-cx":"286","-cy":"321","-r":"5","name":"BukitGombak"},{"-id":"ns5","-cx":"286","-cy":"123","-r":"5","name":"Yew Tee"},{"-id":"ns7","-cx":"352","-cy":"67","-r":"5","name":"Kranji"},{"-id":"ns8","-cx":"435","-cy":"67","-r":"5","name":"Marsiling"},{"-id":"ns9","-cx":"529","-cy":"67","-r":"5","name":"Woodlands"},{"-id":"ns10","-cx":"632","-cy":"67","-r":"5","name":"Admiralty"},{"-id":"ns11","-cx":"735","-cy":"67","-r":"5","name":"Sembawang"},{"-id":"ns12","-cx":"786","-cy":"104","-r":"5","name":"Canberra"},{"-id":"ns13","-cx":"786","-cy":"153","-r":"5","name":"Yishun"},{"-id":"ns14","-cx":"786","-cy":"202","-r":"5","name":"Khatib"},{"-id":"ns15","-cx":"786","-cy":"250","-r":"5","name":"YioChu Kang"},{"-id":"ns16","-cx":"786","-cy":"306","-r":"5","name":"AngMo Kio"},{"-id":"ns18","-cx":"786","-cy":"428","-r":"5","name":"Braddell"},{"-id":"ns19","-cx":"770","-cy":"467","-r":"5","name":"Toa Payoh"},{"-id":"ns20","-cx":"739","-cy":"498","-r":"5","name":"Novena"},{"-id":"ns22","-cx":"660","-cy":"586","-r":"5","name":"Orchard"},{"-id":"ns23","-cx":"702","-cy":"632","-r":"5","name":"Somerset"},{"-id":"ns28","-cx":"833","-cy":"955","-r":"5","name":"MarinaSouth Pier"}]}}
   const NE_LINE_STN={"g":{"-id":"stns_nel","-stroke":"#9900aa","circle":[{"-id":"ne5","-cx":"723.5","-cy":"724.5","-r":"5","name":"ClarkeQuay"},{"-id":"ne8","-cx":"807.5","-cy":"578.4","-r":"5","name":"Farrer Park"},{"-id":"ne9","-cx":"834","-cy":"552","-r":"5","name":"Boon Keng"},{"-id":"ne10","-cx":"861","-cy":"525","-r":"5","name":"Potong Pasir"},{"-id":"ne11","-cx":"888","-cy":"498","-r":"5","name":"Woodleigh"},{"-id":"ne13","-cx":"956","-cy":"430","-r":"5","name":"Kovan"},{"-id":"ne14","-cx":"983","-cy":"403.5","-r":"5","name":"Hougang"},{"-id":"ne15","-cx":"1018","-cy":"368","-r":"5","name":"Buangkok"}]}}
@@ -72,6 +83,8 @@ const genImage = ({displayStations})=> {
   "NS_SK_LRT_LINE_STN":NS_SK_LRT_LINE_STN,
   "NS_PG_LRT_LINE_STN":NS_PG_LRT_LINE_STN,
   "RTS_JB_LINE_STN":RTS_JB_LINE_STN}
+
+  const isDisplay =(stnName)=>displayStations.filter(item=>item===stnName).length>0
   
   return <svg version="1.1" xmlns="http://www.w3.org/2000/svg" style={{"overflow":`auto`,"width": `1410px`, "height": `auto`}} 
   height="1007" width="1410"  preserveAspectRatio="xMidYMid meet">
@@ -141,62 +154,62 @@ const genImage = ({displayStations})=> {
      </g>
      
      <g id="lines" fill="none" strokeWidth="4">
-     {displayStations.filter(item=>item==="EW_LINE_STN").length>0&&
+     {isDisplay("EW_LINE_STN")&&
       <g id="ewl" stroke="#009645">
        <path d="m1227 658v16q0 20 20 20h84"/>
        <path d="m1284 523-25 25 q-14.14 14.14-14.14 34.14 v57 q0 20 -20 20 h-239 q-20 0 -34.14 14.14 l-177 177 q-14.14 14.14-34.14 14.14 h-15 q-20 0 -34.14 -14.14 l-21-21 q-14.14-14.14-14.14-34.14 q0-20-14.14-34.14 l-232.4-232.4 q-14.14-14.14-34.14-14.14 h-280.6 q-20 0-20 20 v146"/>
       </g>
      }
-      {displayStations.filter(item=>item==="NS_LINE_STN").length>0&&
+      {isDisplay("NS_LINE_STN")&&
       <g id="nsl" stroke="#d42e12">
        <path d="m286 514v-427q0-20 20-20h460q20 0 20 20v344 q0 20-14.14 34.14 l-104 104 q-14.14 14.14 0 28.28 l162 162 q14.14 14.14 0 28.28 l-67.7 67.7 q-14.14 14.14 0 28.28 l72 72"/>
       </g>
       }
       <g id="nel" stroke="#9900aa">
-      {displayStations.filter(item=>item==="NE_LINE_STN").length>0&&
+      {isDisplay("NE_LINE_STN")&&
        <path d="m582 866 l173.2-173.2 q14.14-14.14 14.14-28.28 v-28 q0 -20 14.14 -34.34 l390 -390"/>}
        
-       {displayStations.filter(item=>item==="NE_LINE_NEW_STN").length>0&&
+       {isDisplay("NE_LINE_NEW_STN")&&
        <path id="nelex" d="m1254 132.46-92 91.3" strokeDasharray="8, 8"/>
     }
       </g>
       <g id="ccl" stroke="#fa9e0d">
-      {displayStations.filter(item=>item === "CC_LINE_STN").length>0&&
+      {isDisplay("CC_LINE_STN")&&
              <path d="m754 689q20 0 34.14 14.14 l124 124 q14.14 14.14 28.28 0"/>
       
       }
-      {displayStations.filter(item=>item === "CC_LINE_STN").length>0&&
+      {isDisplay("CC_LINE_STN")&&
           <path d="m582 867 A 265 265 0 1 1 793 914"/>
       }
         
-       {displayStations.filter(item=>item === "CC_LINE_NEW_STN").length>0&&
+       {isDisplay("CC_LINE_NEW_STN")&&
         <path id="cclex" d="m582 867 A 265 265 0 0 0 793 914" strokeWidth="4.5" strokeDasharray="10, 10"/>
        }
       </g>
-      {displayStations.filter(item=>item === "DTL_LINE_STN").length>0&&
+      {isDisplay("DTL_LINE_STN")&&
       <g id="dtl" stroke="#005ec4">
        <path d="m479 225 v157 q0 20 14.14 34.14 l48.5 48.5 q14.14 14.14 34.14 14.14 h56 q20 0 34.14 14.14 l284 284 q13 14.14 0 30 c-16.1 22.6-47.3 54.9-93.9 80 q-20.34 9-41.1-10 l-121-121"/>
        <path d="m698 760q-14.14 -14.14 0 -28.28 l10-10 q14.14-14.14 28.28-14.14 h61 q20 0 34.14 -14.14 l79-79 q14.14-14.14 34.14-14.14 h321.5 q20 0 20 20 v69"/>
       </g>
       }
-      {displayStations.filter(item=>item==="DTL_LINE_NEW_STN").length>0&&
+      {isDisplay("DTL_LINE_NEW_STN")&&
       <g id="dtlex" stroke="#005ec4" strokeDasharray="8, 8">
        <path d="m1286 695v90"/>
       </g>
       }
-      {displayStations.filter(item=>item==="ECL_TEL_LINE_STN").length>0&&
+      {isDisplay("ECL_TEL_LINE_STN")&&
       <g id="telex" stroke="#784008" strokeDasharray="8, 8">
        <path d="m496 34 l147.8 147.8 q14.14 14.14 14.14 34.14 v562 q0 20 14.14 34.14 l87 87 q14.14 14.14 34.14 14.14 h134 q20 0 34.14 -14.14 l99 -99 q14.14 -14.14 28.28 -14.14 h283 q20 0 20 -20 v-52 q0 -20 -20 -20 h-35"/>
       </g>
       }
-      {displayStations.filter(item=>item==="JRL_LINE_STN").length>0&&
+      {isDisplay("JRL_LINE_STN")&&
       <g id="jrlex" stroke="#0099aa" strokeDasharray="8, 8">
        <path d="m292 220 l-123.5 123.5 q-14.14 14.14 -14.14 34.14 v142 q0 20 14.14 34.14 l62 62"/>
        <path d="m151 480 h-56 q-20 0 -20 -20 v-140"/>
        <path d="m179 332 q-14.14 14.14 -14.14 34.14 v6 q0 20 14.14 34.14 l305 305"/>
       </g>
       }
-       {displayStations.filter(item=>item==="CRL_LINE_STN").length>0&&
+       {isDisplay("CRL_LINE_STN")&&
       <g id="crlex" stroke="#f266b5" strokeDasharray="8, 8">
        <path d="m77 597 l5.5 5.5 q14.14 14.14 20 14.14 h257.3s12.1 0.149 17.6-5.27c5.54-5.42 8.9-21.8 8.9-21.8"/>
        <path d="m385 595 A 355 355 0 0 1 1050 494"/>
@@ -206,22 +219,22 @@ const genImage = ({displayStations})=> {
        }
        
       <g id="lrt" stroke="#999999">
-      {displayStations.filter(item=>item==="BP_LRT_LINE_STN").length>0&&
+      {isDisplay("BP_LRT_LINE_STN")&&
        <path d="m284.4 225.6h207 q10 0 17.07-7.07 l19.2-19.2 q7.07-7.07 17.07-7.07 h10 q10 0 10 10 v46.6 q0 10-10 10 h-10 q-10 0-17.07-7.07 l-19.2-19.2 q-7.07-7.07-17.07-7.07"/>
       }
-      {displayStations.filter(item=>item==="BP_LRT_LINE_STN").length>0&&
+      {isDisplay("BP_LRT_LINE_STN")&&
        <path d="m445.5 224.9v-35.2"/>
     }
-    {displayStations.filter(item=>item==="NS_SK_LRT_LINE_STN").length>0&&
+    {isDisplay("NS_SK_LRT_LINE_STN")&&
        <path d="m1081 306 l-7.76-7.76 q-7.07-7.07-7.07-17.07 v-20 q0-10-7.07-17.07 l-19-19 q-7.07-7.07-14.14 0 l-26 26 q-7.07 7.07 0 14.14 l 19 19 q 7.07 7.07 17.07 7.07 h 20 q 10 0 17.07 7.07"/>}
-       {displayStations.filter(item=>item==="NS_SK_LRT_LINE_STN").length>0&&
+       {isDisplay("NS_SK_LRT_LINE_STN")&&
        <path d="m1081 306 l 7.76 7.76 q 7.07 7.07 7.07 17.07 v 20 q0 10 7.07 17.07 l 19 19 q 7.07 7.07 14.14 0 l 26-26 q 7.07-7.07 0-14.14 l-19-19 q-7.07-7.07-17.07-7.07 h-20 q-10 0-17.07-7.07"/>}
-       {displayStations.filter(item=>item==="NS_PG_LRT_LINE_STN").length>0&&
+       {isDisplay("NS_PG_LRT_LINE_STN")&&
        <path d="m1176 209.5 l-7.76-7.76 q-7.07-7.07-7.07-17.07 v-20 q0-10-7.07-17.07 l-19-19 q-7.07-7.07-14.14 0 l-26 26 q-7.07 7.07 0 14.14 l 19 19 q 7.07 7.07 17.07 7.07 h 20 q 10 0 17.07 7.07"/>}
-       {displayStations.filter(item=>item==="NS_PG_LRT_LINE_STN").length>0&&
+       {isDisplay("NS_PG_LRT_LINE_STN")&&
        <path d="m1177 209.5 l 7.76 7.76 q 7.07 7.07 7.07 17.07 v 20 q0 10 7.07 17.07 l 19 19 q 7.07 7.07 14.14 0 l 26-26 q 7.07-7.07 0-14.14 l-19-19 q-7.07-7.07-17.07-7.07 h-20 q-10 0-17.07-7.07"/>}
       </g>
-      {displayStations.filter(item=>item==="RTS_JB_LINE_STN").length>0&&
+      {isDisplay("RTS_JB_LINE_STN")&&
       <g id="rtslink" stroke="#87cefa" strokeDasharray="8, 8">
        <path d="m496 34h-60"/>
       </g>
@@ -230,15 +243,13 @@ const genImage = ({displayStations})=> {
      <g id="stns_icons" fill="#FFFFFF" strokeWidth="2">
 
      {displayStations.map((line,index)=>{
-      return generateStationsCheckBoxes(stationDict[line],index)})
+      return generateStationsCheckBoxes(stationDict[line],index,selectedStations,setSelectedStations,removeSelectedStation)})
      }
-      {generateStationsCheckBoxes(INTS_STNS)}
-           
-               
+      {generateStationsCheckBoxes(INTS_STNS,0,selectedStations,setSelectedStations,removeSelectedStation)}
      </g>
      
      <g id="stns_labels" fontFamily="Arial" line-height="100%">
-     {displayStations.filter(item=>item==="EW_LINE_STN").length>0&&
+     {isDisplay("EW_LINE_STN")&&
       <g id="lbewl" fill="#000000">
        <text id="lbcg1" x="1255" y="707" fontSize="12">Expo</text>
        <text id="lbcg2a" x="1310" y="707" fontSize="12">Changi</text>
@@ -275,7 +286,7 @@ const genImage = ({displayStations})=> {
        <text id="lbew32a" x="39" y="664" fontSize="12">Road</text>
        <text id="lbew33" x="15" y="684" fontSize="12">Tuas Link</text>
       </g>
-    }{displayStations.filter(item=>item==="NS_LINE_STN").length>0&&
+    }{isDisplay("NS_LINE_STN")&&
       <g id="lbnsl" fill="#000000">
        <text id="lbns2a" x="292" y="411" fontSize="12">Bukit</text>
        <text id="lbns2b" x="292" y="423" fontSize="12">Batok</text>
@@ -303,7 +314,7 @@ const genImage = ({displayStations})=> {
        <text id="lbns28b" x="836" y="979" fontSize="12">South Pier</text>
       </g>
       }
-      {displayStations.filter(item=>item==="NE_LINE_STN").length>0&&
+      {isDisplay("NE_LINE_STN")&&
      <g id="lbnel" fill="#000000">
        <text id="lbne5a" x="730" y="729" fontSize="12">Clarke</text>
        <text id="lbne5b" x="730" y="741" fontSize="12">Quay</text>
@@ -318,12 +329,12 @@ const genImage = ({displayStations})=> {
     
       </g>
       }
-      {displayStations.filter(item=>item==="NE_LINE_NEW_STN").length>0&&
+      {isDisplay("NE_LINE_NEW_STN")&&
        <g id="lbnelex" fill="#000000">
        <text id="lbne18" x="1264" y="132" fontSize="12" fill="#aaaaaa">Punggol Coast</text>
        </g>
       }
-       {displayStations.filter(item=>item === "CC_LINE_STN").length>0&&
+       {isDisplay("CC_LINE_STN")&&
       <g id="lbccl" fill="#000000">
        <text id="lbcc2a" x="830" y="727" fontSize="12">Bras</text>
        <text id="lbcc2b" x="830" y="739" fontSize="12">Basah</text>
@@ -357,7 +368,7 @@ const genImage = ({displayStations})=> {
        <text id="lbcc28b" x="488" y="846" fontSize="12">Blangah</text>
       </g>
       }
-      {displayStations.filter(item=>item === "CC_LINE_NEW_STN").length>0&&
+      {isDisplay("CC_LINE_NEW_STN")&&
       <g id="lbcclex" fill="#aaaaaa">
        <text id="lbcc18a" x="571" y="414" fontSize="12">Bukit</text>
        <text id="lbcc18b" x="566" y="426" fontSize="12">Brown</text>
@@ -367,7 +378,7 @@ const genImage = ({displayStations})=> {
        <text id="lbcc32b" x="713" y="946" fontSize="12">Edward</text>
       </g>
       }
-      {displayStations.filter(item=>item==="DTL_LINE_STN").length>0&&
+      {isDisplay("DTL_LINE_STN")&&
       <g id="lbdtl" fill="#000000">
        <text id="lbdt2" x="430.5" y="272" fontSize="12">Cashew</text>
        <text id="lbdt3" x="433" y="312" fontSize="12">Hillview</text>
@@ -409,7 +420,7 @@ const genImage = ({displayStations})=> {
        
       </g>
       }
-      {displayStations.filter(item=>item==="DTL_LINE_NEW_STN").length>0&&
+      {isDisplay("DTL_LINE_NEW_STN")&&
     
       <g id="lbdtlex" fill="#aaaaaa">
        <text id="lbdt36" x="1292" y="741" fontSize="12">Xilin</text>
@@ -417,7 +428,7 @@ const genImage = ({displayStations})=> {
        <text id="lbdt37b" x="1271" y="814" fontSize="12">Bedok</text>
       </g>
       }
-      {displayStations.filter(item=>item==="ECL_TEL_LINE_STN").length>0&&
+      {isDisplay("ECL_TEL_LINE_STN")&&
       <g id="lbtelex" fill="#aaaaaa">
        <text id="lbte1a" x="506" y="29" fontSize="12">Woodlands</text>
        <text id="lbte1b" x="506" y="41" fontSize="12">North</text>
@@ -460,7 +471,7 @@ const genImage = ({displayStations})=> {
        <text id="lbte30b" x="1220" y="814" fontSize="12">South</text>
       </g>
       }
-      {displayStations.filter(item=>item==="JRL_LINE_STN").length>0&&
+      {isDisplay("JRL_LINE_STN")&&
       <g id="lbjrlex" fill="#aaaaaa">
        <text id="lbjs2a" x="163" y="274" fontSize="12">Choa Chu</text>
        <text id="lbjs2b" x="158" y="286" fontSize="12">Kang West</text>
@@ -541,7 +552,7 @@ const genImage = ({displayStations})=> {
 <text id="lbdt1a" x="465" y="204" fontSize="12">Bukit</text>
 <text id="lbdt1b" x="456" y="215" fontSize="12">Panjang</text>
 </g>
-{displayStations.filter(item=>item==="BP_LRT_LINE_STN").length>0&&
+{isDisplay("BP_LRT_LINE_STN")&&
       <g id="lbbpl" fill="#000000">
        <text id="lbbp2a" x="307" y="211" fontSize="10">South</text>
        <text id="lbbp2b" x="309" y="221" fontSize="10">View</text>
@@ -561,7 +572,7 @@ const genImage = ({displayStations})=> {
        <text id="lbbp13" x="525" y="215" fontSize="10">Senja</text>
       </g>
 }
- {displayStations.filter(item=>item==="NS_SK_LRT_LINE_STN").length>0&&
+ {isDisplay("NS_SK_LRT_LINE_STN")&&
       <g id="lbskl" fill="#000000">
        <text id="lbse1" x="1096" y="315" fontSize="10">Compassvale</text>
        <text id="lbse2" x="1155" y="335" fontSize="10">Rumbia</text>
@@ -579,7 +590,7 @@ const genImage = ({displayStations})=> {
        <text id="lbsw8" x="1025" y="286" fontSize="10">Renjong</text>
       </g>
  }
-  {displayStations.filter(item=>item==="NS_PG_LRT_LINE_STN").length>0&&
+  {isDisplay("NS_PG_LRT_LINE_STN")&&
       <g id="lbpgl" fill="#000000">
        <text id="lbpe1" x="1164" y="250" fontSize="10">Cove</text>
        <text id="lbpe2" x="1154" y="275" fontSize="10">Meridian</text>
@@ -598,7 +609,7 @@ const genImage = ({displayStations})=> {
        <text id="lbpw7b" x="1130" y="191" fontSize="10">Teck</text>
       </g>
   }
-      {displayStations.filter(item=>item==="RTS_JB_LINE_STN").length>0&&
+      {isDisplay("RTS_JB_LINE_STN")&&
       <g id="rtsl" fill="#aaaaaa">
        <text id="jb2" x="360" y="29" fontSize="12">Bukit Chagar</text>
        <text id="jb2" x="356" y="41" fontSize="12">(Johor Bahru)</text>
@@ -609,20 +620,30 @@ const genImage = ({displayStations})=> {
 }
 const SGMrt=()=> {
         const [showFutureStations, setShowFutureStation] = useState(true);
+        
         const currentStation = ["EW_LINE_STN","NS_LINE_STN","NE_LINE_STN","CC_LINE_STN","DTL_LINE_STN","BP_LRT_LINE_STN","NS_SK_LRT_LINE_STN","NS_PG_LRT_LINE_STN"]
         const newStations = ["ECL_TEL_LINE_STN","JRL_LINE_STN","RTS_JB_LINE_STN","CC_LINE_NEW_STN","DTL_LINE_NEW_STN","NE_LINE_NEW_STN"]
         const stns= {
           displayStations:[...currentStation,...newStations]
-          // displayStations:[]
         };
+        let selectedStations = ["ew1","ew2"];
+        const addSelectedStation = (id) =>   selectedStations.push(id)         
+       
+        const removeSelectedStation = (id)=> {
+          if (selectedStations.filter(item=>item===id).length>0){
+            if (selectedStations.findIndex(item=>item===id) > -1){
+               selectedStations.splice(selectedStations.findIndex(item=>item===id),1)
+            }
+          }
+        }
         return(<div style={{"width": `100vw`,
                     "overflow": `scroll`,
                     "margin": `0 auto`}}>
-           {genImage(stns)}
-           <p>You clicked {showFutureStations.toString()} times</p>
-      <button onClick={() => setShowFutureStation(!showFutureStations)}>
-        Click me
-      </button>
+            {genImage(stns,selectedStations,addSelectedStation,removeSelectedStation)}
+            <p>You clicked {showFutureStations.toString()} times</p>
+            <button onClick={() => setShowFutureStation(!showFutureStations)}>
+              Click me
+            </button>
             </div>)
     
 }
