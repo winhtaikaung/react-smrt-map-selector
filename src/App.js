@@ -7,7 +7,10 @@ class App extends Component {
   render() {
     return (
       <div className="App">
-      <SGMrt/>
+      <SGMrt 
+      selectedStations={[]} 
+      onStationsCheckChange={(id,item)=>console.log(id,item)}
+      />
         <header className="App-header">
           {/* <img src={logo} className="App-logo" alt="logo" /> */}
           

@@ -618,33 +618,73 @@ const genImage = ({displayStations},selectedStations,setSelectedStations,removeS
      </g>
     </svg>
 }
-const SGMrt=()=> {
+const SGMrt=({selectedStations,onStationsCheckChange})=> {
         const [showFutureStations, setShowFutureStation] = useState(true);
+        const [selectedStn,setSelectedStn]=useState([...selectedStations])
         
         const currentStation = ["EW_LINE_STN","NS_LINE_STN","NE_LINE_STN","CC_LINE_STN","DTL_LINE_STN","BP_LRT_LINE_STN","NS_SK_LRT_LINE_STN","NS_PG_LRT_LINE_STN"]
         const newStations = ["ECL_TEL_LINE_STN","JRL_LINE_STN","RTS_JB_LINE_STN","CC_LINE_NEW_STN","DTL_LINE_NEW_STN","NE_LINE_NEW_STN"]
         const stns= {
           displayStations:[...currentStation,...newStations]
         };
-        let selectedStations = ["ew1","ew2"];
-        const addSelectedStation = (id) =>   selectedStations.push(id)         
+        
+        let selectedStns = selectedStations||[];
+        const addSelectedStation = (id) => {  
+          selectedStns.push(id);
+          onStationsCheckChange(id,selectedStns)
+          setSelectedStn(selectedStns)
+        }
        
         const removeSelectedStation = (id)=> {
-          if (selectedStations.filter(item=>item===id).length>0){
-            if (selectedStations.findIndex(item=>item===id) > -1){
-               selectedStations.splice(selectedStations.findIndex(item=>item===id),1)
+          if (selectedStns.filter(item=>item===id).length>0){
+            if (selectedStns.findIndex(item=>item===id) > -1){
+               selectedStns.splice(selectedStns.findIndex(item=>item===id),1)
+               onStationsCheckChange(id,selectedStns)
+               setSelectedStn(selectedStns)
             }
           }
         }
-        return(<div style={{"width": `100vw`,
+
+        const stationTags = (stnTags)=>{
+         return stnTags.map((stn,index)=><li style={{"background": `#009645`,
+          "padding": `5px`,
+          "margin":`10px`,
+          "width": `auto`,
+          "height": `auto`,
+          "color": `white`,
+          "fontWeight": `bold`,
+          "borderRadius":`10%`,
+          "fontSize": `auto`,
+          }} key={index}>{stn}</li>)
+        }
+        return(<div><div style={{"width": `100vw`,
                     "overflow": `scroll`,
                     "margin": `0 auto`}}>
-            {genImage(stns,selectedStations,addSelectedStation,removeSelectedStation)}
+            {genImage(stns,selectedStns,addSelectedStation,removeSelectedStation)}
             <p>You clicked {showFutureStations.toString()} times</p>
             <button onClick={() => setShowFutureStation(!showFutureStations)}>
               Click me
             </button>
-            </div>)
+            </div><ul style={{
+            "background": `rgba(72, 71, 71, 0.91)`,
+            "flexDirection": `row `,
+            "justifyContent": `flex-start space-around`,
+            "flexWrap": `wrap`,
+            "listStyle": `none`,
+            "minHeight":`7vh`,
+            // "display": `-webkit-box`,
+            // "display": `-moz-box`,
+            // "display": `-ms-flexbox`,
+            // "display": `-webkit-flex`,
+            "display": `flex`,
+            "WebkitFlexFlow": `row wrap`,
+            
+            "width": `100%`}}>
+            
+            {stationTags(selectedStn)}
+  
+  
+            </ul></div>)
     
 }
 export default SGMrt;
