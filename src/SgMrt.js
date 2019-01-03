@@ -4,34 +4,34 @@ const generateStationsCheckBoxes = (stationObj,key,selectedStations,setSelectedS
   // stn["strokeColor"]=stationObj["g"]["-stroke"]
   return (<g key={key} id={stationObj["g"]["id"]} stroke={stationObj["g"]["-stroke"]}>
       {stationObj["g"]["circle"].map((stn,index)=>{
-        return <CircleIcon key={index}  stn={stn} selectedStations={selectedStations} setSelectedStations={setSelectedStations} removeSelectedStation={removeSelectedStation} />
+        return <CircleIcon key={index} stn={stn} selectedStations={selectedStations} setSelectedStations={setSelectedStations} removeSelectedStation={removeSelectedStation} />
       })
   }
   </g>)
  
 }
-const CircleIcon = ({stn,strokeColor,selectedStations,setSelectedStations,removeSelectedStation})=>{
+const CircleIcon = ({stn,selectedStations,setSelectedStations,removeSelectedStation})=>{
   
   return <React.Fragment >
       <circle id={stn["id"]} cx={stn["cx"]} cy={stn["cy"]} r={stn["r"]} style={{"cursor":`pointer`}} onClick={()=> {
-          setSelectedStations(stn["id"],strokeColor)        
+          setSelectedStations(stn["id"],stn)        
       }}/>
     {selectedStations.includes(stn["id"]) &&
     
       <React.Fragment >
         <circle id={stn["id"]} cx={stn["cx"]} cy={stn["cy"]} r={stn["r"]} style={{"cursor":`pointer`}} fill="#0093ef" onClick={()=> {
-        removeSelectedStation(stn["id"],strokeColor)   
+        removeSelectedStation(stn["id"],stn)   
         
       }}/>
       <g style={{"cursor":`pointer`}} transform ={`rotate(230 ${parseFloat(stn["cx"])} ${parseFloat(stn["cy"])+3})`} stroke="none" fill="#FFFFFF" onClick={()=> {
-          removeSelectedStation(stn["id"],strokeColor)   
+          removeSelectedStation(stn["id"],stn)   
       }}>
       {/* Drawing Tick icon here by overlapping two rectangle and rotating */}
       <rect x={stn["cx"]} y={stn["cy"]} rx="15" ry="15" height="2.5" width="5" onClick={()=> {
-        removeSelectedStation(stn["id"],strokeColor) 
+        removeSelectedStation(stn["id"],stn) 
       }}/>
       <rect x={stn["cx"]} y={stn["cy"]} rx="15" ry="15" height="10" width="2.5" onClick={()=> {
-        removeSelectedStation(stn["id"],strokeColor) 
+        removeSelectedStation(stn["id"],stn) 
       }}/>
       </g>
       </React.Fragment>
@@ -542,63 +542,63 @@ const genImage = ({displayStations},selectedStations,setSelectedStations,removeS
 <text id="lbdt1a" x="465" y="204" fontSize="12">Bukit</text>
 <text id="lbdt1b" x="456" y="215" fontSize="12">Panjang</text>
 </g>
-{isDisplay("BP_LRT_LINE_STN")&&
-      <g id="lbbpl" fill="#000000">
-       <text id="lbbp2a" x="307" y="211" fontSize="10">South</text>
-       <text id="lbbp2b" x="309" y="221" fontSize="10">View</text>
-       <text id="lbbp3a" x="345" y="239" fontSize="10">Keat</text>
-       <text id="lbbp3b" x="344" y="249" fontSize="10">Hong</text>
-       <text id="lbbp4a" x="380" y="211" fontSize="10">Teck</text>
-       <text id="lbbp4b" x="378" y="221" fontSize="10">Whye</text>
-       <text id="lbbp5" x="407" y="239" fontSize="10">Phoenix</text>
-       <text id="lbbp14a" x="425" y="176" fontSize="10">Ten Mile</text>
-       <text id="lbbp14b" x="425" y="186" fontSize="10">Junction</text>
-       <text id="lbbp7" x="525" y="242" fontSize="10">Petir</text>
-       <text id="lbbp8" x="525" y="272" fontSize="10">Pending</text>
-       <text id="lbbp9" x="569" y="251" fontSize="10">Bangkit</text>
-       <text id="lbbp10" x="569" y="229" fontSize="10">Fajar</text>
-       <text id="lbbp11" x="569" y="207" fontSize="10">Segar</text>
-       <text id="lbbp12" x="525" y="186" fontSize="10">Jelapang</text>
-       <text id="lbbp13" x="525" y="215" fontSize="10">Senja</text>
-      </g>
-}
- {isDisplay("NS_SK_LRT_LINE_STN")&&
-      <g id="lbskl" fill="#000000">
-       <text id="lbse1" x="1096" y="315" fontSize="10">Compassvale</text>
-       <text id="lbse2" x="1155" y="335" fontSize="10">Rumbia</text>
-       <text id="lbse3" x="1157" y="379" fontSize="10">Bakau</text>
-       <text id="lbse4" x="1071" y="384" fontSize="10">Kangkar</text>
-       <text id="lbse5" x="1045" y="354" fontSize="10">Ranggung</text>
-       <text id="lbsw1a" x="1071" y="273" fontSize="10">Cheng</text>
-       <text id="lbsw1b" x="1071" y="283" fontSize="10">Lim</text>
-       <text id="lbsw2" x="1065" y="246" fontSize="10">Farmway</text>
-       <text id="lbsw3" x="1048" y="228" fontSize="10">Kupang</text>
-       <text id="lbsw4" x="970" y="226" fontSize="10">Thanggam</text>
-       <text id="lbsw5" x="961" y="246" fontSize="10">Fernvale</text>
-       <text id="lbsw6" x="974" y="277" fontSize="10">Layar</text>
-       <text id="lbsw7" x="973" y="293" fontSize="10">Tongkang</text>
-       <text id="lbsw8" x="1025" y="286" fontSize="10">Renjong</text>
-      </g>
- }
-  {isDisplay("NS_PG_LRT_LINE_STN")&&
-      <g id="lbpgl" fill="#000000">
-       <text id="lbpe1" x="1164" y="250" fontSize="10">Cove</text>
-       <text id="lbpe2" x="1154" y="275" fontSize="10">Meridian</text>
-       <text id="lbpe3" x="1160" y="293" fontSize="10">Coral Edge</text>
-       <text id="lbpe4" x="1252" y="282" fontSize="10">Riviera</text>
-       <text id="lbpe5" x="1259" y="245" fontSize="10">Kadaloor</text>
-       <text id="lbpe6" x="1243" y="229" fontSize="10">Oasis</text>
-       <text id="lbpe7" x="1198" y="219" fontSize="10">Damai</text>
-       <text id="lbpw1" x="1166" y="177" fontSize="10">Sam Kee</text>
-       <text id="lbpw2" x="1162" y="150" fontSize="10" fill="#aaaaaa">Teck Lee</text>
-       <text id="lbpw3" x="1145" y="131" fontSize="10">Punggol Point</text>
-       <text id="lbpw4" x="1056" y="142" fontSize="10">Samudera</text>
-       <text id="lbpw5" x="1063" y="181" fontSize="10">Nibong</text>
-       <text id="lbpw6" x="1075" y="198" fontSize="10">Sumang</text>
-       <text id="lbpw7a" x="1131" y="182" fontSize="10">Soo</text>
-       <text id="lbpw7b" x="1130" y="191" fontSize="10">Teck</text>
-      </g>
-  }
+      {isDisplay("BP_LRT_LINE_STN")&&
+            <g id="lbbpl" fill="#000000">
+            <text id="lbbp2a" x="307" y="211" fontSize="10">South</text>
+            <text id="lbbp2b" x="309" y="221" fontSize="10">View</text>
+            <text id="lbbp3a" x="345" y="239" fontSize="10">Keat</text>
+            <text id="lbbp3b" x="344" y="249" fontSize="10">Hong</text>
+            <text id="lbbp4a" x="380" y="211" fontSize="10">Teck</text>
+            <text id="lbbp4b" x="378" y="221" fontSize="10">Whye</text>
+            <text id="lbbp5" x="407" y="239" fontSize="10">Phoenix</text>
+            <text id="lbbp14a" x="425" y="176" fontSize="10">Ten Mile</text>
+            <text id="lbbp14b" x="425" y="186" fontSize="10">Junction</text>
+            <text id="lbbp7" x="525" y="242" fontSize="10">Petir</text>
+            <text id="lbbp8" x="525" y="272" fontSize="10">Pending</text>
+            <text id="lbbp9" x="569" y="251" fontSize="10">Bangkit</text>
+            <text id="lbbp10" x="569" y="229" fontSize="10">Fajar</text>
+            <text id="lbbp11" x="569" y="207" fontSize="10">Segar</text>
+            <text id="lbbp12" x="525" y="186" fontSize="10">Jelapang</text>
+            <text id="lbbp13" x="525" y="215" fontSize="10">Senja</text>
+            </g>
+      }
+      {isDisplay("NS_SK_LRT_LINE_STN")&&
+            <g id="lbskl" fill="#000000">
+            <text id="lbse1" x="1096" y="315" fontSize="10">Compassvale</text>
+            <text id="lbse2" x="1155" y="335" fontSize="10">Rumbia</text>
+            <text id="lbse3" x="1157" y="379" fontSize="10">Bakau</text>
+            <text id="lbse4" x="1071" y="384" fontSize="10">Kangkar</text>
+            <text id="lbse5" x="1045" y="354" fontSize="10">Ranggung</text>
+            <text id="lbsw1a" x="1071" y="273" fontSize="10">Cheng</text>
+            <text id="lbsw1b" x="1071" y="283" fontSize="10">Lim</text>
+            <text id="lbsw2" x="1065" y="246" fontSize="10">Farmway</text>
+            <text id="lbsw3" x="1048" y="228" fontSize="10">Kupang</text>
+            <text id="lbsw4" x="970" y="226" fontSize="10">Thanggam</text>
+            <text id="lbsw5" x="961" y="246" fontSize="10">Fernvale</text>
+            <text id="lbsw6" x="974" y="277" fontSize="10">Layar</text>
+            <text id="lbsw7" x="973" y="293" fontSize="10">Tongkang</text>
+            <text id="lbsw8" x="1025" y="286" fontSize="10">Renjong</text>
+            </g>
+      }
+      {isDisplay("NS_PG_LRT_LINE_STN")&&
+          <g id="lbpgl" fill="#000000">
+          <text id="lbpe1" x="1164" y="250" fontSize="10">Cove</text>
+          <text id="lbpe2" x="1154" y="275" fontSize="10">Meridian</text>
+          <text id="lbpe3" x="1160" y="293" fontSize="10">Coral Edge</text>
+          <text id="lbpe4" x="1252" y="282" fontSize="10">Riviera</text>
+          <text id="lbpe5" x="1259" y="245" fontSize="10">Kadaloor</text>
+          <text id="lbpe6" x="1243" y="229" fontSize="10">Oasis</text>
+          <text id="lbpe7" x="1198" y="219" fontSize="10">Damai</text>
+          <text id="lbpw1" x="1166" y="177" fontSize="10">Sam Kee</text>
+          <text id="lbpw2" x="1162" y="150" fontSize="10" fill="#aaaaaa">Teck Lee</text>
+          <text id="lbpw3" x="1145" y="131" fontSize="10">Punggol Point</text>
+          <text id="lbpw4" x="1056" y="142" fontSize="10">Samudera</text>
+          <text id="lbpw5" x="1063" y="181" fontSize="10">Nibong</text>
+          <text id="lbpw6" x="1075" y="198" fontSize="10">Sumang</text>
+          <text id="lbpw7a" x="1131" y="182" fontSize="10">Soo</text>
+          <text id="lbpw7b" x="1130" y="191" fontSize="10">Teck</text>
+          </g>
+      }
       {isDisplay("RTS_JB_LINE_STN")&&
       <g id="rtsl" fill="#aaaaaa">
        <text id="jb2" x="360" y="29" fontSize="12">Bukit Chagar</text>
@@ -617,6 +617,39 @@ const SGMrt=({selectedStations,onStationsCheckChange})=> {
         const stns= {
           displayStations:[...currentStation,...newStations]
         };
+
+        const colorFilter = (str) => {
+          
+          switch(str.slice(0,2)){
+            case "ew": 
+            case "cg": 
+                 return "#009645";
+           case "cc": 
+               return "#fa9e0d";
+           case "ns": 
+               return "#d42e12";
+           case "ne": 
+               return "#9900aa";
+           case "dt":
+               return "#005ec4";
+           case "te":
+               return "#784008";
+           case "js":
+           case "je":
+               return "#0099aa";
+           case "bp":
+           case "se":
+           case "sw":
+           case "pe":
+           case "pw":
+               return "#999999"
+           case "jb":
+               return "#87cefa"
+           default:
+               return "rgba(0,0,0,0)"
+            
+          }
+     }
         
         
         const addSelectedStation = (id,strokeColor) => {  
@@ -639,7 +672,7 @@ const SGMrt=({selectedStations,onStationsCheckChange})=> {
         }
 
         const stationTags = (stnTags,removeSelectedStation)=>{
-         return stnTags.map((stn,index)=><li style={{"background":`#009645`,
+         return stnTags.map((stn,index)=><li style={{"background":`${colorFilter(stn)}`,
           "padding": `5px`,
           "margin":`10px`,
           "width": `auto`,
