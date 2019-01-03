@@ -645,8 +645,8 @@ const SGMrt=({selectedStations,onStationsCheckChange})=> {
           }
         }
 
-        const stationTags = (stnTags)=>{
-         return stnTags.map((stn,index)=><li style={{"background": `#009645`,
+        const stationTags = (stnTags,removeSelectedStation)=>{
+         return stnTags.map((stn,index)=><li style={{"background":`#009645`,
           "padding": `5px`,
           "margin":`10px`,
           "width": `auto`,
@@ -655,7 +655,7 @@ const SGMrt=({selectedStations,onStationsCheckChange})=> {
           "fontWeight": `bold`,
           "borderRadius":`10%`,
           "fontSize": `auto`,
-          }} key={index}>{stn}</li>)
+          }} key={index} >{stn}</li>)
         }
         return(<div><div style={{"width": `100vw`,
                     "overflow": `scroll`,
@@ -678,10 +678,10 @@ const SGMrt=({selectedStations,onStationsCheckChange})=> {
             // "display": `-webkit-flex`,
             "display": `flex`,
             "WebkitFlexFlow": `row wrap`,
+            "margin":`0 auto`
+            }}>
             
-            "width": `100%`}}>
-            
-            {stationTags(selectedStn)}
+            {stationTags(selectedStn,removeSelectedStation)}
   
   
             </ul></div>)

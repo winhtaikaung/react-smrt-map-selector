@@ -8,7 +8,8 @@ class App extends Component {
     return (
       <div className="App">
       <SGMrt 
-      selectedStations={[]} 
+      selectedStations={["ew1", "ew2", "ew3", "ew4", "ew5", "ew6", "ew7", "ew8", "ew9", "ew10", "ew11", "ew12", "ew13", "ew14", "ew15", "ew16", "ew17", "ew18", "ew19", 
+      "ew20", "ew21", "ew22", "ew23", "ew24", "ew25", "ew26", "ew27", "ew28", "ew29", "ew30"]} 
       onStationsCheckChange={(id,item)=>console.log(id,item)}
       />
         <header className="App-header">
