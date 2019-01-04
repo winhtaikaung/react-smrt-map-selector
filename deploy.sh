@@ -1,5 +1,7 @@
 yarn build
 
+rm -rf docs
+
 sed -i.'' 's/\/static/static/g' build/asset-manifest.json
 rm -rf build/asset-manifest.json.
 # mv build/asset-manifest.json. build/asset-manifest.json
