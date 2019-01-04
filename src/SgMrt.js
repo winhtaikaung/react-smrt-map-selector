@@ -625,6 +625,7 @@ const SGMrt=({selectedStations,onStationsCheckChange})=> {
             case "cg": 
                  return "#009645";
            case "cc": 
+           case "ce":
                return "#fa9e0d";
            case "ns": 
                return "#d42e12";
