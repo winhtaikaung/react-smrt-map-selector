@@ -9,7 +9,7 @@ class App extends Component {
       <div className="App">
       <SGMrt 
       selectedStations={["ew30", "je7", "je6", "js10", "cc19", "cc16", "cc17", "te8", "ne7", "ne8", "ne9", "ne10", "ns21"]} 
-      onStationsCheckChange={(id,item)=>console.log(id,item)}
+      onStationsCheckChange={()=>{}}
       />
         <header className="App-header">
           {/* <img src={logo} className="App-logo" alt="logo" /> */}
