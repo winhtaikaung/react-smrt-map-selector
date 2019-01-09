@@ -11,7 +11,7 @@ const generateStationsCheckBoxes = (stationObj,key,selectedStations,setSelectedS
  
 }
 const CircleIcon = ({stn,selectedStations,setSelectedStations,removeSelectedStation})=>{
-  
+  console.log(selectedStations)
   return <React.Fragment >
       <circle id={stn["id"]} cx={stn["cx"]} cy={stn["cy"]} r={stn["r"]} style={{"cursor":`pointer`}} onClick={()=> {
           setSelectedStations(stn["id"],stn)        
@@ -609,7 +609,7 @@ const genImage = ({displayStations},selectedStations,setSelectedStations,removeS
     </svg>
 }
 const SGMrt=({selectedStations,onStationsCheckChange})=> {
-        
+        const [showFutureStations, setShowFutureStation] = useState(true);
         const [selectedStn,setSelectedStn]=useState([...selectedStations])
         
         const currentStation = ["EW_LINE_STN","NS_LINE_STN","NE_LINE_STN","CC_LINE_STN","DTL_LINE_STN","BP_LRT_LINE_STN","NS_SK_LRT_LINE_STN","NS_PG_LRT_LINE_STN"]
@@ -619,13 +619,11 @@ const SGMrt=({selectedStations,onStationsCheckChange})=> {
         };
 
         const colorFilter = (str) => {
-          
           switch(str.slice(0,2)){
             case "ew": 
             case "cg": 
                  return "#009645";
            case "cc": 
-           case "ce":
                return "#fa9e0d";
            case "ns": 
                return "#d42e12";
@@ -636,14 +634,13 @@ const SGMrt=({selectedStations,onStationsCheckChange})=> {
            case "te":
                return "#784008";
            case "js":
-           case "je":
                return "#0099aa";
            case "bp":
            case "se":
-           case "sw":
            case "pe":
-           case "pw":
                return "#999999"
+           case "je":
+                return "#0099aa";
            case "jb":
                return "#87cefa"
            default:
@@ -664,7 +661,6 @@ const SGMrt=({selectedStations,onStationsCheckChange})=> {
           if (selectedStn.filter(item=>item===id).length>0){
             if (selectedStn.findIndex(item=>item===id) > -1){
               selectedStn.splice(selectedStn.findIndex(item=>item===id),1)
-               
                setSelectedStn(selectedStn)
                onStationsCheckChange(id,selectedStn)
                
@@ -682,13 +678,16 @@ const SGMrt=({selectedStations,onStationsCheckChange})=> {
           "fontWeight": `bold`,
           "borderRadius":`10%`,
           "fontSize": `auto`,
-          }} key={index} onClick={()=>removeSelectedStation(stn)}>{stn} <svg viewBox="64 64 896 896"  data-icon="close" width="0.75em" height="0.75em" fill="currentColor" aria-hidden="true"><path d="M563.8 512l262.5-312.9c4.4-5.2.7-13.1-6.1-13.1h-79.8c-4.7 0-9.2 2.1-12.3 5.7L511.6 449.8 295.1 191.7c-3-3.6-7.5-5.7-12.3-5.7H203c-6.8 0-10.5 7.9-6.1 13.1L459.4 512 196.9 824.9A7.95 7.95 0 0 0 203 838h79.8c4.7 0 9.2-2.1 12.3-5.7l216.5-258.1 216.5 258.1c3 3.6 7.5 5.7 12.3 5.7h79.8c6.8 0 10.5-7.9 6.1-13.1L563.8 512z"></path></svg></li>)
+          }} key={index} onClick={()=>removeSelectedStation(stn)}>{stn}</li>)
         }
         return(<div><div style={{"width": `100vw`,
                     "overflow": `scroll`,
                     "margin": `0 auto`}}>
             {genImage(stns,selectedStn,addSelectedStation,removeSelectedStation)}
-            
+            <p>You clicked {showFutureStations.toString()} times</p>
+            <button onClick={() => setShowFutureStation(!showFutureStations)}>
+              Click me
+            </button>
             </div><ul style={{
             "background": `rgba(72, 71, 71, 0.91)`,
             "flexDirection": `row `,
