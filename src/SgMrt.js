@@ -11,12 +11,12 @@ const generateStationsCheckBoxes = (stationObj,key,selectedStations,setSelectedS
  
 }
 const CircleIcon = ({stn,selectedStations,setSelectedStations,removeSelectedStation})=>{
-  console.log(selectedStations)
+  
   return <React.Fragment >
       <circle id={stn["id"]} cx={stn["cx"]} cy={stn["cy"]} r={stn["r"]} style={{"cursor":`pointer`}} onClick={()=> {
           setSelectedStations(stn["id"],stn)        
       }}/>
-    {selectedStations.includes(stn["id"]) &&
+    {selectedStations.filter(item=>item["id"]===stn["id"]).length>0 &&
     
       <React.Fragment >
         <circle id={stn["id"]} cx={stn["cx"]} cy={stn["cy"]} r={stn["r"]} style={{"cursor":`pointer`}} fill="#0093ef" onClick={()=> {
@@ -619,7 +619,9 @@ const SGMrt=({selectedStations,onStationsCheckChange})=> {
         };
 
         const colorFilter = (str) => {
-          switch(str.slice(0,2)){
+          
+          switch(str["id"].slice(0,2)){
+            
             case "ew": 
             case "cg": 
                  return "#009645";
@@ -650,19 +652,19 @@ const SGMrt=({selectedStations,onStationsCheckChange})=> {
      }
         
         
-        const addSelectedStation = (id,strokeColor) => {  
-          selectedStn.push(id);
-          onStationsCheckChange(id,selectedStn)
+        const addSelectedStation = (id,stn) => {  
+          selectedStn.push(stn);
+          onStationsCheckChange(stn,selectedStn)
           setSelectedStn(selectedStn)
         }
        
-        const removeSelectedStation = (id,strokeColor)=> {
-          
-          if (selectedStn.filter(item=>item===id).length>0){
-            if (selectedStn.findIndex(item=>item===id) > -1){
-              selectedStn.splice(selectedStn.findIndex(item=>item===id),1)
+        const removeSelectedStation = (id,stn)=> {
+          console.log(id,stn)
+          if (selectedStn.filter(item=>item["id"]===stn["id"]).length>0){
+            if (selectedStn.findIndex(item=>item["id"]===stn["id"]) > -1){
+              selectedStn.splice(selectedStn.findIndex(item=>item["id"]===stn["id"]),1)
                setSelectedStn(selectedStn)
-               onStationsCheckChange(id,selectedStn)
+               onStationsCheckChange(stn,selectedStn)
                
             }
           }
@@ -678,7 +680,7 @@ const SGMrt=({selectedStations,onStationsCheckChange})=> {
           "fontWeight": `bold`,
           "borderRadius":`10%`,
           "fontSize": `auto`,
-          }} key={index} onClick={()=>removeSelectedStation(stn)}>{stn}</li>)
+          }} key={index} onClick={()=>removeSelectedStation(stn["id"],stn)}>{stn["name"]}</li>)
         }
         return(<div><div style={{"width": `100vw`,
                     "overflow": `scroll`,
