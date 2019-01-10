@@ -1,13 +1,13 @@
 import React, { Component } from 'react';
 
 import './App.css';
-import SGMrt from './SgMrt';
+import SGMrtSelector from './SgMrtSelector';
 
 class App extends Component {
   render() {
     return (
       <div className="App">
-      <SGMrt 
+      <SGMrtSelector 
       selectedStations={[]} 
       onStationsCheckChange={(item,selectedStn)=>{
         console.log(item,selectedStn)
