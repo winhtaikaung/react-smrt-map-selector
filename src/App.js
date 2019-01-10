@@ -12,9 +12,12 @@ class App extends Component {
       onStationsCheckChange={(item,selectedStn)=>{
         console.log(item,selectedStn)
       }}
+      displayStations={["EW_LINE_STN","NS_LINE_STN","NE_LINE_STN","CC_LINE_STN","DTL_LINE_STN","BP_LRT_LINE_STN","NS_SK_LRT_LINE_STN","NS_PG_LRT_LINE_STN"]}
+      isDisplayFutureStation={false}
+      
       />
         <header className="App-header">
-          {/* <img src={logo} className="App-logo" alt="logo" /> */}
+          
           
           <p>
             Edit <code>src/App.js</code> and save to reload.
@@ -25,7 +28,7 @@ class App extends Component {
             target="_blank"
             rel="noopener noreferrer"
           >
-            Learn React
+            Singapore SMRT Map Selector
           </a>
         </header>
       </div>
