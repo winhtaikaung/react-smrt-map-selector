@@ -670,7 +670,6 @@ const SmrtSelector=({width,height,selectedStations,onStationsCheckChange,display
         }
        
         const removeSelectedStation = (id,stn)=> {
-          console.log(id,stn)
           if (selectedStn.filter(item=>item["id"]===stn["id"]).length>0){
             if (selectedStn.findIndex(item=>item["id"]===stn["id"]) > -1){
               selectedStn.splice(selectedStn.findIndex(item=>item["id"]===stn["id"]),1)
