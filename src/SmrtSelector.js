@@ -726,7 +726,7 @@ SmrtSelector.propTypes = {
   height:PropTypes.string,
   title:PropTypes.string,
   selectedStations: PropTypes.array,
-  onStationsCheckChange:PropTypes.func,
+  onStationsCheckChange:PropTypes.func.isRequired,
   displayStations:PropTypes.array,
   displayFutureStation:PropTypes.bool,
   displayTagSelector:PropTypes.bool,
