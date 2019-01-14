@@ -10,7 +10,7 @@ npm install --save react-smrt-selector
 ```
 
 
-## [Usage & Configuration]
+## Usage & Configuration
 ````javascript
 import  SmrtSelector  from  './SmrtSelector';
 
@@ -43,7 +43,7 @@ displayTagSelector={true}
 const  newStations  = ["ECL_TEL_LINE_STN","JRL_LINE_STN","RTS_JB_LINE_STN","CC_LINE_NEW_STN","DTL_LINE_NEW_STN","NE_LINE_NEW_STN"]
  ```
  
-## [Demo App][demo-app-url]
+## Demo App & demo-app-url
 
 * [Demo][https://winhtaikaung.github.io/sg-mrt-stations-selector/]
 * [SourceCode][https://winhtaikaung.github.io/sg-mrt-stations-selector/]
