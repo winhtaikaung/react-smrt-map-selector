@@ -2,6 +2,10 @@
 # react-smrt-selector
 > React.js  Singapore SMRT map integration component
 
+[![Version][npm-image]][npm-url] [![Travis CI][travis-image]][travis-url] [![Quality][codeclimate-image]][codeclimate-url] [![Coverage][codeclimate-coverage-image]][codeclimate-coverage-url] [![Dependencies][gemnasium-image]][gemnasium-url] [![Gitter][gitter-image]][gitter-url]
+
+
+
 
 
 ## Installation
@@ -43,9 +47,9 @@ displayTagSelector={true}
 const  newStations  = ["ECL_TEL_LINE_STN","JRL_LINE_STN","RTS_JB_LINE_STN","CC_LINE_NEW_STN","DTL_LINE_NEW_STN","NE_LINE_NEW_STN"]
  ```
  
-## Demo App & demo-app-url
+## Demo App && demo-app-url
 
-* [Demo][https://winhtaikaung.github.io/sg-mrt-stations-selector/]
-* [SourceCode][https://winhtaikaung.github.io/sg-mrt-stations-selector/]
+* [Demo](https://winhtaikaung.github.io/sg-mrt-stations-selector/)
+* [SourceCode](https://winhtaikaung.github.io/sg-mrt-stations-selector/)
 
 
