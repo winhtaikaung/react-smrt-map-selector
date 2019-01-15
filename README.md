@@ -48,7 +48,6 @@ const  newStations  = ["ECL_TEL_LINE_STN","JRL_LINE_STN","RTS_JB_LINE_STN","CC_L
 * [Demo](https://winhtaikaung.github.io/react-smrt-selector/)
 * [SourceCode](https://github.com/winhtaikaung/react-smrt-selector/)
 
-
 ## License
  
 The MIT License (MIT)
