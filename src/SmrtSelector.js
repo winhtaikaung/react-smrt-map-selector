@@ -663,10 +663,10 @@ const renderStationTags = (stnTags,removeSelectedStation)=>{
  }
 
 const withStatefutureStation = withState('showFutureStations','setShowFutureStations',props=>
-  props.isDisplayFutureStation
+  props.isDisplayFutureStation || false
 );
 const withStateselectedStations=withState('selectedStn','setSelectedStn',props=> 
-   props.selectedStations
+   props.selectedStations || []
 );
 
 const SmrtSelector=({width,height,selectedStations,setShowFutureStations,selectedStn,setSelectedStn,showFutureStations,onStationsCheckChange,displayStations,isDisplayFutureStation,title,displayTagSelector,config})=> {
