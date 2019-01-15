@@ -40,7 +40,7 @@ displayTagSelector={true}
 |**displayTagSelector** | Tags selector view which shows selected stations below the stations map view|	array| |false
 |**config** | configurations for map ```backgroundColor``` and ```textColor```|	object| |false
 
- ## list of available stations arrays
+## list of available stations arrays
  ```javascript
  const  currentStation  = ["EW_LINE_STN","NS_LINE_STN","NE_LINE_STN","CC_LINE_STN","DTL_LINE_STN","BP_LRT_LINE_STN","NS_SK_LRT_LINE_STN","NS_PG_LRT_LINE_STN"]
 
