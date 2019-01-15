@@ -673,7 +673,7 @@ const SmrtSelector=({width,height,selectedStations,setShowFutureStations,selecte
     
         const currentStation = ["EW_LINE_STN","NS_LINE_STN","NE_LINE_STN","CC_LINE_STN","DTL_LINE_STN","BP_LRT_LINE_STN","NS_SK_LRT_LINE_STN","NS_PG_LRT_LINE_STN"]
         const newStations = ["ECL_TEL_LINE_STN","JRL_LINE_STN","RTS_JB_LINE_STN","CC_LINE_NEW_STN","DTL_LINE_NEW_STN","NE_LINE_NEW_STN"]
-        console.log(selectedStn)
+        
           
         const stns= displayStations?{
           displayStations:(Array.isArray(displayStations) && displayStations.length>0)?displayStations:[...currentStation]
