@@ -54,12 +54,8 @@ const  newStations  = ["ECL_TEL_LINE_STN","JRL_LINE_STN","RTS_JB_LINE_STN","CC_L
 ## Demo App && demo-app-url
 
 * [Demo](https://winhtaikaung.github.io/react-smrt-selector/)
-<<<<<<< HEAD
-* [SourceCode](https://github.com/winhtaikaung/react-smrt-selector/)
-=======
 * [SourceCode](https://github.com/winhtaikaung/react-smrt-selector)
 
->>>>>>> feature/license
 
 ## License
  
