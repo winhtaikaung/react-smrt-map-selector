@@ -1,6 +1,6 @@
 {
   "name": "react-smrt-map-selector",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "main": "SmrtSelector.js",
   "dependencies": {
     "react": "16.5.2",
