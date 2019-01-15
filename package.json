@@ -1,5 +1,5 @@
 {
-  "name": "react-smrt-selector",
+  "name": "react-smrt-map-selector",
   "version": "0.1.0",
   "dependencies": {
     "react": "16.5.2",

@@ -1,26 +1,22 @@
 
-# react-smrt-selector
-<<<<<<< HEAD
-> Singapore SMRT map integration React component
-=======
+# react-smrt-map-selector
 > Singapore SMRT map station selector react component
 
 
 
 
->>>>>>> feature/license
 
 
 
 ## Installation
 ```
-npm install --save react-smrt-selector
+npm install --save react-smrt-map-selector
 ```
 
 
 ## Usage & Configuration
 ````javascript
-import  SmrtSelector  from  'react-smrt-selector';
+import  SmrtSelector  from  'react-smrt-map-selector';
 
 <SmrtSelector
 selectedStations={[]}
@@ -51,7 +47,7 @@ displayTagSelector={true}
 const  newStations  = ["ECL_TEL_LINE_STN","JRL_LINE_STN","RTS_JB_LINE_STN","CC_LINE_NEW_STN","DTL_LINE_NEW_STN","NE_LINE_NEW_STN"]
  ```
  
-## Demo App && demo-app-url
+## Demo App & Source Code
 
 * [Demo](https://winhtaikaung.github.io/react-smrt-selector/)
 * [SourceCode](https://github.com/winhtaikaung/react-smrt-selector)
