@@ -1,6 +1,6 @@
 {
   "name": "react-smrt-map-selector",
-  "version": "0.1.4",
+  "version": "0.1.5",
   "main": "src/SmrtSelector.js",
   "dependencies": {
     "react": "16.5.2",
@@ -8,6 +8,7 @@
     "react-scripts": "2.1.2",
     "recompose": "^0.30.0"
   },
+  "keywords":["react","smrt","Singapore","selector"],
   "license": "MIT",
   "scripts": {
     "start": "react-scripts start",
