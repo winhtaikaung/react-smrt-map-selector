@@ -1,8 +1,9 @@
-import React,{useState} from 'react';
+import React from 'react';
 import PropTypes from 'prop-types';
+import {withState,compose} from 'recompose';
+
 
 const generateStationsCheckBoxes = (stationObj,key,selectedStations,setSelectedStations,removeSelectedStation)=>{
-  // stn["strokeColor"]=stationObj["g"]["-stroke"]
   return (<g key={key} id={stationObj["g"]["id"]} stroke={stationObj["g"]["-stroke"]}>
       {stationObj["g"]["circle"].map((stn,index)=>{
         return <CircleIcon key={index} stn={stn} selectedStations={selectedStations} setSelectedStations={setSelectedStations} removeSelectedStation={removeSelectedStation} />
@@ -611,13 +612,68 @@ const genImage = ({displayStations},selectedStations,setSelectedStations,removeS
      </g>
     </svg>
 }
-const SmrtSelector=({width,height,selectedStations,onStationsCheckChange,displayStations,isDisplayFutureStation,title,displayTagSelector,config})=> {
-        const [showFutureStations] = useState(isDisplayFutureStation);
-        const [selectedStn,setSelectedStn]=useState([...selectedStations])
-        
+
+const colorFilter = (str) => {
+          
+  switch(str["id"].slice(0,2)){
+    
+    case "ew": 
+    case "cg": 
+         return "#009645";
+   case "cc": 
+   case "ce":
+       return "#fa9e0d";
+   case "ns": 
+   
+       return "#d42e12";
+   case "ne": 
+       return "#9900aa";
+   case "dt":
+       return "#005ec4";
+   case "te":
+       return "#784008";
+   case "js":
+       return "#0099aa";
+   case "bp":
+   case "se":
+   case "pe":
+   case "pw":
+       return "#999999"
+   case "je":
+        return "#0099aa";
+   case "jb":
+       return "#87cefa"
+   default:
+       return "rgba(0,0,0,0)"
+    
+  }
+}
+
+const renderStationTags = (stnTags,removeSelectedStation)=>{
+  return stnTags.map((stn,index)=><li style={{"background":`${colorFilter(stn)}`,
+   "padding": `5px`,
+   "margin":`10px`,
+   "width": `auto`,
+   "height": `20px`,
+   "color": `white`,
+   "fontWeight": `bold`,
+   "borderRadius":`5px`,
+   "fontSize": `auto`,
+   }} key={index} onClick={()=>removeSelectedStation(stn["id"],stn)}>{stn["name"]} <svg viewBox="0 0 896 896"  data-icon="close" width="0.7em" height="0.7em" fill="currentColor" aria-hidden="true"><path d="M563.8 512l262.5-312.9c4.4-5.2.7-13.1-6.1-13.1h-79.8c-4.7 0-9.2 2.1-12.3 5.7L511.6 449.8 295.1 191.7c-3-3.6-7.5-5.7-12.3-5.7H203c-6.8 0-10.5 7.9-6.1 13.1L459.4 512 196.9 824.9A7.95 7.95 0 0 0 203 838h79.8c4.7 0 9.2-2.1 12.3-5.7l216.5-258.1 216.5 258.1c3 3.6 7.5 5.7 12.3 5.7h79.8c6.8 0 10.5-7.9 6.1-13.1L563.8 512z"></path></svg></li>)
+ }
+
+const withStatefutureStation = withState('showFutureStations','setShowFutureStations',props=>
+  props.isDisplayFutureStation
+);
+const withStateselectedStations=withState('selectedStn','setSelectedStn',props=> 
+   props.selectedStations
+);
+
+const SmrtSelector=({width,height,selectedStations,setShowFutureStations,selectedStn,setSelectedStn,showFutureStations,onStationsCheckChange,displayStations,isDisplayFutureStation,title,displayTagSelector,config})=> {
+    
         const currentStation = ["EW_LINE_STN","NS_LINE_STN","NE_LINE_STN","CC_LINE_STN","DTL_LINE_STN","BP_LRT_LINE_STN","NS_SK_LRT_LINE_STN","NS_PG_LRT_LINE_STN"]
         const newStations = ["ECL_TEL_LINE_STN","JRL_LINE_STN","RTS_JB_LINE_STN","CC_LINE_NEW_STN","DTL_LINE_NEW_STN","NE_LINE_NEW_STN"]
-        
+        console.log(selectedStn)
           
         const stns= displayStations?{
           displayStations:(Array.isArray(displayStations) && displayStations.length>0)?displayStations:[...currentStation]
@@ -626,41 +682,7 @@ const SmrtSelector=({width,height,selectedStations,onStationsCheckChange,display
           [...currentStation,...newStations]:[...currentStation]
         };
 
-        const colorFilter = (str) => {
-          
-          switch(str["id"].slice(0,2)){
-            
-            case "ew": 
-            case "cg": 
-                 return "#009645";
-           case "cc": 
-           case "ce":
-               return "#fa9e0d";
-           case "ns": 
-           
-               return "#d42e12";
-           case "ne": 
-               return "#9900aa";
-           case "dt":
-               return "#005ec4";
-           case "te":
-               return "#784008";
-           case "js":
-               return "#0099aa";
-           case "bp":
-           case "se":
-           case "pe":
-           case "pw":
-               return "#999999"
-           case "je":
-                return "#0099aa";
-           case "jb":
-               return "#87cefa"
-           default:
-               return "rgba(0,0,0,0)"
-            
-          }
-     }
+        
         
         
         const addSelectedStation = (id,stn) => {  
@@ -680,18 +702,7 @@ const SmrtSelector=({width,height,selectedStations,onStationsCheckChange,display
           }
         }
 
-        const stationTags = (stnTags,removeSelectedStation)=>{
-         return stnTags.map((stn,index)=><li style={{"background":`${colorFilter(stn)}`,
-          "padding": `5px`,
-          "margin":`10px`,
-          "width": `auto`,
-          "height": `20px`,
-          "color": `white`,
-          "fontWeight": `bold`,
-          "borderRadius":`5px`,
-          "fontSize": `auto`,
-          }} key={index} onClick={()=>removeSelectedStation(stn["id"],stn)}>{stn["name"]} <svg viewBox="0 0 896 896"  data-icon="close" width="0.7em" height="0.7em" fill="currentColor" aria-hidden="true"><path d="M563.8 512l262.5-312.9c4.4-5.2.7-13.1-6.1-13.1h-79.8c-4.7 0-9.2 2.1-12.3 5.7L511.6 449.8 295.1 191.7c-3-3.6-7.5-5.7-12.3-5.7H203c-6.8 0-10.5 7.9-6.1 13.1L459.4 512 196.9 824.9A7.95 7.95 0 0 0 203 838h79.8c4.7 0 9.2-2.1 12.3-5.7l216.5-258.1 216.5 258.1c3 3.6 7.5 5.7 12.3 5.7h79.8c6.8 0 10.5-7.9 6.1-13.1L563.8 512z"></path></svg></li>)
-        }
+        
         return(<React.Fragment>
             <div style={{"width": `${width?width:`100vw`}`,
                     "height":`${height?height:`100vh`}`,
@@ -714,13 +725,13 @@ const SmrtSelector=({width,height,selectedStations,onStationsCheckChange,display
             "margin":`0 auto`
             }}>
             
-            {stationTags(selectedStn,removeSelectedStation)}
+            {selectedStn&&renderStationTags(selectedStn,removeSelectedStation)}
   
           </ul>}
           </React.Fragment>)
     
 }
-export default SmrtSelector;
+export default compose(withStateselectedStations,withStatefutureStation)(SmrtSelector);
 SmrtSelector.propTypes = {
   width:PropTypes.string,
   height:PropTypes.string,
