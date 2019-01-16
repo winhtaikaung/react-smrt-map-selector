@@ -4,7 +4,7 @@
 
 
 
-
+[![npm version](https://badge.fury.io/js/react-smrt-map-selector.svg)](https://badge.fury.io/js/react-smrt-map-selector)
 
 
 
