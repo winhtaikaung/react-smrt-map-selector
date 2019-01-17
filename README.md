@@ -60,25 +60,15 @@ displayTagSelector={true}
 ## Props & methods
 
 | PropName | Description|PropType | value | required
-
 |--|--|--|--|--|
-
 |**width** | Width of the map component | string(default 100vw) | number + em,px,%, |false
-
 |**height** | Height of the map component | string(default 100vh) | number + em,px,%, |false
-
 |**title** | Title of the map component | string(default Singapore SMRT Map) | |false
-
 |**selectedStations** | Array of selected stations | array | [] |false
-
 |**onStationsCheckChange** | Function to receive stations check changes from map | function| |True
-
 |**displayStations** | List of stations that can display by passing as an array | array| |True
-
 |**displayFutureStation** | List of future stations that can display by passing as an array | array| |true
-
 |**displayTagSelector** | Tags selector view which shows selected stations below the stations map view| array| |false
-
 |**config** | configurations for map ```backgroundColor``` and ```textColor```| object| |false
 
   
