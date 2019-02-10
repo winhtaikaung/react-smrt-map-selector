@@ -3,18 +3,25 @@
   "version": "0.1.5",
   "main": "src/SmrtSelector.js",
   "dependencies": {
-    "react": "16.5.2",
-    "react-dom": "16.5.2",
+    "react": "16.8.0",
+    "react-dom": "16.8.0",
     "react-scripts": "2.1.2",
     "recompose": "^0.30.0"
   },
-  "keywords":["react","smrt","Singapore","selector"],
+  "keywords": [
+    "react",
+    "smrt",
+    "Singapore",
+    "selector"
+  ],
   "license": "MIT",
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "prettier":"prettier --single-quote --tabWidth=2 --print-width=80 --semi --trailing-comma all",
+    "prettify": "yarn prettier --write 'src/**/*.{js,jsx,json,css}'"
   },
   "eslintConfig": {
     "extends": "react-app"
@@ -24,5 +31,10 @@
     "not dead",
     "not ie <= 11",
     "not op_mini all"
-  ]
+  ],
+  "devDependencies": {
+    "eslint-config-prettier": "^4.0.0",
+    "eslint-plugin-prettier": "^3.0.1",
+    "prettier": "^1.16.4"
+  }
 }
