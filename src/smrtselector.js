@@ -1,1831 +1,24 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { withState, compose } from 'recompose';
-
-const EW_LINE_STN = {
-  g: {
-    id: 'stns_ewl',
-    '-stroke': '#009645',
-    circle: [
-      {
-        id: 'cg2',
-        cx: '1334',
-        cy: '694',
-        r: '5',
-        name: 'ChangiAirport',
-        strokeColor: '#009645',
-      },
-      {
-        id: 'ew1',
-        cx: '1283',
-        cy: '524.5',
-        r: '5',
-        name: 'Pasir Ris',
-        strokeColor: '#009645',
-      },
-      {
-        id: 'ew3',
-        cx: '1245',
-        cy: '634',
-        r: '5',
-        name: 'Simei',
-        strokeColor: '#009645',
-      },
-      {
-        id: 'ew5',
-        cx: '1186',
-        cy: '659',
-        r: '5',
-        name: 'Bedok',
-        strokeColor: '#009645',
-      },
-      {
-        id: 'ew6',
-        cx: '1126',
-        cy: '659',
-        r: '5',
-        name: 'Kembangan',
-        strokeColor: '#009645',
-      },
-      {
-        id: 'ew7',
-        cx: '1066',
-        cy: '659',
-        r: '5',
-        name: 'Eunos',
-        strokeColor: '#009645',
-      },
-      {
-        id: 'ew9',
-        cx: '974',
-        cy: '660',
-        r: '5',
-        name: 'Aljunied',
-        strokeColor: '#009645',
-      },
-      {
-        id: 'ew10',
-        cx: '950.5',
-        cy: '675',
-        r: '5',
-        name: 'Kallang',
-        strokeColor: '#009645',
-      },
-      {
-        id: 'ew11',
-        cx: '926',
-        cy: '699',
-        r: '5',
-        name: 'Lavender',
-        strokeColor: '#009645',
-      },
-      {
-        id: 'ew15',
-        cx: '698.5',
-        cy: '856',
-        r: '5',
-        name: 'TanjongPagar',
-        strokeColor: '#009645',
-      },
-      {
-        id: 'ew17',
-        cx: '630',
-        cy: '748',
-        r: '5',
-        name: 'TiongBahru',
-        strokeColor: '#009645',
-      },
-      {
-        id: 'ew18',
-        cx: '595.5',
-        cy: '714',
-        r: '5',
-        name: 'Redhill',
-        strokeColor: '#009645',
-      },
-      {
-        id: 'ew19',
-        cx: '554.7',
-        cy: '673',
-        r: '5',
-        name: 'Queenstown',
-        strokeColor: '#009645',
-      },
-      {
-        id: 'ew20',
-        cx: '519',
-        cy: '637',
-        r: '5',
-        name: 'Commonwealth',
-        strokeColor: '#009645',
-      },
-      {
-        id: 'ew22',
-        cx: '451',
-        cy: '570',
-        r: '5',
-        name: 'Dover',
-        strokeColor: '#009645',
-      },
-      {
-        id: 'ew23',
-        cx: '405',
-        cy: '524',
-        r: '5',
-        name: 'Clementi',
-        strokeColor: '#009645',
-      },
-      {
-        id: 'ew25',
-        cx: '247',
-        cy: '514',
-        r: '5',
-        name: 'ChineseGarden',
-        strokeColor: '#009645',
-      },
-      {
-        id: 'ew26',
-        cx: '202',
-        cy: '514',
-        r: '5',
-        name: 'Lakeside',
-        strokeColor: '#009645',
-      },
-      {
-        id: 'ew27',
-        cx: '155',
-        cy: '514',
-        r: '5',
-        name: 'Boon Lay',
-        strokeColor: '#009645',
-      },
-      {
-        id: 'ew28',
-        cx: '75',
-        cy: '540',
-        r: '5',
-        name: 'Pioneer',
-        strokeColor: '#009645',
-      },
-      {
-        id: 'ew29',
-        cx: '75',
-        cy: '568',
-        r: '5',
-        name: 'Joo Koon ',
-        strokeColor: '#009645',
-      },
-      {
-        id: 'ew30',
-        cx: '75',
-        cy: '596',
-        r: '5',
-        name: 'Gul Circle',
-        strokeColor: '#009645',
-      },
-      {
-        id: 'ew31',
-        cx: '75',
-        cy: '624',
-        r: '5',
-        name: 'TuasCrescent',
-        strokeColor: '#009645',
-      },
-      {
-        id: 'ew32',
-        cx: '75',
-        cy: '652',
-        r: '5',
-        name: 'Tuas WestRoad',
-        strokeColor: '#009645',
-      },
-      {
-        id: 'ew33',
-        cx: '75',
-        cy: '680',
-        r: '5',
-        name: 'Tuas Link',
-        strokeColor: '#009645',
-      },
-    ],
-  },
-};
-const NS_LINE_STN = {
-  g: {
-    id: 'stns_nsl',
-    '-stroke': '#d42e12',
-    circle: [
-      {
-        id: 'ns2',
-        cx: '286',
-        cy: '413',
-        r: '5',
-        name: 'BukitBatok',
-        strokeColor: '#d42e12',
-      },
-      {
-        id: 'ns3',
-        cx: '286',
-        cy: '321',
-        r: '5',
-        name: 'BukitGombak',
-        strokeColor: '#d42e12',
-      },
-      {
-        id: 'ns5',
-        cx: '286',
-        cy: '123',
-        r: '5',
-        name: 'Yew Tee',
-        strokeColor: '#d42e12',
-      },
-      {
-        id: 'ns7',
-        cx: '352',
-        cy: '67',
-        r: '5',
-        name: 'Kranji',
-        strokeColor: '#d42e12',
-      },
-      {
-        id: 'ns8',
-        cx: '435',
-        cy: '67',
-        r: '5',
-        name: 'Marsiling',
-        strokeColor: '#d42e12',
-      },
-      {
-        id: 'ns9',
-        cx: '529',
-        cy: '67',
-        r: '5',
-        name: 'Woodlands',
-        strokeColor: '#d42e12',
-      },
-      {
-        id: 'ns10',
-        cx: '632',
-        cy: '67',
-        r: '5',
-        name: 'Admiralty',
-        strokeColor: '#d42e12',
-      },
-      {
-        id: 'ns11',
-        cx: '735',
-        cy: '67',
-        r: '5',
-        name: 'Sembawang',
-        strokeColor: '#d42e12',
-      },
-      {
-        id: 'ns12',
-        cx: '786',
-        cy: '104',
-        r: '5',
-        name: 'Canberra',
-        strokeColor: '#d42e12',
-      },
-      {
-        id: 'ns13',
-        cx: '786',
-        cy: '153',
-        r: '5',
-        name: 'Yishun',
-        strokeColor: '#d42e12',
-      },
-      {
-        id: 'ns14',
-        cx: '786',
-        cy: '202',
-        r: '5',
-        name: 'Khatib',
-        strokeColor: '#d42e12',
-      },
-      {
-        id: 'ns15',
-        cx: '786',
-        cy: '250',
-        r: '5',
-        name: 'YioChu Kang',
-        strokeColor: '#d42e12',
-      },
-      {
-        id: 'ns16',
-        cx: '786',
-        cy: '306',
-        r: '5',
-        name: 'AngMo Kio',
-        strokeColor: '#d42e12',
-      },
-      {
-        id: 'ns18',
-        cx: '786',
-        cy: '428',
-        r: '5',
-        name: 'Braddell',
-        strokeColor: '#d42e12',
-      },
-      {
-        id: 'ns19',
-        cx: '770',
-        cy: '467',
-        r: '5',
-        name: 'Toa Payoh',
-        strokeColor: '#d42e12',
-      },
-      {
-        id: 'ns20',
-        cx: '739',
-        cy: '498',
-        r: '5',
-        name: 'Novena',
-        strokeColor: '#d42e12',
-      },
-      {
-        id: 'ns22',
-        cx: '660',
-        cy: '586',
-        r: '5',
-        name: 'Orchard',
-        strokeColor: '#d42e12',
-      },
-      {
-        id: 'ns23',
-        cx: '702',
-        cy: '632',
-        r: '5',
-        name: 'Somerset',
-        strokeColor: '#d42e12',
-      },
-      {
-        id: 'ns28',
-        cx: '833',
-        cy: '955',
-        r: '5',
-        name: 'MarinaSouth Pier',
-        strokeColor: '#d42e12',
-      },
-    ],
-  },
-};
-const NE_LINE_STN = {
-  g: {
-    id: 'stns_nel',
-    '-stroke': '#9900aa',
-    circle: [
-      {
-        id: 'ne5',
-        cx: '723.5',
-        cy: '724.5',
-        r: '5',
-        name: 'ClarkeQuay',
-        strokeColor: '#9900aa',
-      },
-      {
-        id: 'ne8',
-        cx: '807.5',
-        cy: '578.4',
-        r: '5',
-        name: 'Farrer Park',
-        strokeColor: '#9900aa',
-      },
-      {
-        id: 'ne9',
-        cx: '834',
-        cy: '552',
-        r: '5',
-        name: 'Boon Keng',
-        strokeColor: '#9900aa',
-      },
-      {
-        id: 'ne10',
-        cx: '861',
-        cy: '525',
-        r: '5',
-        name: 'Potong Pasir',
-        strokeColor: '#9900aa',
-      },
-      {
-        id: 'ne11',
-        cx: '888',
-        cy: '498',
-        r: '5',
-        name: 'Woodleigh',
-        strokeColor: '#9900aa',
-      },
-      {
-        id: 'ne13',
-        cx: '956',
-        cy: '430',
-        r: '5',
-        name: 'Kovan',
-        strokeColor: '#9900aa',
-      },
-      {
-        id: 'ne14',
-        cx: '983',
-        cy: '403.5',
-        r: '5',
-        name: 'Hougang',
-        strokeColor: '#9900aa',
-      },
-      {
-        id: 'ne15',
-        cx: '1018',
-        cy: '368',
-        r: '5',
-        name: 'Buangkok',
-        strokeColor: '#9900aa',
-      },
-    ],
-  },
-};
-const NE_LINE_NEW_STN = {
-  g: {
-    id: 'stns_nel',
-    '-stroke': '#9900aa',
-    circle: [
-      {
-        id: 'ne18',
-        cx: '1254',
-        cy: '132',
-        r: '5',
-        name: 'Punggol Coast',
-        strokeColor: '#9900aa',
-      },
-    ],
-  },
-};
-const CC_LINE_STN = {
-  g: {
-    id: 'stns_ccl',
-    '-stroke': '#fa9e0d',
-    circle: [
-      {
-        id: 'cc2',
-        cx: '824',
-        cy: '739',
-        r: '5',
-        name: 'BrasBasah',
-        strokeColor: '#fa9e0d',
-      },
-      {
-        id: 'cc3',
-        cx: '880',
-        cy: '795',
-        r: '5',
-        name: 'Esplanade',
-        strokeColor: '#fa9e0d',
-      },
-      {
-        id: 'cc5',
-        cx: '970',
-        cy: '786',
-        r: '5',
-        name: 'NicollHighway',
-        strokeColor: '#fa9e0d',
-      },
-      {
-        id: 'cc6',
-        cx: '985',
-        cy: '754.5',
-        r: '5',
-        name: 'Stadium',
-        strokeColor: '#fa9e0d',
-      },
-      {
-        id: 'cc7',
-        cx: '996',
-        cy: '720.5',
-        r: '5',
-        name: 'Mountbatten',
-        strokeColor: '#fa9e0d',
-      },
-      {
-        id: 'cc8',
-        cx: '1003',
-        cy: '687',
-        r: '5',
-        name: 'Dakota',
-        strokeColor: '#fa9e0d',
-      },
-      {
-        id: 'cc11',
-        cx: '984.5',
-        cy: '552',
-        r: '5',
-        name: 'Tai Seng',
-        strokeColor: '#fa9e0d',
-      },
-      {
-        id: 'cc12',
-        cx: '964',
-        cy: '514',
-        r: '5',
-        name: 'Bartley',
-        strokeColor: '#fa9e0d',
-      },
-      {
-        id: 'cc14',
-        cx: '854',
-        cy: '416',
-        r: '5',
-        name: 'LorongChuan',
-        strokeColor: '#fa9e0d',
-      },
-      {
-        id: 'cc16',
-        cx: '721',
-        cy: '390.8',
-        r: '5',
-        name: 'Marymount',
-        strokeColor: '#fa9e0d',
-      },
-      {
-        id: 'cc17',
-        cx: '658',
-        cy: '402.8',
-        r: '5',
-        name: 'Caldecott',
-        strokeColor: '#fa9e0d',
-      },
-      {
-        id: 'cc20',
-        cx: '515.5',
-        cy: '514',
-        r: '5',
-        name: 'Farrer Road',
-        strokeColor: '#fa9e0d',
-      },
-      {
-        id: 'cc21',
-        cx: '497',
-        cy: '549',
-        r: '5',
-        name: 'HollandVillage',
-        strokeColor: '#fa9e0d',
-      },
-      {
-        id: 'cc23',
-        cx: '475.7',
-        cy: '637',
-        r: '5',
-        name: 'one-north',
-        strokeColor: '#fa9e0d',
-      },
-      {
-        id: 'cc24',
-        cx: '476',
-        cy: '674',
-        r: '5',
-        name: 'KentRidge',
-        strokeColor: '#fa9e0d',
-      },
-      {
-        id: 'cc25',
-        cx: '481',
-        cy: '709',
-        r: '5',
-        name: 'Haw ParVilla',
-        strokeColor: '#fa9e0d',
-      },
-      {
-        id: 'cc26',
-        cx: '493.5',
-        cy: '750',
-        r: '5',
-        name: 'PasirPanjang',
-        strokeColor: '#fa9e0d',
-      },
-      {
-        id: 'cc27',
-        cx: '513.8',
-        cy: '792',
-        r: '5',
-        name: 'LabradorPark',
-        strokeColor: '#fa9e0d',
-      },
-      {
-        id: 'cc28',
-        cx: '540',
-        cy: '827.5',
-        r: '5',
-        name: 'TelokBlangah',
-        strokeColor: '#fa9e0d',
-      },
-    ],
-  },
-};
-const CC_LINE_NEW_STN = {
-  g: {
-    id: 'stns_ccl',
-    '-stroke': '#fa9e0d',
-    circle: [
-      {
-        id: 'cc18',
-        cx: '601',
-        cy: '429',
-        r: '5',
-        name: 'BukitBrown',
-        strokeColor: '#fa9e0d',
-      },
-      {
-        id: 'cc30',
-        cx: '630',
-        cy: '895',
-        r: '5',
-        name: 'Keppel',
-        strokeColor: '#fa9e0d',
-      },
-      {
-        id: 'cc31',
-        cx: '681',
-        cy: '912',
-        r: '5',
-        name: 'Cantonment',
-        strokeColor: '#fa9e0d',
-      },
-      {
-        id: 'cc32',
-        cx: '735',
-        cy: '919',
-        r: '5',
-        name: 'PrinceEdward',
-        strokeColor: '#fa9e0d',
-      },
-    ],
-  },
-};
-const DTL_LINE_STN = {
-  g: {
-    id: 'stns_dtl',
-    '-stroke': '#005ec4',
-    circle: [
-      {
-        id: 'dt2',
-        cx: '479',
-        cy: '268',
-        r: '5',
-        name: 'Cashew',
-        strokeColor: '#005ec4',
-      },
-      {
-        id: 'dt3',
-        cx: '479',
-        cy: '309',
-        r: '5',
-        name: 'Hillview',
-        strokeColor: '#005ec4',
-      },
-      {
-        id: 'dt5',
-        cx: '479',
-        cy: '353',
-        r: '5',
-        name: 'BeautyWorld',
-        strokeColor: '#005ec4',
-      },
-      {
-        id: 'dt6',
-        cx: '485',
-        cy: '406',
-        r: '5',
-        name: 'King AlbertPark',
-        strokeColor: '#005ec4',
-      },
-      {
-        id: 'dt7',
-        cx: '502',
-        cy: '425',
-        r: '5',
-        name: 'SixthAvenue',
-        strokeColor: '#005ec4',
-      },
-      {
-        id: 'dt8',
-        cx: '524',
-        cy: '447.5',
-        r: '5',
-        name: 'TanKah Kee',
-        strokeColor: '#005ec4',
-      },
-      {
-        id: 'dt10',
-        cx: '658',
-        cy: '486',
-        r: '5',
-        name: 'Stevens',
-        strokeColor: '#005ec4',
-      },
-      {
-        id: 'dt13',
-        cx: '818',
-        cy: '645',
-        r: '5',
-        name: 'Rochor',
-        strokeColor: '#005ec4',
-      },
-      {
-        id: 'dt17',
-        cx: '804',
-        cy: '866',
-        r: '5',
-        name: 'Downtown',
-        strokeColor: '#005ec4',
-      },
-      {
-        id: 'dt18',
-        cx: '742',
-        cy: '803',
-        r: '5',
-        name: 'TelokAyer',
-        strokeColor: '#005ec4',
-      },
-      {
-        id: 'dt20',
-        cx: '703.5',
-        cy: '727',
-        r: '5',
-        name: 'FortCanning',
-        strokeColor: '#005ec4',
-      },
-      {
-        id: 'dt21',
-        cx: '832',
-        cy: '693',
-        r: '5',
-        name: 'Bencoolen',
-        strokeColor: '#005ec4',
-      },
-      {
-        id: 'dt22',
-        cx: '865',
-        cy: '659.8',
-        r: '5',
-        name: 'JalanBesar',
-        strokeColor: '#005ec4',
-      },
-      {
-        id: 'dt23',
-        cx: '896',
-        cy: '629',
-        r: '5',
-        name: 'Bendeemer',
-        strokeColor: '#005ec4',
-      },
-      {
-        id: 'dt24',
-        cx: '927',
-        cy: '602.5',
-        r: '5',
-        name: 'GeylangBahru',
-        strokeColor: '#005ec4',
-      },
-      {
-        id: 'dt25',
-        cx: '969',
-        cy: '600',
-        r: '5',
-        name: 'Mattar',
-        strokeColor: '#005ec4',
-      },
-      {
-        id: 'dt27',
-        cx: '1046',
-        cy: '600',
-        r: '5',
-        name: 'Ubi',
-        strokeColor: '#005ec4',
-      },
-      {
-        id: 'dt28',
-        cx: '1089',
-        cy: '600',
-        r: '5',
-        name: 'KakiBukit',
-        strokeColor: '#005ec4',
-      },
-      {
-        id: 'dt29',
-        cx: '1129',
-        cy: '600',
-        r: '5',
-        name: 'BedokNorth',
-        strokeColor: '#005ec4',
-      },
-      {
-        id: 'dt30',
-        cx: '1172.5',
-        cy: '600',
-        r: '5',
-        name: 'BedokReservoir',
-        strokeColor: '#005ec4',
-      },
-      {
-        id: 'dt31',
-        cx: '1211',
-        cy: '600',
-        r: '5',
-        name: 'TampinesWest',
-        strokeColor: '#005ec4',
-      },
-      {
-        id: 'dt33',
-        cx: '1286',
-        cy: '632',
-        r: '5',
-        name: 'TampinesEast',
-        strokeColor: '#005ec4',
-      },
-      {
-        id: 'dt34',
-        cx: '1286',
-        cy: '667',
-        r: '5',
-        name: 'UpperChangi',
-        strokeColor: '#005ec4',
-      },
-    ],
-  },
-};
-const DTL_LINE_NEW_STN = {
-  g: {
-    id: 'stns_dtl',
-    '-stroke': '#005ec4',
-    circle: [
-      {
-        id: 'dt36',
-        cx: '1286',
-        cy: '736',
-        r: '5',
-        name: 'Xilin',
-        strokeColor: '#005ec4',
-      },
-      {
-        id: 'dt37',
-        cx: '1286',
-        cy: '786',
-        r: '5',
-        name: 'SungeiBedok',
-        strokeColor: '#005ec4',
-      },
-    ],
-  },
-};
-const ECL_TEL_LINE_STN = {
-  g: {
-    id: 'stns_tel',
-    '-stroke': '#784008',
-    circle: [
-      {
-        id: 'te1',
-        cx: '496',
-        cy: '34',
-        r: '5',
-        name: 'WoodlandsNorth',
-        strokeColor: '#784008',
-      },
-      {
-        id: 'te3',
-        cx: '579',
-        cy: '117',
-        r: '5',
-        name: 'WoodlandsSouth',
-        strokeColor: '#784008',
-      },
-      {
-        id: 'te4',
-        cx: '624',
-        cy: '161.8',
-        r: '5',
-        name: 'Springleaf',
-        strokeColor: '#784008',
-      },
-      {
-        id: 'te5',
-        cx: '658',
-        cy: '208',
-        r: '5',
-        name: 'Lentor',
-        strokeColor: '#784008',
-      },
-      {
-        id: 'te6',
-        cx: '658',
-        cy: '247',
-        r: '5',
-        name: 'Mayflower',
-        strokeColor: '#784008',
-      },
-      {
-        id: 'te7',
-        cx: '658',
-        cy: '309.5',
-        r: '5',
-        name: 'BrightHill',
-        strokeColor: '#784008',
-      },
-      {
-        id: 'te8',
-        cx: '658',
-        cy: '357',
-        r: '5',
-        name: 'UpperThomson',
-        strokeColor: '#784008',
-      },
-      {
-        id: 'te10',
-        cx: '658',
-        cy: '444',
-        r: '5',
-        name: 'MountPleasant',
-        strokeColor: '#784008',
-      },
-      {
-        id: 'te12',
-        cx: '658',
-        cy: '517',
-        r: '5',
-        name: 'Napier',
-        strokeColor: '#784008',
-      },
-      {
-        id: 'te13',
-        cx: '658',
-        cy: '549',
-        r: '5',
-        name: 'OrchardBoulevard',
-        strokeColor: '#784008',
-      },
-      {
-        id: 'te15',
-        cx: '658',
-        cy: '648',
-        r: '5',
-        name: 'GreatWorld',
-        strokeColor: '#784008',
-      },
-      {
-        id: 'te16',
-        cx: '658',
-        cy: '694',
-        r: '5',
-        name: 'Havelock',
-        strokeColor: '#784008',
-      },
-      {
-        id: 'te18',
-        cx: '687',
-        cy: '826.4',
-        r: '5',
-        name: 'Maxwell',
-        strokeColor: '#784008',
-      },
-      {
-        id: 'te19',
-        cx: '741.7',
-        cy: '881',
-        r: '5',
-        name: 'ShentonWay',
-        strokeColor: '#784008',
-      },
-      {
-        id: 'te21',
-        cx: '846',
-        cy: '913',
-        r: '5',
-        name: 'MarinaSouth',
-        strokeColor: '#784008',
-      },
-      {
-        id: 'te22',
-        cx: '911',
-        cy: '913',
-        r: '5',
-        name: 'Gardensby the Bay',
-        strokeColor: '#784008',
-      },
-      {
-        id: 'te23',
-        cx: '958',
-        cy: '903',
-        r: '5',
-        name: 'TanjongRhu',
-        strokeColor: '#784008',
-      },
-      {
-        id: 'te24',
-        cx: '988',
-        cy: '873',
-        r: '5',
-        name: 'Katong Park',
-        strokeColor: '#784008',
-      },
-      {
-        id: 'te25',
-        cx: '1024',
-        cy: '837',
-        r: '5',
-        name: 'TanjongKatong',
-        strokeColor: '#784008',
-      },
-      {
-        id: 'te26',
-        cx: '1056',
-        cy: '805',
-        r: '5',
-        name: 'MarineParade',
-        strokeColor: '#784008',
-      },
-      {
-        id: 'te27',
-        cx: '1104',
-        cy: '786',
-        r: '5',
-        name: 'MarineTerrace',
-        strokeColor: '#784008',
-      },
-      {
-        id: 'te28',
-        cx: '1148',
-        cy: '786',
-        r: '5',
-        name: 'Siglap',
-        strokeColor: '#784008',
-      },
-      {
-        id: 'te29',
-        cx: '1192',
-        cy: '786',
-        r: '5',
-        name: 'Bayshore',
-        strokeColor: '#784008',
-      },
-      {
-        id: 'te30',
-        cx: '1236',
-        cy: '786',
-        r: '5',
-        name: 'BedokSouth',
-        strokeColor: '#784008',
-      },
-    ],
-  },
-};
-const JRL_LINE_STN = {
-  g: {
-    id: 'stns_jrl',
-    '-stroke': '#0099aa',
-    circle: [
-      {
-        id: 'js2',
-        cx: '227',
-        cy: '286',
-        r: '5',
-        name: 'Choa ChuKang West',
-        strokeColor: '#0099aa',
-      },
-      {
-        id: 'js3',
-        cx: '179',
-        cy: '334',
-        r: '5',
-        name: 'Tengah',
-        strokeColor: '#0099aa',
-      },
-      {
-        id: 'js4',
-        cx: '154.5',
-        cy: '380',
-        r: '5',
-        name: 'Hong Kah',
-        strokeColor: '#0099aa',
-      },
-      {
-        id: 'js5',
-        cx: '154.5',
-        cy: '415',
-        r: '5',
-        name: 'Corporation',
-        strokeColor: '#0099aa',
-      },
-      {
-        id: 'js6',
-        cx: '154.5',
-        cy: '450',
-        r: '5',
-        name: 'JurongWest',
-        strokeColor: '#0099aa',
-      },
-      {
-        id: 'js7',
-        cx: '154.5',
-        cy: '480',
-        r: '5',
-        name: 'BaharJunction',
-        strokeColor: '#0099aa',
-      },
-      {
-        id: 'js9',
-        cx: '156',
-        cy: '535',
-        r: '5',
-        name: 'Enterprise',
-        strokeColor: '#0099aa',
-      },
-      {
-        id: 'js10',
-        cx: '179',
-        cy: '565',
-        r: '5',
-        name: 'Tukang',
-        strokeColor: '#0099aa',
-      },
-      {
-        id: 'js11',
-        cx: '203.5',
-        cy: '589',
-        r: '5',
-        name: 'Jurong Hill',
-        strokeColor: '#0099aa',
-      },
-      {
-        id: 'js12',
-        cx: '232',
-        cy: '617',
-        r: '5',
-        name: 'Jurong Pier',
-        strokeColor: '#0099aa',
-      },
-      {
-        id: 'je1',
-        cx: '166',
-        cy: '386',
-        r: '5',
-        name: 'TengahPlantation',
-        strokeColor: '#0099aa',
-      },
-      {
-        id: 'je2',
-        cx: '188',
-        cy: '416',
-        r: '5',
-        name: 'undefinedTengah Park',
-        strokeColor: '#0099aa',
-      },
-      {
-        id: 'je3',
-        cx: '220',
-        cy: '448',
-        r: '5',
-        name: 'Bukit BatokWest',
-        strokeColor: '#0099aa',
-      },
-      {
-        id: 'je4',
-        cx: '249',
-        cy: '477',
-        r: '5',
-        name: 'TohGuan',
-        strokeColor: '#0099aa',
-      },
-      {
-        id: 'je6',
-        cx: '311',
-        cy: '539',
-        r: '5',
-        name: 'JurongTown Hall',
-        strokeColor: '#0099aa',
-      },
-      {
-        id: 'je7',
-        cx: '346',
-        cy: '574',
-        r: '5',
-        name: 'PandanReservoir',
-        strokeColor: '#0099aa',
-      },
-      {
-        id: 'jw1',
-        cx: '75',
-        cy: '465',
-        r: '5',
-        name: 'Gek Poh',
-        strokeColor: '#0099aa',
-      },
-      {
-        id: 'jw2',
-        cx: '75',
-        cy: '430',
-        r: '5',
-        name: 'Tawas',
-        strokeColor: '#0099aa',
-      },
-      {
-        id: 'jw3',
-        cx: '75',
-        cy: '395',
-        r: '5',
-        name: 'NanyangGateway',
-        strokeColor: '#0099aa',
-      },
-      {
-        id: 'jw4',
-        cx: '75',
-        cy: '360',
-        r: '5',
-        name: 'NanyangCrescent',
-        strokeColor: '#0099aa',
-      },
-      {
-        id: 'jw5',
-        cx: '75',
-        cy: '325',
-        r: '5',
-        name: 'Peng KangHill',
-        strokeColor: '#0099aa',
-      },
-    ],
-  },
-};
-// LRT STATIONS
-const BP_LRT_LINE_STN = {
-  g: {
-    id: 'stns_bplrt',
-    '-stroke': '#999999',
-    '-strokeWidth': '1.7',
-    circle: [
-      {
-        id: 'bp2',
-        cx: '321',
-        cy: '226',
-        r: '4.6',
-        name: 'SouthView',
-        strokeColor: '#999999',
-      },
-      {
-        id: 'bp3',
-        cx: '356',
-        cy: '226',
-        r: '4.6',
-        name: 'KeatHong',
-        strokeColor: '#999999',
-      },
-      {
-        id: 'bp4',
-        cx: '391',
-        cy: '226',
-        r: '4.6',
-        name: 'TeckWhye',
-        strokeColor: '#999999',
-      },
-      {
-        id: 'bp5',
-        cx: '426',
-        cy: '226',
-        r: '4.6',
-        name: 'Phoenix',
-        strokeColor: '#999999',
-      },
-      {
-        id: 'bp14',
-        cx: '445.5',
-        cy: '192.5',
-        r: '4.6',
-        name: 'Ten MileJunction',
-        strokeColor: '#999999',
-      },
-      {
-        id: 'bp7',
-        cx: '521',
-        cy: '245',
-        r: '4.6',
-        name: 'Petir',
-        strokeColor: '#999999',
-      },
-      {
-        id: 'bp8',
-        cx: '546',
-        cy: '259',
-        r: '4.6',
-        name: 'Pending',
-        strokeColor: '#999999',
-      },
-      {
-        id: 'bp9',
-        cx: '565',
-        cy: '248',
-        r: '4.6',
-        name: 'Bangkit',
-        strokeColor: '#999999',
-      },
-      {
-        id: 'bp10',
-        cx: '565',
-        cy: '226',
-        r: '4.6',
-        name: 'Fajar',
-        strokeColor: '#999999',
-      },
-      {
-        id: 'bp11',
-        cx: '565',
-        cy: '204',
-        r: '4.6',
-        name: 'Segar',
-        strokeColor: '#999999',
-      },
-      {
-        id: 'bp12',
-        cx: '546',
-        cy: '192',
-        r: '4.6',
-        name: 'Jelapang',
-        strokeColor: '#999999',
-      },
-      {
-        id: 'bp13',
-        cx: '521',
-        cy: '206',
-        r: '4.6',
-        name: 'Senja',
-        strokeColor: '#999999',
-      },
-    ],
-  },
-};
-const NS_SK_LRT_LINE_STN = {
-  g: {
-    id: 'stns_sklrt',
-    '-stroke': '#999999',
-    '-strokeWidth': '1.7',
-    circle: [
-      {
-        id: 'se1',
-        cx: '1127',
-        cy: '321',
-        r: '4.6',
-        name: 'Compassvale',
-        strokeColor: '#999999',
-      },
-      {
-        id: 'se2',
-        cx: '1154',
-        cy: '339',
-        r: '4.6',
-        name: 'Rumbia',
-        strokeColor: '#999999',
-      },
-      {
-        id: 'se3',
-        cx: '1151',
-        cy: '372',
-        r: '4.6',
-        name: 'Bakau',
-        strokeColor: '#999999',
-      },
-      {
-        id: 'se4',
-        cx: '1113',
-        cy: '377.3',
-        r: '4.6',
-        name: 'Kangkar',
-        strokeColor: '#999999',
-      },
-      {
-        id: 'se5',
-        cx: '1095.5',
-        cy: '348.5',
-        r: '4.6',
-        name: 'Ranggung',
-        strokeColor: '#999999',
-      },
-      {
-        id: 'sw1',
-        cx: '1066.5',
-        cy: '273.5',
-        r: '4.6',
-        name: 'ChengLim',
-        strokeColor: '#999999',
-      },
-      {
-        id: 'sw2',
-        cx: '1061.4',
-        cy: '247',
-        r: '4.6',
-        name: 'Farmway',
-        strokeColor: '#999999',
-      },
-      {
-        id: 'sw3',
-        cx: '1044',
-        cy: '229',
-        r: '4.6',
-        name: 'Kupang',
-        strokeColor: '#999999',
-      },
-      {
-        id: 'sw4',
-        cx: '1022',
-        cy: '229',
-        r: '4.6',
-        name: 'Thanggam',
-        strokeColor: '#999999',
-      },
-      {
-        id: 'sw5',
-        cx: '1002',
-        cy: '249',
-        r: '4.6',
-        name: 'Fernvale',
-        strokeColor: '#999999',
-      },
-      {
-        id: 'sw6',
-        cx: '1003.5',
-        cy: '269.5',
-        r: '4.6',
-        name: 'Layar',
-        strokeColor: '#999999',
-      },
-      {
-        id: 'sw7',
-        cx: '1018.7',
-        cy: '284.5',
-        r: '4.6',
-        name: 'Tongkang',
-        strokeColor: '#999999',
-      },
-      {
-        id: 'sw8',
-        cx: '1047',
-        cy: '291.5',
-        r: '4.6',
-        name: 'Renjong',
-        strokeColor: '#999999',
-      },
-    ],
-  },
-};
-const NS_PG_LRT_LINE_STN = {
-  g: {
-    id: 'stns_pglrt',
-    '-stroke': '#999999',
-    '-strokeWidth': '1.7',
-    circle: [
-      {
-        id: 'pe1',
-        cx: '1191.7',
-        cy: '247.3',
-        r: '4.6',
-        name: 'Cove',
-        strokeColor: '#999999',
-      },
-      {
-        id: 'pe2',
-        cx: '1198',
-        cy: '270',
-        r: '4.6',
-        name: 'Meridian',
-        strokeColor: '#999999',
-      },
-      {
-        id: 'pe3',
-        cx: '1215',
-        cy: '287',
-        r: '4.6',
-        name: 'Coral Edge',
-        strokeColor: '#999999',
-      },
-      {
-        id: 'pe4',
-        cx: '1245',
-        cy: '277.7',
-        r: '4.6',
-        name: 'Riviera',
-        strokeColor: '#999999',
-      },
-      {
-        id: 'pe5',
-        cx: '1254',
-        cy: '246.5',
-        r: '4.6',
-        name: 'Kadaloor',
-        strokeColor: '#999999',
-      },
-      {
-        id: 'pe6',
-        cx: '1238',
-        cy: '230.5',
-        r: '4.6',
-        name: 'Oasis',
-        strokeColor: '#999999',
-      },
-      {
-        id: 'pe7',
-        cx: '1214',
-        cy: '224',
-        r: '4.6',
-        name: 'Damai',
-        strokeColor: '#999999',
-      },
-      {
-        id: 'pw1',
-        cx: '1161',
-        cy: '177',
-        r: '4.6',
-        name: 'Sam Kee',
-        strokeColor: '#999999',
-      },
-      {
-        id: 'pw2',
-        cx: '1156',
-        cy: '150',
-        r: '4.6',
-        name: 'Teck Lee',
-        strokeColor: '#999999',
-      },
-      {
-        id: 'pw3',
-        cx: '1139',
-        cy: '132',
-        r: '4.6',
-        name: 'Punggol Point',
-        strokeColor: '#999999',
-      },
-      {
-        id: 'pw4',
-        cx: '1106',
-        cy: '144',
-        r: '4.6',
-        name: 'Samudera',
-        strokeColor: '#999999',
-      },
-      {
-        id: 'pw5',
-        cx: '1098.5',
-        cy: '173',
-        r: '4.6',
-        name: 'Nibong',
-        strokeColor: '#999999',
-      },
-      {
-        id: 'pw6',
-        cx: '1115.5',
-        cy: '190',
-        r: '4.6',
-        name: 'Sumang',
-        strokeColor: '#999999',
-      },
-      {
-        id: 'pw7',
-        cx: '1141',
-        cy: '194.5',
-        r: '4.6',
-        name: 'SooTeck',
-        strokeColor: '#999999',
-      },
-    ],
-  },
-};
-const RTS_JB_LINE_STN = {
-  g: {
-    id: 'rtslink',
-    '-stroke': '#87cefa',
-    '-strokeWidth': '1.7',
-    circle: [
-      {
-        id: 'jb2',
-        cx: '436',
-        cy: '34',
-        r: '5',
-        name: 'Bukit Chagar(Johor Bahru)',
-        strokeColor: '#87cefa',
-      },
-    ],
-  },
-};
-
-// Interchange Stations
-const INTS_STNS = {
-  g: {
-    id: 'stns_ints',
-    '-stroke': '#000000',
-    '-strokeWidth': '3',
-    circle: [
-      {
-        id: 'cc1',
-        cx: '760.2',
-        cy: '689',
-        r: '7.7',
-        name: 'DhobyGhaut',
-        strokeColor: '#000000',
-      },
-      {
-        id: 'ce2',
-        cx: '793',
-        cy: '913.3',
-        r: '7.7',
-        name: 'MarinaBay',
-        strokeColor: '#000000',
-      },
-      {
-        id: 'ce1',
-        cx: '887',
-        cy: '871',
-        r: '7.7',
-        name: 'Bayfront',
-        strokeColor: '#000000',
-      },
-      {
-        id: 'cc4',
-        cx: '941.3',
-        cy: '821',
-        r: '7.7',
-        name: 'Promenade',
-        strokeColor: '#000000',
-      },
-      {
-        id: 'cc9',
-        cx: '1004',
-        cy: '659',
-        r: '7.7',
-        name: 'PayaLebar',
-        strokeColor: '#000000',
-      },
-      {
-        id: 'cc10',
-        cx: '1000',
-        cy: '600',
-        r: '7.7',
-        name: 'MacPherson',
-        strokeColor: '#000000',
-      },
-      {
-        id: 'cc13',
-        cx: '923',
-        cy: '463.2',
-        r: '7.7',
-        name: 'Serangoon',
-        strokeColor: '#000000',
-      },
-      {
-        id: 'cc15',
-        cx: '786',
-        cy: '394',
-        r: '7.7',
-        name: 'Bishan',
-        strokeColor: '#000000',
-      },
-      {
-        id: 'cc19',
-        cx: '548',
-        cy: '471.5',
-        r: '7.7',
-        name: 'BotanicGardens',
-        strokeColor: '#000000',
-      },
-      {
-        id: 'cc22',
-        cx: '481',
-        cy: '599',
-        r: '7.7',
-        name: 'Buona Vista',
-        strokeColor: '#000000',
-      },
-      {
-        id: 'cc29',
-        cx: '581',
-        cy: '866',
-        r: '7.7',
-        name: 'HarbourFront',
-        strokeColor: '#000000',
-      },
-      {
-        id: 'cg1',
-        cx: '1286',
-        cy: '694',
-        r: '7.7',
-        name: 'Expo',
-        strokeColor: '#000000',
-      },
-      {
-        id: 'ew2',
-        cx: '1245',
-        cy: '600.5',
-        r: '7.7',
-        name: 'Tampines',
-        strokeColor: '#000000',
-      },
-      {
-        id: 'ew4',
-        cx: '1227',
-        cy: '659',
-        r: '7.7',
-        name: 'TanahMerah',
-        strokeColor: '#000000',
-      },
-      {
-        id: 'ew12',
-        cx: '899',
-        cy: '726',
-        r: '7.7',
-        name: 'Bugis',
-        strokeColor: '#000000',
-      },
-      {
-        id: 'ew13',
-        cx: '830.3',
-        cy: '790',
-        r: '7.7',
-        name: 'CityHall',
-        strokeColor: '#000000',
-      },
-      {
-        id: 'ew14',
-        cx: '799',
-        cy: '822',
-        r: '7.7',
-        name: 'RafflesPlace',
-        strokeColor: '#000000',
-      },
-      {
-        id: 'ew16',
-        cx: '657',
-        cy: '790.5',
-        r: '7.7',
-        name: 'OutramPark',
-        strokeColor: '#000000',
-      },
-      {
-        id: 'ew24',
-        cx: '286',
-        cy: '514',
-        r: '7.7',
-        name: 'JurongEast',
-        strokeColor: '#000000',
-      },
-      {
-        id: 'ne4',
-        cx: '693.5',
-        cy: '754',
-        r: '7.7',
-        name: 'Chinatown',
-        strokeColor: '#000000',
-      },
-      {
-        id: 'ne7',
-        cx: '780',
-        cy: '606.5',
-        r: '7.7',
-        name: 'LittleIndia',
-        strokeColor: '#000000',
-      },
-      {
-        id: 'ne16',
-        cx: '1080.7',
-        cy: '305.3',
-        r: '7.7',
-        name: 'Sengkang',
-        strokeColor: '#000000',
-      },
-      {
-        id: 'ne17',
-        cx: '1177',
-        cy: '209.5',
-        r: '7.7',
-        name: 'Punggol',
-        strokeColor: '#000000',
-      },
-      {
-        id: 'ns4',
-        cx: '286',
-        cy: '225.5',
-        r: '7.7',
-        name: 'ChoaChu Kang',
-        strokeColor: '#000000',
-      },
-      {
-        id: 'ns21',
-        cx: '705',
-        cy: '532',
-        r: '7.7',
-        name: 'Newton',
-        strokeColor: '#000000',
-      },
-      {
-        id: 'dt1',
-        cx: '479',
-        cy: '225.5',
-        r: '7.7',
-        name: 'BukitPanjang',
-        strokeColor: '#000000',
-      },
-    ],
-  },
-};
+import {
+  EW_LINE_STN,
+  NS_LINE_STN,
+  BP_LRT_LINE_STN,
+  CC_LINE_STN,
+  NE_LINE_STN,
+  CC_LINE_NEW_STN,
+  NE_LINE_NEW_STN,
+  DTL_LINE_STN,
+  DTL_LINE_NEW_STN,
+  ECL_TEL_LINE_STN,
+  JRL_LINE_STN,
+  NS_PG_LRT_LINE_STN,
+  NS_SK_LRT_LINE_STN,
+  RTS_JB_LINE_STN,
+  INTS_STNS,
+  CRLEX_NEW_STN,
+} from './stations';
 
 const generateStationsCheckBoxes = (
   stationObj,
@@ -1857,7 +50,7 @@ const CircleIcon = ({
   removeSelectedStation,
 }) => {
   return (
-    <React.Fragment>
+    <>
       <circle
         id={stn['id']}
         cx={stn['cx']}
@@ -1869,7 +62,7 @@ const CircleIcon = ({
         }}
       />
       {selectedStations.filter(item => item['id'] === stn['id']).length > 0 && (
-        <React.Fragment>
+        <>
           <circle
             id={stn['id']}
             cx={stn['cx']}
@@ -1916,9 +109,9 @@ const CircleIcon = ({
               }}
             />
           </g>
-        </React.Fragment>
+        </>
       )}
-    </React.Fragment>
+    </>
   );
 };
 const genImage = (
@@ -1936,6 +129,7 @@ const genImage = (
     NE_LINE_NEW_STN: NE_LINE_NEW_STN,
     CC_LINE_STN: CC_LINE_STN,
     CC_LINE_NEW_STN: CC_LINE_NEW_STN,
+    CRLEX_NEW_STN:CRLEX_NEW_STN,
     DTL_LINE_STN: DTL_LINE_STN,
     DTL_LINE_NEW_STN: DTL_LINE_NEW_STN,
     ECL_TEL_LINE_STN: ECL_TEL_LINE_STN,
@@ -1956,7 +150,7 @@ const genImage = (
       style={{ overflow: `auto`, width: `1410px`, height: `auto` }}
       height="1007"
       width="1410"
-      preserveAspectRatio="xMidYMid meet"
+      preserveAspectRatio="meet"
     >
       <title>Singapore MRT/LRT system map</title>
       <rect
@@ -2195,8 +389,8 @@ const genImage = (
           </g>
         )}
         {isDisplay('NS_LINE_STN') && (
-          <g id="nsl" stroke="#d42e12">
-            <path d="m286 514v-427q0-20 20-20h460q20 0 20 20v344 q0 20-14.14 34.14 l-104 104 q-14.14 14.14 0 28.28 l162 162 q14.14 14.14 0 28.28 l-67.7 67.7 q-14.14 14.14 0 28.28 l72 72" />
+          <g xmlns="http://www.w3.org/2000/svg" id="nsl" stroke="#d42e12">
+            <path d="m286 514v-407q0-20 20-20h391.5 q20 0 34.4 14.4 l40 40 q14.4 14.14 14.14 34.14v255 q0 20-14.14 34.14 l-104 104 q-14.14 14.14 0 28.28 l162 162 q14.14 14.14 0 28.28 l-29.7 29.7 q-14.14 14.14 -14.14 20 v125" />
           </g>
         )}
         <g id="nel" stroke="#9900aa">
@@ -2231,11 +425,25 @@ const genImage = (
             <path d="m698 760q-14.14 -14.14 0 -28.28 l10-10 q14.14-14.14 28.28-14.14 h61 q20 0 34.14 -14.14 l79-79 q14.14-14.14 34.14-14.14 h321.5 q20 0 20 20 v69" />
           </g>
         )}
+        <g
+          xmlns="http://www.w3.org/2000/svg"
+          id="dtlex"
+          stroke="#005ec4"
+          strokeDasharray="8, 8"
+        >
+          <path d="m1286 695v70" />
+          <path d="m479 225 v-13 q0-14.14-14.14-34.14 l-40-40 q-14.14-14.14-34.14-14.14 h-105" />
+        </g>
+        
         {isDisplay('DTL_LINE_NEW_STN') && (
-          <g id="dtlex" stroke="#005ec4" strokeDasharray="8, 8">
+          <><g id="dtlex" stroke="#005ec4" strokeDasharray="8, 8">
             <path d="m1286 695v90" />
           </g>
+           <g xmlns="http://www.w3.org/2000/svg" id="tel" stroke="#784008">
+           <path d="m496 34 l97.8 97.8"/>
+          </g></>
         )}
+       
         {isDisplay('ECL_TEL_LINE_STN') && (
           <g id="telex" stroke="#784008" strokeDasharray="8, 8">
             <path d="m496 34 l147.8 147.8 q14.14 14.14 14.14 34.14 v562 q0 20 14.14 34.14 l87 87 q14.14 14.14 34.14 14.14 h134 q20 0 34.14 -14.14 l99 -99 q14.14 -14.14 28.28 -14.14 h283 q20 0 20 -20 v-52 q0 -20 -20 -20 h-35" />
@@ -2248,6 +456,14 @@ const genImage = (
             <path d="m179 332 q-14.14 14.14 -14.14 34.14 v6 q0 20 14.14 34.14 l305 305" />
           </g>
         )}
+        {isDisplay('CRLEX_NEW_STN') && (
+          <g id="crlex" stroke="#78BE20" strokeDasharray="8, 8">
+          <path d="m77 544 l59.5 59.5 q14.14 14.14 34.14 14.14 h192.86 q21.79 0 25.5 -22.13 A356 356 0 0 1 1059.45 497 q10.31 20.92 46.47 20.92 h153 q20 0 34.14 14.14 l83.8 83.8 q14.14 14.14 14.14 34.14 v78" />
+          <path d="m1177 209.5 l67 67 q14.14 14.14 14.14 34.14 v167.4 q0 20 14.14 34.14 l10 10" />
+        </g>
+        )}
+       
+
         {isDisplay('CRL_LINE_STN') && (
           <g id="crlex" stroke="#f266b5" strokeDasharray="8, 8">
             <path d="m77 597 l5.5 5.5 q14.14 14.14 20 14.14 h257.3s12.1 0.149 17.6-5.27c5.54-5.42 8.9-21.8 8.9-21.8" />
@@ -2410,76 +626,107 @@ const genImage = (
         {isDisplay('NS_LINE_STN') && (
           <g id="lbnsl" fill={config['textColor'] || '#000000'}>
             <text id="lbns2a" x="292" y="411" fontSize="12">
-              Bukit
+              <tspan id="trsvg94">Bukit</tspan>
             </text>
+
             <text id="lbns2b" x="292" y="423" fontSize="12">
-              Batok
+              <tspan id="trsvg95">Batok</tspan>
             </text>
-            <text id="lbns3a" x="292" y="320" fontSize="12">
-              Bukit
+
+            <text id="lbns3a" x="292" y="350" fontSize="12">
+              <tspan id="trsvg96">Bukit</tspan>
             </text>
-            <text id="lbns3b" x="292" y="332" fontSize="12">
-              Gombak
+
+            <text id="lbns3b" x="292" y="362" fontSize="12">
+              <tspan id="trsvg97">Gombak</tspan>
             </text>
-            <text id="lbns5" x="292" y="125" fontSize="12">
-              Yew Tee
+
+            <text id="lbns3x" x="292" y="295" fill="#aaaaaa" fontSize="12">
+              <tspan id="trsvg98">Brickland</tspan>
             </text>
-            <text id="lbns7" x="335.5" y="60" fontSize="12">
-              Kranji
+
+            <text id="lbns6" x="292" y="175" fontSize="12">
+              <tspan id="trsvg99">Yew Tee</tspan>
             </text>
-            <text id="lbns8" x="410" y="60" fontSize="12">
-              Marsiling
+
+            <text id="lbns5" x="204" y="125" fill="#aaaaaa" fontSize="12">
+              <tspan id="trsvg100">Sungei Kadut</tspan>
             </text>
-            <text id="lbns9" x="526" y="60" fontSize="12">
-              Woodlands
+
+            <text id="lbns7" x="335.5" y="80" fontSize="12">
+              <tspan id="trsvg101">Kranji</tspan>
             </text>
-            <text id="lbns10" x="606" y="60" fontSize="12">
-              Admiralty
+
+            <text id="lbns8" x="410" y="80" fontSize="12">
+              <tspan id="trsvg102">Marsiling</tspan>
             </text>
-            <text id="lbns11" x="699" y="60" fontSize="12">
-              Sembawang
+
+            <text id="lbns10" x="586" y="80" fontSize="12">
+              <tspan id="trsvg104">Admiralty</tspan>
             </text>
-            <text id="lbns12" x="731" y="108" fontSize="12" fill="#aaaaaa">
-              Canberra
+
+            <text id="lbns11" x="650" y="80" fontSize="12">
+              <tspan id="trsvg105">Sembawang</tspan>
             </text>
-            <text id="lbns13" x="743" y="156" fontSize="12">
-              Yishun
+
+            <text id="lbns12" x="742" y="108" fontSize="12">
+              <tspan id="trsvg106">Canberra</tspan>
             </text>
+
+            <text id="lbns13" x="730" y="151" fontSize="12">
+              <tspan id="trsvg107">Yishun</tspan>
+            </text>
+
             <text id="lbns14" x="746" y="205" fontSize="12">
-              Khatib
+              <tspan id="trsvg108">Khatib</tspan>
             </text>
+
             <text id="lbns15a" x="763" y="246" fontSize="12">
-              Yio
+              <tspan id="trsvg109">Yio</tspan>
             </text>
+
             <text id="lbns15b" x="727" y="258" fontSize="12">
-              Chu Kang
+              <tspan id="trsvg110">Chu Kang</tspan>
             </text>
+
             <text id="lbns16a" x="758" y="317" fontSize="12">
-              Ang
+              <tspan id="trsvg111">Ang</tspan>
             </text>
+
             <text id="lbns16b" x="742" y="329" fontSize="12">
-              Mo Kio
+              <tspan id="trsvg112">Mo Kio</tspan>
             </text>
+
             <text id="lbns18" x="734" y="432" fontSize="12">
-              Braddell
+              <tspan id="trsvg113">Braddell</tspan>
             </text>
-            <text id="lbns19" x="779" y="473" fontSize="12">
-              Toa Payoh
+
+            <text id="lbns19a" x="779" y="473" fontSize="12">
+              <tspan id="trsvg114">Toa</tspan>
             </text>
+
+            <text id="lbns19b" x="779" y="485" fontSize="12">
+              <tspan id="trsvg115">Payoh</tspan>
+            </text>
+
             <text id="lbns20" x="748" y="504" fontSize="12">
-              Novena
+              <tspan id="trsvg116">Novena</tspan>
             </text>
+
             <text id="lbns22" x="609" y="590" fontSize="12">
-              Orchard
+              <tspan id="trsvg117">Orchard</tspan>
             </text>
+
             <text id="lbns23" x="709" y="634" fontSize="12">
-              Somerset
+              <tspan id="trsvg118">Somerset</tspan>
             </text>
-            <text id="lbns28a" x="836" y="967" fontSize="12">
-              Marina
+
+            <text id="lbns28a" x="745" y="972" fontSize="12">
+              <tspan id="trsvg119">Marina</tspan>
             </text>
-            <text id="lbns28b" x="836" y="979" fontSize="12">
-              South Pier
+
+            <text id="lbns28b" x="724" y="984" fontSize="12">
+              <tspan id="trsvg120">South Pier</tspan>
             </text>
           </g>
         )}
@@ -2556,10 +803,10 @@ const genImage = (
             <text id="lbcc12" x="968" y="514" fontSize="12">
               Bartley
             </text>
-            <text id="lbcc14a" x="855" y="398" fontSize="12">
+            <text id="lbcc14a" x="879" y="411" fontSize="12">
               Lorong
             </text>
-            <text id="lbcc14b" x="855" y="410" fontSize="12">
+            <text id="lbcc14b" x="879" y="424" fontSize="12">
               Chuan
             </text>
             <text id="lbcc16" x="690" y="383" fontSize="12">
@@ -2637,6 +884,50 @@ const genImage = (
             </text>
           </g>
         )}
+        {/* CRLEX labels */}
+        {isDisplay('CRLEX_NEW_STN') && ( <g
+          xmlns="http://www.w3.org/2000/svg"
+          id="lbcrlex"
+          font-size="12"
+          fill="#aaaaaa"
+        >
+          <text id="lbcr2a" x="1344" y="650">
+            <tspan id="trsvg281">Aviation</tspan>
+          </text>
+          <text id="lbcr2b" x="1360" y="661">
+            <tspan id="trsvg282">Park</tspan>
+          </text>
+          <text id="lbcr3a" x="1361" y="594">
+            <tspan id="trsvg283">Loyang</tspan>
+          </text>
+          <text id="lbcr4a" x="1321" y="554">
+            <tspan id="trsvg284">Pasir Ris East</tspan>
+          </text>
+          <text id="lbcr6a" x="1183" y="501">
+            <tspan id="trsvg285">Tampines</tspan>
+          </text>
+          <text id="lbcr6b" x="1194" y="512">
+            <tspan id="trsvg286">North</tspan>
+          </text>
+          <text id="lbcr7a" x="1055" y="478">
+            <tspan id="trsvg287">Defu</tspan>
+          </text>
+          <text id="lbcr9a" x="924" y="334">
+            <tspan id="trsvg288">Serangoon</tspan>
+          </text>
+          <text id="lbcr9b" x="924" y="345">
+            <tspan id="trsvg289">North</tspan>
+          </text>
+          <text id="lbcr10" x="856" y="313">
+            <tspan id="trsvg290">Tavistock</tspan>
+          </text>
+          <text id="lbcr12" x="696" y="293">
+            <tspan id="trsvg291">Teck Ghee</tspan>
+          </text>
+          <text id="lbcpe1" x="1264" y="424">
+            <tspan id="trsvg375">Elias</tspan>
+          </text>
+        </g>)}
         {isDisplay('DTL_LINE_STN') && (
           <g id="lbdtl" fill={config['textColor'] || '#000000'}>
             <text id="lbdt2" x="430.5" y="272" fontSize="12">
@@ -3006,10 +1297,10 @@ const genImage = (
           <text id="lbcc1b" x="709" y="698" fontSize="12">
             Ghaut
           </text>
-          <text id="lbce2a" x="759" y="931" fontSize="12">
+          <text id="lbce2a" x="797" y="931" fontSize="12">
             Marina
           </text>
-          <text id="lbce2b" x="776" y="943" fontSize="12">
+          <text id="lbce2b" x="798" y="943" fontSize="12">
             Bay
           </text>
           <text id="lbce1" x="885" y="888" fontSize="12">
@@ -3063,6 +1354,7 @@ const genImage = (
           <text id="lbew14b" x="808" y="843" fontSize="12">
             Place
           </text>
+          <text id="lbns9" x="480" y="100" fontSize="12">Woodlands</text>
           <text id="lbew16a" x="605" y="782" fontSize="12">
             Outram
           </text>
@@ -3375,6 +1667,7 @@ const SmrtSelector = ({
     'CC_LINE_NEW_STN',
     'DTL_LINE_NEW_STN',
     'NE_LINE_NEW_STN',
+    'CRLEX_NEW_STN',
   ];
 
   const stns = displayStations
@@ -3410,7 +1703,7 @@ const SmrtSelector = ({
   };
 
   return (
-    <React.Fragment>
+    <>
       <div
         style={{
           width: `${width ? width : `100vw`}`,
@@ -3451,7 +1744,7 @@ const SmrtSelector = ({
           {selectedStn && renderStationTags(selectedStn, removeSelectedStation)}
         </ul>
       )}
-    </React.Fragment>
+    </>
   );
 };
 export default compose(
@@ -3471,9 +1764,10 @@ SmrtSelector.propTypes = {
 };
 
 SmrtSelector.defaultProps = {
-  config:{
+  config: {
     backgroundColor: '#FFF',
     textColor: '#000000',
     title: { textColor: '#000000' },
-  }, onStationsCheckChange:(item, selectedStn) =>{}
-}
+  },
+  onStationsCheckChange: (item, selectedStn) => {},
+};
